@@ -592,6 +592,7 @@ int swap_fast_to_slow(struct tier_struct *ts) {
     spin_unlock(ts->ptl);
     ts->fast_in_use = 0;
     ts->fast_valid = 0;
+    hash_del(&ts->hl_node);
     unlock_page(source);
 out_unlock:
     unlock_page(dest);
@@ -775,6 +776,8 @@ unsigned long check_used_pages(int start, int cutoff) {
                 shuffled_pages[i] = NULL;
                 found = 1;
                 ++stay_count;
+                DEBUG_CODE(printk("mtier check_used_pages: found page 0x%lx\n",
+                            tier_cursor->slow_vaddr));
                 break;
             }
         }
@@ -807,6 +810,7 @@ unsigned long populate_freelist(void) {
     return free_count;
 }
 
+/* Handle the actual duplication/fast swap stuff here. */
 static int mod_mtier_duplicate(struct task_struct *tsk) {
     //int pages_moved = 0;
     struct mm_struct *mm = NULL;
@@ -870,6 +874,7 @@ static int mod_mtier_duplicate(struct task_struct *tsk) {
             INIT_LIST_HEAD(pagelist);
         }
         mod_mtier_generate_pagelist(mm);
+        DEBUG_CODE(printk("pagelist size = %d\n", get_list_size(pagelist)));
     }
     else {
         int count;

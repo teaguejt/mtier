@@ -656,8 +656,7 @@ void do_exit(long code)
 	int group_dead;
 	TASKS_RCU(int tasks_rcu_i);
 
-    if(tsk->should_tier == 1) {
-        tsk->should_tier = 0;
+    if(tsk->should_tier == 1 && (int)tsk->pid == (int)tsk->tgid) {
         printk("mtier: inside do_exit for tiering task %d (state %d).\n",
                 (int)tsk->pid, (int)tsk->state);
         down(&tsk->exit_sem);
