@@ -1,0 +1,34 @@
+2 bugs we need to fix:
+  1) The module does not release memory from the original process after the
+     process exits. I think we need to call 'putback_movable_pages(pagelist)' after 
+
+  2) Many pages are in a bad state when we remove the module. I'm not sure if
+     these are pages we create or pages from the process (likely module
+     We need to clean up the page flags on module exit.
+
+Some testing that we need to do:
+  1) Highest priority is that we ensure the copying / map flipping actually
+     works asynchronously. There is good reason to think that it does -- but I
+     haven't convinced myself yet.
+
+  2) The module right now does not flush TLB's. We should write a version that
+     flushes the TLB's. We need a version that migrates synchronously as well.
+
+
+Other things:
+  1) Add this to a repo ASAP
+
+Netconsole debugging:
+
+On brazil, open a screen session and do:
+
+$ nc -l 1185 > tmp.out
+
+In another screen, do:
+
+$ tail -f tmp.out
+
+On ecuador, open a screen session and do:
+
+tail -f /var/log/messages | nc brazil.eecs.utk.edu 1185
+
