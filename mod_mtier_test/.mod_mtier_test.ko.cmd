@@ -1,0 +1,1 @@
+cmd_/home/jteague6/projects/mtier/mod_mtier_test/mod_mtier_test.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/jteague6/projects/mtier/mod_mtier_test/mod_mtier_test.ko /home/jteague6/projects/mtier/mod_mtier_test/mod_mtier_test.o /home/jteague6/projects/mtier/mod_mtier_test/mod_mtier_test.mod.o

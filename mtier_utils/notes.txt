@@ -1,0 +1,13 @@
+Some experiments:
+  1) Stream on fast node (no migration) (use numactl --cpunodebind=1 --membind=1)
+  2) Stream on slow node (no migration) (use numactl --cpunodebind=1 --membind=0)
+  3) Migration enabled, rate=100ms, no shootdowns (as is)
+  4) Migration enabled, rate=100ms, targeted shootdowns (only for slow copies)
+  5) Migration enabled, rate=100ms, slow copy everything (with shootdowns)
+  6) Migration enabled, rate=100ms, fast copy everything (no shootdowns, but don't
+                        change the set you copy after the startup)
+  Use ktime to look at migration overhead
+    For 1-6, get performance
+    For 3-6, get time spent doing migration, and number of pages migrated
+    (fast and slow)
+

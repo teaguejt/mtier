@@ -1,0 +1,188 @@
+arch/x86/xen/mmu.c: In function ‘xen_cleanhighmap’:
+arch/x86/xen/mmu.c:1116:57: warning: array subscript is above array bounds [-Warray-bounds]
+  for (; vaddr <= vaddr_end && (pmd < (level2_kernel_pgt + PAGE_SIZE));
+                                      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+mm/mtier.c:12:12: warning: ‘bigCount’ defined but not used [-Wunused-variable]
+ static int bigCount = 0;
+            ^~~~~~~~
+In file included from include/linux/perf_event.h:47:0,
+                 from kernel/sched/core.c:41:
+kernel/sched/core.c: In function ‘get_parent_ip’:
+include/linux/ftrace.h:683:36: warning: calling ‘__builtin_return_address’ with a nonzero argument is unsafe [-Wframe-address]
+ #  define ftrace_return_address(n) __builtin_return_address(n)
+                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/linux/ftrace.h:691:38: note: in expansion of macro ‘ftrace_return_address’
+ #define CALLER_ADDR2 ((unsigned long)ftrace_return_address(2))
+                                      ^~~~~~~~~~~~~~~~~~~~~
+kernel/sched/core.c:2935:10: note: in expansion of macro ‘CALLER_ADDR2’
+   addr = CALLER_ADDR2;
+          ^~~~~~~~~~~~
+include/linux/ftrace.h:683:36: warning: calling ‘__builtin_return_address’ with a nonzero argument is unsafe [-Wframe-address]
+ #  define ftrace_return_address(n) __builtin_return_address(n)
+                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/linux/ftrace.h:692:38: note: in expansion of macro ‘ftrace_return_address’
+ #define CALLER_ADDR3 ((unsigned long)ftrace_return_address(3))
+                                      ^~~~~~~~~~~~~~~~~~~~~
+kernel/sched/core.c:2937:11: note: in expansion of macro ‘CALLER_ADDR3’
+    addr = CALLER_ADDR3;
+           ^~~~~~~~~~~~
+In file included from include/linux/mmzone.h:16:0,
+                 from include/linux/mempolicy.h:9,
+                 from mm/mempolicy.c:70:
+mm/mempolicy.c: In function ‘mtier_get_ro_pagelist’:
+mm/mempolicy.c:3000:20: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+     NODEMASK_ALLOC(nodemask_t, old, GFP_KERNEL);
+                    ^
+include/linux/nodemask.h:508:4: note: in definition of macro ‘NODEMASK_ALLOC’
+    type *name = kmalloc(sizeof(*name), gfp_flags)
+    ^~~~
+mm/mempolicy.c:3006:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+     int flags = capable(CAP_SYS_NICE) ? MPOL_MF_MOVE_ALL : MPOL_MF_MOVE;
+     ^~~
+mm/mempolicy.c: In function ‘mtier_copy_to_node’:
+mm/mempolicy.c:3553:1: warning: label ‘out’ defined but not used [-Wunused-label]
+ out:
+ ^~~
+mm/mempolicy.c:3507:29: warning: unused variable ‘q’ [-Wunused-variable]
+     struct list_head *pos, *q;
+                             ^
+mm/mempolicy.c:3507:23: warning: unused variable ‘pos’ [-Wunused-variable]
+     struct list_head *pos, *q;
+                       ^~~
+mm/mempolicy.c: In function ‘sys_do_mtier_management’:
+mm/mempolicy.c:3779:45: warning: passing argument 3 of ‘mtier_migrate_pages’ from incompatible pointer type [-Wincompatible-pointer-types]
+     rv = mtier_migrate_pages( pid, maxNode, oldNode, newNode, nPages );
+                                             ^~~~~~~
+mm/mempolicy.c:3304:5: note: expected ‘nodemask_t * {aka struct <anonymous> *}’ but argument is of type ‘long unsigned int *’
+ int mtier_migrate_pages( pid_t pid, unsigned long maxnode,
+     ^~~~~~~~~~~~~~~~~~~
+mm/mempolicy.c:3779:54: warning: passing argument 4 of ‘mtier_migrate_pages’ from incompatible pointer type [-Wincompatible-pointer-types]
+     rv = mtier_migrate_pages( pid, maxNode, oldNode, newNode, nPages );
+                                                      ^~~~~~~
+mm/mempolicy.c:3304:5: note: expected ‘nodemask_t * {aka struct <anonymous> *}’ but argument is of type ‘long unsigned int *’
+ int mtier_migrate_pages( pid_t pid, unsigned long maxnode,
+     ^~~~~~~~~~~~~~~~~~~
+mm/mempolicy.c:3765:9: warning: unused variable ‘i’ [-Wunused-variable]
+     int i, rv;
+         ^
+At top level:
+mm/mempolicy.c:491:12: warning: ‘mtier_queue_pages_pte_range’ defined but not used [-Wunused-function]
+ static int mtier_queue_pages_pte_range(pmd_t *pmd, unsigned long addr,
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+fs/proc/task_mmu.c: In function ‘proc_maps_open’:
+fs/proc/task_mmu.c:217:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  struct proc_maps_private *priv = __seq_open_private(file, ops, psize);
+  ^~~~~~
+In file included from kernel/trace/trace_sched_wakeup.c:15:0:
+kernel/trace/trace_sched_wakeup.c: In function ‘probe_wakeup’:
+include/linux/ftrace.h:683:36: warning: calling ‘__builtin_return_address’ with a nonzero argument is unsafe [-Wframe-address]
+ #  define ftrace_return_address(n) __builtin_return_address(n)
+                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/linux/ftrace.h:691:38: note: in expansion of macro ‘ftrace_return_address’
+ #define CALLER_ADDR2 ((unsigned long)ftrace_return_address(2))
+                                      ^~~~~~~~~~~~~~~~~~~~~
+kernel/trace/trace_sched_wakeup.c:591:47: note: in expansion of macro ‘CALLER_ADDR2’
+  __trace_function(wakeup_trace, CALLER_ADDR1, CALLER_ADDR2, flags, pc);
+                                               ^~~~~~~~~~~~
+include/linux/ftrace.h:683:36: warning: calling ‘__builtin_return_address’ with a nonzero argument is unsafe [-Wframe-address]
+ #  define ftrace_return_address(n) __builtin_return_address(n)
+                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/linux/ftrace.h:690:38: note: in expansion of macro ‘ftrace_return_address’
+ #define CALLER_ADDR1 ((unsigned long)ftrace_return_address(1))
+                                      ^~~~~~~~~~~~~~~~~~~~~
+kernel/trace/trace_sched_wakeup.c:591:33: note: in expansion of macro ‘CALLER_ADDR1’
+  __trace_function(wakeup_trace, CALLER_ADDR1, CALLER_ADDR2, flags, pc);
+                                 ^~~~~~~~~~~~
+kernel/trace/trace_sched_wakeup.c: In function ‘probe_wakeup_sched_switch’:
+include/linux/ftrace.h:683:36: warning: calling ‘__builtin_return_address’ with a nonzero argument is unsafe [-Wframe-address]
+ #  define ftrace_return_address(n) __builtin_return_address(n)
+                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/linux/ftrace.h:690:38: note: in expansion of macro ‘ftrace_return_address’
+ #define CALLER_ADDR1 ((unsigned long)ftrace_return_address(1))
+                                      ^~~~~~~~~~~~~~~~~~~~~
+kernel/trace/trace_sched_wakeup.c:472:47: note: in expansion of macro ‘CALLER_ADDR1’
+  __trace_function(wakeup_trace, CALLER_ADDR0, CALLER_ADDR1, flags, pc);
+                                               ^~~~~~~~~~~~
+lib/raid6/recov_avx2.c:322:2: warning: #warning "your version of binutils lacks AVX2 support" [-Wcpp]
+ #warning "your version of binutils lacks AVX2 support"
+  ^~~~~~~
+drivers/iommu/dmar.c: In function ‘dmar_hp_remove_drhd’:
+drivers/iommu/dmar.c:1861:5: warning: suggest explicit braces to avoid ambiguous ‘else’ [-Wparentheses]
+  if (!dmaru->include_all && dmaru->devices && dmaru->devices_cnt)
+     ^
+drivers/iommu/intel-iommu.c: In function ‘dmar_check_one_atsr’:
+drivers/iommu/intel-iommu.c:4185:5: warning: suggest explicit braces to avoid ambiguous ‘else’ [-Wparentheses]
+  if (!atsru->include_all && atsru->devices && atsru->devices_cnt)
+     ^
+drivers/net/ethernet/intel/i40e/i40e_txrx.c: In function ‘i40e_xmit_frame_ring’:
+drivers/net/ethernet/intel/i40e/i40e_txrx.c:2357:20: warning: ‘oiph’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+    oudph->check = ~csum_tcpudp_magic(oiph->saddr,
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      oiph->daddr,
+      ~~~~~~~~~~~~   
+      (skb->len - skb_transport_offset(skb)),
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      IPPROTO_UDP, 0);
+      ~~~~~~~~~~~~~~~
+drivers/net/ethernet/intel/i40e/i40e_txrx.c:2307:16: note: ‘oiph’ was declared here
+  struct iphdr *oiph;
+                ^~~~
+drivers/net/ethernet/intel/i40e/i40e_txrx.c:2357:17: warning: ‘oudph’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+    oudph->check = ~csum_tcpudp_magic(oiph->saddr,
+    ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      oiph->daddr,
+      ~~~~~~~~~~~~
+      (skb->len - skb_transport_offset(skb)),
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      IPPROTO_UDP, 0);
+      ~~~~~~~~~~~~~~~
+drivers/net/ethernet/intel/i40e/i40e_txrx.c:2306:17: note: ‘oudph’ was declared here
+  struct udphdr *oudph;
+                 ^~~~~
+drivers/tty/nozomi.c: In function ‘receive_data’:
+drivers/tty/nozomi.c:857:9: warning: ‘size’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+    size -= i;
+         ^~
+drivers/scsi/megaraid/megaraid_sas_base.c: In function ‘megasas_detach_one’:
+drivers/scsi/megaraid/megaraid_sas_base.c:5941:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+    if (fusion->ld_drv_map[i])
+    ^~
+drivers/scsi/megaraid/megaraid_sas_base.c:5944:5: note: ...this statement, but the latter is misleadingly indented as if it is guarded by the ‘if’
+     if (fusion->pd_seq_sync)
+     ^~
+drivers/scsi/mvsas/mv_sas.c: In function ‘mvs_task_prep’:
+drivers/scsi/mvsas/mv_sas.c:736:3: warning: this ‘else’ clause does not guard... [-Wmisleading-indentation]
+   else
+   ^~~~
+drivers/scsi/mvsas/mv_sas.c:740:4: note: ...this statement, but the latter is misleadingly indented as if it is guarded by the ‘else’
+    rc = SAS_PHY_DOWN;
+    ^~
+drivers/net/wireless/ath/ath9k/init.c: In function ‘ath9k_set_hw_capab’:
+drivers/net/wireless/ath/ath9k/init.c:868:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   if (ath9k_is_chanctx_enabled())
+   ^~
+drivers/net/wireless/ath/ath9k/init.c:872:4: note: ...this statement, but the latter is misleadingly indented as if it is guarded by the ‘if’
+    hw->wiphy->iface_combinations = if_comb;
+    ^~
+drivers/gpu/drm/radeon/r100.c: In function ‘r100_bandwidth_update’:
+drivers/gpu/drm/radeon/r100.c:3583:42: warning: ‘disp_drain_rate.full’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     temp_ff.full = read_return_rate.full - disp_drain_rate.full;
+                    ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+In file included from drivers/gpu/drm/radeon/radeon_mode.h:37:0,
+                 from drivers/gpu/drm/radeon/radeon.h:80,
+                 from drivers/gpu/drm/radeon/r100.c:33:
+include/drm/drm_fixed.h:64:13: warning: ‘crit_point_ff.full’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  u64 tmp = ((u64)A.full << 13);
+             ^~~~~~~~~~~
+drivers/gpu/drm/radeon/r100.c:3153:63: note: ‘crit_point_ff.full’ was declared here
+  fixed20_12 peak_disp_bw, mem_bw, pix_clk, pix_clk2, temp_ff, crit_point_ff;
+                                                               ^~~~~~~~~~~~~
+drivers/net/wireless/iwlegacy/3945.c: In function ‘il3945_hw_txq_ctx_free’:
+drivers/net/wireless/iwlegacy/3945.c:1022:5: warning: suggest explicit braces to avoid ambiguous ‘else’ [-Wparentheses]
+  if (il->txq)
+     ^
+drivers/gpu/drm/nouveau/nvkm/engine/pm/nv40.c: In function ‘nv40_perfctr_next’:
+drivers/gpu/drm/nouveau/nvkm/engine/pm/nv40.c:62:19: warning: self-comparison always evaluates to false [-Wtautological-compare]
+  if (pm->sequence != pm->sequence) {
+                   ^~
+Succeed: decoded and checked 1781183 instructions
