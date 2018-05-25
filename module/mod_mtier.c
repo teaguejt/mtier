@@ -33,7 +33,7 @@ MODULE_DESCRIPTION("The module for the mtier kthread worker");
 
 /* Debug output because, let's face it, we need this for tasks of this
  * complexity. */
-#define MTIER_DEBUG
+//#define MTIER_DEBUG
 #ifdef MTIER_DEBUG
 #define DEBUG_CODE(x)   x
 #else
@@ -643,8 +643,8 @@ int evict_pid_tier_structs(pid_t pid) {
     int i = 0;
 
     DEBUG_CODE(printk("mtier evict_pid_tier_structs: entry\n"));
-    printk("mtier evict_pid_tier_structs: calculated usedlist size = %d\n",
-            get_list_size(usedlist));
+    //printk("mtier evict_pid_tier_structs: calculated usedlist size = %d\n",
+    //         get_list_size(usedlist));
     list_for_each_entry_safe(cursor, tmp, usedlist, list) {
         ++i;
         if(cursor->owner != pid) {

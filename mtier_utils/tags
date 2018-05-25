@@ -26,9 +26,15 @@ __NR_mtier_kill_process	mtier.h	3;"	d
 __NR_mtier_list	mtier.h	2;"	d
 a	stream.c	/^STREAM_TYPE *a, *b, *c;$/;"	v
 abs	stream.c	484;"	d	file:
+add	exp.py	/^from operator import add$/;"	i
+all_stream_cfgs	exp.py	/^all_stream_cfgs = ['baseline-local', 'baseline-remote', '1000-100-1-20']$/;"	v
+analysis	exp.py	/^analysis = ['time', 'bandwidth']$/;"	v
+analyze_stream	exp.py	/^def analyze_stream(cfg, is_baseline):$/;"	f
 arr	tracee.c	/^static int *arr[ALLOC_MEMBERS];$/;"	v	file:
 avgtime	stream.c	/^static double	avgtime[4] = {0}, maxtime[4] = {0},$/;"	v	file:
 b	stream.c	/^STREAM_TYPE *a, *b, *c;$/;"	v
+bw	exp.py	/^bw         = 'pcm-memory.x'$/;"	v
+bwdir	exp.py	/^bwdir      = '\/home\/jteague6\/IntelPerformanceCounterMonitorV2.7\/'$/;"	v
 bytes	stream.c	/^static double	bytes[4] = {$/;"	v	file:
 c	stream.c	/^STREAM_TYPE *a, *b, *c;$/;"	v
 checkSTREAMresults	stream.c	/^void checkSTREAMresults ()$/;"	f
@@ -37,6 +43,7 @@ d	stream.c	/^STREAM_TYPE d;$/;"	v
 do_mtier_management_end	process_trace.py	/^do_mtier_management_end   = 'exit_do_mtier_management'$/;"	v
 do_mtier_management_start	process_trace.py	/^do_mtier_management_start = 'entry_do_mtier_management'$/;"	v
 events	process_trace.py	/^events = []$/;"	v
+exps	exp.py	/^exps  = ['baseline-local', 'baseline-remote']$/;"	v
 f	process_trace.py	/^    f = open(sys.argv[2], 'r')$/;"	v
 function_stats	process_trace.py	/^def function_stats(events, start_event, end_event, caption):$/;"	f
 label	stream.c	/^static char	*label[4] = {"Copy:      ", "Scale:     ",$/;"	v	file:
@@ -56,19 +63,40 @@ migrate_pages	process_trace.py	/^migrate_pages     = []$/;"	v
 migrate_pages_end	process_trace.py	/^migrate_pages_end         = 'exit_migrate_pages'$/;"	v
 migrate_pages_start	process_trace.py	/^migrate_pages_start       = 'enter_migrate_pages'$/;"	v
 mintime	stream.c	/^		mintime[4] = {FLT_MAX,FLT_MAX,FLT_MAX,FLT_MAX};$/;"	v	file:
+mm_sizes	exp.py	/^mm_sizes = [1024, 2048, 4096]$/;"	v
+mod	exp.py	/^mod        = 'mod_mtier.ko'$/;"	v
+moddir	exp.py	/^moddir     = '\/home\/jteague6\/projects\/mtier\/module\/'$/;"	v
+mtier	exp.py	/^mtier     = 'mtier3'$/;"	v
 mtier_management	process_trace.py	/^mtier_management  = []$/;"	v
+mtierargs	exp.py	/^mtierargs = ['--ftnode', '1', '--stnode', '0', '--verbose']$/;"	v
+mtierbind	exp.py	/^mtierbind  = remotebind$/;"	v
 mysecond	stream.c	/^double mysecond()$/;"	f
+numactl	exp.py	/^numactl    = 'numactl'$/;"	v
+os	exp.py	/^import os$/;"	i
 pid	process_trace.py	/^    pid = int(sys.argv[1])$/;"	v
+process_stream_analysis	exp.py	/^def process_stream_analysis(runs):$/;"	f
+process_stream_runs	exp.py	/^def process_stream_runs(runs):$/;"	f
+progs	exp.py	/^progs = ['mm', 'stream']$/;"	v
+progsdir	exp.py	/^progsdir   = '\/home\/jteague6\/projects\/mtier\/mtier_utils\/'$/;"	v
 queue_pages_range	process_trace.py	/^queue_pages_range = []$/;"	v
 queue_pages_range_end	process_trace.py	/^queue_pages_range_end     = 'exit_mtier_queue_pages_range'$/;"	v
 queue_pages_range_start	process_trace.py	/^queue_pages_range_start   = 'enter_mtier_queue_pages_range'$/;"	v
+results_dict	exp.py	/^results_dict = {}$/;"	v
+run_mm	exp.py	/^def run_mm():$/;"	f
+run_stream	exp.py	/^def run_stream(threads, cfg, is_baseline, mtier_params = None):$/;"	f
 schedule_event	process_trace.py	/^schedule_event            = 'mtier_sched_switch'$/;"	v
 schedule_events	process_trace.py	/^schedule_events   = []$/;"	v
 scheduler_stats	process_trace.py	/^def scheduler_stats(events, caption):$/;"	f
 shrink_pagelist	process_trace.py	/^shrink_pagelist   = []$/;"	v
 shrink_pagelist_end	process_trace.py	/^shrink_pagelist_end       = 'exit_mtier_shrink_pagelist'$/;"	v
 shrink_pagelist_start	process_trace.py	/^shrink_pagelist_start     = 'enter_mtier_shrink_pagelist'$/;"	v
+signal	exp.py	/^import signal$/;"	i
+stream_process	exp.py	/^stream_process = []$/;"	v
+stream_runs	exp.py	/^stream_runs = []$/;"	v
+subprocess	exp.py	/^import subprocess$/;"	i
+sys	exp.py	/^import sys$/;"	i
 sys	process_trace.py	/^import sys$/;"	i
+time	exp.py	/^import time$/;"	i
 time_file	mtier2.c	/^static char *time_file  = NULL;$/;"	v	file:
 time_file	mtier3.c	/^static char *time_file  = NULL;$/;"	v	file:
 tuned_STREAM_Add	stream.c	/^void tuned_STREAM_Add()$/;"	f
