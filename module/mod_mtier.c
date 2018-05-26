@@ -40,8 +40,11 @@ MODULE_DESCRIPTION("The module for the mtier kthread worker");
 #define DEBUG_CODE(x)
 #endif
 
+#define MTIER_TIMING
+
 //#define SIZE_MB 3000        /* Used for testing 100% migration with STREAM */
-#define SIZE_MB 1024      /* Standard size */
+//#define SIZE_MB 1024  /* Standard size > 100% STREAM RO RSS */
+#define SIZE_MB 68      /* 12.5% STREAM RO RSS */
 //#define SIZE_MB 2         /* Fun size, for testing */
 #define ENTRY_NAME  "mod_mtier"
 #define PROCFS_NAME "mod_mtier"
@@ -574,7 +577,7 @@ int swap_fast_to_slow(struct tier_struct *ts) {
     DEBUG_CODE(printk("mtier swap_fast_to_slow: entry\n"));
     //DEBUG_CODE(print_tier_struct_info(ts));
     /* Lock the fast and slow pages. */
-    if(!mtier_trylock_page(source)) {
+    /*if(!mtier_trylock_page(source)) {
         DEBUG_CODE(printk("mtier swap_fast_to_slow: fast lock failure.\n"));
         rv = -EINVAL;
         goto out;
@@ -583,11 +586,11 @@ int swap_fast_to_slow(struct tier_struct *ts) {
         DEBUG_CODE(printk("mtier swap_fast_to_slow: slow lock failure.\n"));
         rv = -EINVAL;
         goto out_unlock;
-    }
+    }*/
 
     /* Swap the mappings and the PTE */
     move_page_mapping(source, dest);
-    spin_lock(ts->ptl);
+    //spin_lock(ts->ptl);
     *(ts->pte) = ts->slow_pte;
     spin_unlock(ts->ptl);
     ts->fast_in_use = 0;
@@ -613,8 +616,14 @@ int evict_unused_tier_structs(void) {
     struct tier_struct *cursor, *tmp;
     int unfreed_count = 0;
     int freed_count = 0;
+#ifdef MTIER_TIMING
+    ktime_t start, end;
+#endif
 
     DEBUG_CODE(printk("mtier evict_unused_tier_structs: entry\n"));
+#ifdef MTIER_TIMING
+    start = ktime_get();
+#endif
     list_for_each_entry_safe(cursor, tmp, usedlist, list) {
         /* Try to swap - nonzero rv indicates failure and the entry should not
          * be returned to the freelist in this case. */
@@ -632,6 +641,11 @@ int evict_unused_tier_structs(void) {
     }
     DEBUG_CODE(printk("mtier evict_unused_tier_structs: failed to free %d\n",
                 unfreed_count));
+#ifdef MTIER_TIMING
+    end = ktime_get();
+    printk("mtier evict_unused_tier_structs: %d pages in %lu nanoseconds\n",
+            freed_count, (unsigned long)(end.tv64 - start.tv64));
+#endif
 
     return unfreed_count;
 }
@@ -692,14 +706,25 @@ int evict_all_tier_structs(void) {
 
 static int mod_mtier_generate_pagelist(struct mm_struct *mm) {
     struct list_head *iter;
+#ifdef MTIER_TIMING
+    ktime_t start, end;
+
+    start = ktime_get();
+#endif
 
     pagelist = mtier_get_ro_pagelist(mm, 0, 1, pagelist);
-    printk("mtier: call complete, pagelist=0x%lx\n", (unsigned long)pagelist);
+    //printk("mtier: call complete, pagelist=0x%lx\n", (unsigned long)pagelist);
     pagecount = 0;
     list_for_each(iter, pagelist) {
         ++pagecount;
     }
-    printk("mtier: page count is %d\n", pagecount);
+    //printk("mtier: page count is %d\n", pagecount);
+#ifdef MTIER_TIMING
+    end = ktime_get();
+    printk("mtier mod_mtier_generate_pagelist: rebuilt pagelist f size %d "
+           "in %lu nanoseconds.\n", pagecount,
+           (unsigned long)(end.tv64 - start.tv64));
+#endif
 
     return 0;
 }
@@ -750,6 +775,11 @@ unsigned long check_used_pages(int start, int cutoff) {
     int num_to_count;
     struct tier_struct *tier_cursor;
     struct page *page_cursor = NULL;
+#ifdef MTIER_TIMING
+    ktime_t tstart, end;
+    
+    tstart = ktime_get();
+#endif
 
     num_to_count = MIN2(pagecount, PAGES(SIZE_MB));
     /* Invalidate each fast entry */
@@ -790,6 +820,12 @@ unsigned long check_used_pages(int start, int cutoff) {
         }
     }
 
+#ifdef MTIER_TIMING
+    end = ktime_get();
+    printk("mtier check_used_pages completed in %lu nanoseconds.\n",
+           (unsigned long)(end.tv64 - tstart.tv64));
+#endif
+
     return stay_count;
 }
 
@@ -812,17 +848,15 @@ unsigned long populate_freelist(void) {
 
 /* Handle the actual duplication/fast swap stuff here. */
 static int mod_mtier_duplicate(struct task_struct *tsk) {
-    //int pages_moved = 0;
     struct mm_struct *mm = NULL;
     const struct cred *cred = current_cred(), *tcred;
-    //struct page *cursor, *tmp;
-    //unsigned long start, end, cur_addr;
+    //struct tier_struct *ts;
     int err, i, stay_cnt, swap_cnt, cutoff;
     int rc;
-    //struct vm_area_struct *vma = NULL, *fvma;
-    //ktime_t tot_start, tot_end, tot_total, total;
-    //struct list_head *cur;
-    //struct tier_struct free_entries;
+    int num_copied = 0;
+#ifdef MTIER_TIMING
+    ktime_t start, end;
+#endif
 
     ++tot_iter;
     /* Check credentials and make sure we're authorized to perform memory 
@@ -896,10 +930,10 @@ static int mod_mtier_duplicate(struct task_struct *tsk) {
 
         swap_cnt = 0;
         DEBUG_CODE(printk("mtier: starting swap loop.\n"));
+#ifdef MTIER_TIMING
+        start = ktime_get();
+#endif
         for(i = 0; i < cutoff; i++) {
-            //ktime_t start, end;
-            //struct tier_entry *ent;
-
             if(!shuffled_pages[i])
                 continue;
 
@@ -915,7 +949,21 @@ static int mod_mtier_duplicate(struct task_struct *tsk) {
                             "error code: %d.\n", rc));
                 continue;
             }
+            /* Using defauly migrate. Comment this out, because it doesn't
+             * play well with the bookkeeping iterations */
+            /*ts = get_free_fast_entry();
+            if(!ts) break;
+            mtier_unmap_and_move(shuffled_pages[i], ts->fast_page, 0, 2);
+            ts->fast_in_use = 1;
+            list_del(&(ts->list));
+            list_add(&(ts->list), usedlist);*/
+            ++num_copied;
         }
+#ifdef MTIER_TIMING
+        end = ktime_get();
+        printk("mtier duplicate heavy-copied %d pages in %lu nanoseconds\n",
+                num_copied, (unsigned long)(end.tv64 - start.tv64));
+#endif
         DEBUG_CODE(printk("mtier: swap loop finished.\n"));
     }
 

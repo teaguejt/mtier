@@ -40,7 +40,6 @@ __attribute__((section("__versions"))) = {
 	{ 0x7144f3b7, __VMLINUX_SYMBOL_STR(get_task_mm) },
 	{ 0xbb7d95de, __VMLINUX_SYMBOL_STR(security_task_movememory) },
 	{ 0xc6cbbc89, __VMLINUX_SYMBOL_STR(capable) },
-	{ 0xc87c1f84, __VMLINUX_SYMBOL_STR(ktime_get) },
 	{ 0xf9b2a6f, __VMLINUX_SYMBOL_STR(down_trylock) },
 	{ 0xf9a482f9, __VMLINUX_SYMBOL_STR(msleep) },
 	{ 0x2d63fb3a, __VMLINUX_SYMBOL_STR(init_task) },
@@ -48,6 +47,7 @@ __attribute__((section("__versions"))) = {
 	{ 0xc4d5c571, __VMLINUX_SYMBOL_STR(current_task) },
 	{ 0x5f40bd26, __VMLINUX_SYMBOL_STR(kmem_cache_alloc_trace) },
 	{ 0x512f77c, __VMLINUX_SYMBOL_STR(kmalloc_caches) },
+	{ 0xc87c1f84, __VMLINUX_SYMBOL_STR(ktime_get) },
 	{ 0x417f0dde, __VMLINUX_SYMBOL_STR(up_read) },
 	{ 0xac09a022, __VMLINUX_SYMBOL_STR(unlock_page) },
 	{ 0x61e284ca, __VMLINUX_SYMBOL_STR(mtier_trylock_page) },
@@ -76,4 +76,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "77177141AC7AFA53FD87B46");
+MODULE_INFO(srcversion, "4B16A3FF3009A252C23CCDB");
