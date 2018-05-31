@@ -1,0 +1,566 @@
+#include <linux/init.h>
+#include <linux/module.h>
+#include <linux/moduleparam.h>
+#include <linux/proc_fs.h>
+#include <linux/slab.h>
+#include <linux/string.h>
+#include <linux/kthread.h>
+#include <linux/kernel.h>
+#include <linux/delay.h>
+#include <linux/seq_file.h>
+#include <linux/sched.h>
+#include <linux/timekeeping.h>
+#include <linux/security.h>
+#include <linux/mm.h>
+#include <linux/mm_types.h>
+#include <linux/types.h>
+#include <linux/vmalloc.h>
+#include <linux/page-flags.h>
+//#include <linux/nodemask.h>
+//#include <asm-generic/memory_model.h>
+#include <asm/page.h>
+#include "mod_mtier.h"
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Joseph Teague");
+MODULE_DESCRIPTION("The module for the mtier kthread worker");
+
+#define ENTRY_NAME  "mod_mtier"
+#define PROCFS_NAME "mod_mtier"
+#define PROCFS_SIZE 16<<10
+#define PERMS 0644
+#define PARENT NULL
+#define PAGES(x) (((x) << 20) / 4096)
+
+/* Apparently I have to include these two definitions here, since trying to
+ * include rmap.h or pagemap.h in this module causes it to no longer build
+ * with a phone-book of error messages. */
+struct anon_vma {
+    struct anon_vma *root;      /* Root of this anon_vma tree */
+    struct rw_semaphore rwsem;  /* W: modification, R: walking the list */
+    /*
+     *   * The refcount is taken on an anon_vma when there is no
+     *       * guarantee that the vma of page tables will exist for
+     *           * the duration of the operation. A caller that takes
+     *               * the reference is responsible for clearing up the
+     *                   * anon_vma if they are the last user on release
+     *                       */
+    atomic_t refcount;
+
+    /*
+     *   * Count of child anon_vmas and VMAs which points to this anon_vma.
+     *       *
+     *           * This counter is used for making decision about reusing anon_vma
+     *               * instead of forking new one. See comments in function anon_vma_clone.
+     *                   */
+    unsigned degree;
+
+    struct anon_vma *parent;    /* Parent of this anon_vma */
+
+    /*
+     *   * NOTE: the LSB of the rb_root.rb_node is set by
+     *       * mm_take_all_locks() _after_ taking the above lock. So the
+     *           * rb_root must only be read/written after taking the above lock
+     *               * to be sure to see a valid next pointer. The LSB bit itself
+     *                   * is serialized by a system wide lock only visible to
+     *                       * mm_take_all_locks() (mm_all_locks_mutex).
+     *                           */
+    struct rb_root rb_root; /* Interval tree of private "related" vmas */
+};
+
+struct anon_vma_chain {
+    struct vm_area_struct *vma;
+    struct anon_vma *anon_vma;
+    struct list_head same_vma;   /* locked by mmap_sem & page_table_lock */
+    struct rb_node rb;          /* locked by anon_vma->rwsem */
+    unsigned long rb_subtree_last;
+#ifdef CONFIG_DEBUG_VM_RB
+    unsigned long cached_vma_start, cached_vma_last;
+#endif
+};
+
+struct tier_list_struct {
+    pid_t pid;
+    pte_t pte;
+    struct mm_struct *mm;
+    struct vm_area_struct *vma;
+};
+
+struct tier_struct {
+    pid_t owner;
+    int fast_in_use;
+    int fast_valid;
+    unsigned long fast_pfn;
+    unsigned long fast_paddr;
+    unsigned long fast_vaddr;
+    unsigned long slow_pfn;
+    unsigned long slow_paddr;
+    unsigned long slow_vaddr;
+    struct page *slow_page;
+    struct page *fast_page;
+    pte_t slow_pte;
+    pte_t fast_pte;
+};
+
+static struct task_struct *kthread;
+static int counter;
+//static int slow_node = 0;
+static int fast_node  = 1;
+static int slow_node  = 0;
+static int mod_iter   = 0;
+static int tot_iter   = 0;
+static int unused_idx = 0;
+static int size_mb    = 1024;
+static int ms_delay   = 1000;
+static int iter_pages = 100;
+//static int pers_node = 2;    /* Unused, for now */
+struct tier_struct tier_entries[(1024 << 20) / PAGE_SIZE];
+static struct list_head *pagelist;
+
+struct tier_struct *get_free_fast_entry(void) {
+    int i;
+
+    for(i = 0; i < (1024 << 20) / PAGE_SIZE; i++) {
+        if(tier_entries[i].fast_in_use == 0) {
+            return &tier_entries[i];
+        }
+    }
+
+    return NULL;
+}
+
+struct address_space *get_page_mapping(struct page *page) {
+    unsigned long mapping;                                                                                                                                                                             
+    /* This happens if someone calls flush_dcache_page on slab page */
+    if (unlikely(PageSlab(page)))
+        return NULL;
+    if (unlikely(PageSwapCache(page))) {
+        swp_entry_t entry;
+
+        entry.val = page_private(page);
+        //return &swapper_spaces[swp_type(entry)];
+        return -EINVAL;
+        //return swap_address_space(entry);
+    }
+
+    mapping = (unsigned long)page->mapping;
+    if (mapping & PAGE_MAPPING_FLAGS)
+        return NULL;
+    return page->mapping;
+}
+
+static int move_page_mapping(struct page *page, struct page *newpage) {
+    newpage->mem_cgroup = page->mem_cgroup;
+    newpage->index = page->index;
+    newpage->mapping = page->mapping;
+    return 0;
+}
+
+static int copy_page_contents(struct page *from, struct page *to) {
+    int i;
+    void *vfrom, *vto;
+
+    /* The kernel uses kmap_atomic() and kunmap_atomic() to get vaddrs here.
+     * Since this module only really works on 64-bit NUMA systems that don't
+     * have highmem, we can safely just use the raw linear address obtained by
+     * calling page_address.
+     *
+     * Get the virtual address of the CONTENTS of each of these pages, then
+     * call copy_page to perform the actual memcpy. */
+    vfrom = page_address(from);
+    vto   = page_address(to);
+    copy_page(to, from);
+
+    printk("mtier: copied from 0x%lx to 0x%lx\n",
+            (unsigned long)vfrom, (unsigned long)vto);
+    /*printk("mtier: survival kit contents check --\n");
+    for(i = 0; i < 5; i++) {
+        printk("\tslow:%f\tfast:%f\n", *(double *)vfrom, *(double *)vto);
+    }*/
+
+    return 0;
+}
+
+static int perform_page_swap(struct page *page, struct page *newpage) {
+    struct address_space *mapping;
+    int rc;
+
+    mapping = get_page_mapping(page);
+    if(mapping == -EINVAL) {
+        printk("mtier: invalid mapping (swap)\n");
+        return -EINVAL;
+    }
+    else if(mapping) {
+        printk("mtier: mapping found, tiering only works for anon pages\n");
+        return -EINVAL;
+    }
+
+    /* if !mapping, essentially */
+    rc = move_page_mapping(page, newpage);    
+    rc = copy_page_contents(page, newpage);
+    return 0;
+}
+
+static struct page *page_by_address(const struct mm_struct *mm, 
+        const unsigned long addr) {
+    struct page *page = NULL;
+    pgd_t *pgd;
+    pud_t *pud;
+    pmd_t *pmd;
+    pte_t *pte;
+
+    pgd = pgd_offset(mm, addr);
+    if(!pgd_present(*pgd)) {
+        goto out;
+    }
+
+    pud = pud_offset(pgd, addr);
+    if(!pud_present(*pud)) {
+        goto out;
+    }
+
+    pmd = pmd_offset(pud, addr);
+    if(!pmd_present(*pmd)) {
+        goto out;
+    }
+
+    pte = pte_offset_map(pmd, addr);
+    if(!pte_present(*pte)) {
+        goto out;
+    }
+
+    page = pte_page(*pte);
+out:
+    return page;
+}
+
+static struct vm_area_struct *get_vma_of_page(const struct mm_struct *mm, const struct page *page) {
+    struct vm_area_struct *vma = NULL, *fvma;
+    struct anon_vma *avma;
+    struct anon_vma_chain *avc;
+    unsigned long mapping;
+    pgoff_t pgoff;
+
+    page = compound_head(page);
+    mapping = (unsigned long)page->mapping;
+    if((mapping & PAGE_MAPPING_FLAGS) != PAGE_MAPPING_ANON) {
+        return NULL;
+    }
+    mapping &= ~PAGE_MAPPING_FLAGS;
+    avma = (struct anon_vma *)mapping;
+
+    if (unlikely(PageHeadHuge(page)))
+        pgoff = page->index << compound_order(page);
+    else if (likely(!PageTransTail(page)))
+        pgoff = page->index;
+    else {
+        pgoff = compound_head(page)->index;
+        pgoff += page - compound_head(page);
+    }
+
+    anon_vma_interval_tree_foreach(avc, &avma->rb_root, pgoff, pgoff) {
+        vma = avc->vma;
+        fvma = avc->vma;
+        printk("mtier: finding vma for page 0x%lx\n", (unsigned long)page);
+        for(vma; vma && vma->vm_next != fvma; vma = vma->vm_next) {
+            printk("mtier: vma_start=0x%lx vma_end=0x%lx\n",
+                (unsigned long)vma->vm_start,
+                (unsigned long)vma->vm_end);
+        }
+    }
+    
+    return vma;
+}
+
+static int mod_mtier_generate_pagelist(struct mm_struct *mm) {
+    int pagecount = 0;
+    struct list_head *iter;
+
+    pagelist = mtier_get_ro_pagelist(mm, 0, 1, pagelist);
+    printk("mtier: call complete, pagelist=0x%lx\n", (unsigned long)pagelist);
+    pagecount = 0;
+    list_for_each(iter, pagelist) {
+        ++pagecount;
+    }
+    printk("mtier: page count is %d\n", pagecount);
+
+    return 0;
+}
+
+static int swap_mapping(struct mm_struct *mm, struct page *page) {
+    unsigned long addr, vaddr;
+    int swaprv;
+    pgd_t *pgd;
+    pud_t *pud;
+    pmd_t *pmd;
+    pte_t *ptep, pte;
+    spinlock_t ptelock;
+    struct page *newpage, *pageref;
+    struct vm_area_struct *vma;
+    struct tier_struct *free_entry;
+
+    addr = page_to_phys(page);
+    vaddr = page_address(page);
+    //avma = page_get_anon_vma(page);
+    printk("mtier: vaddr=0x%lx\n", vaddr);
+    vma = get_vma_of_page(mm, page);
+
+    free_entry = get_free_fast_entry();
+    if(free_entry) {
+        printk("mtier: free fast entry found: 0x%lx\n",
+                (unsigned long)free_entry);
+    }
+    else {
+        printk("mtier: no free fast entry found :-(\n");
+    }
+
+    swaprv = perform_page_swap(page, free_entry->fast_page);
+
+    /*pgd = pgd_offset(mm, vaddr);
+    if(!pgd_present(*pgd)) {
+        printk("mtier: pgd not present.\n");
+        return -1;
+    }
+
+    pud = pud_offset(pgd, vaddr);
+    if(!pud_present(*pud)) {
+        printk("mtier: bad pud\n");
+        return -1;
+    }
+    pmd = pmd_offset(pud, vaddr);
+    if(!pmd_present(*pmd)) {
+        printk("mtier: pmd not present.\n");
+        return -1;
+    }
+
+    //ptep = pte_offset_map_lock(mm, pmd, vaddr, ptelock);
+    ptep = pte_offset_map(pmd, vaddr);
+    if(!pte_present(*ptep)) {
+        printk("mtier: no pte present\n");
+        goto out_unlock;
+    }
+    if(!ptep) {
+        printk("mtier: bad pte\n");
+        goto out_unlock;
+    }
+
+    pageref = pte_page(*ptep);
+    if(!pageref) {
+        printk("mtier: bad page ref\n");
+        return -1;
+    }
+
+    printk("mtier: pgd=0x%lx pud=0x%lx pmd=0x%lx pte=0x%lx page=0x%lx "
+            "pageref=0x%lx\n",
+            (unsigned long)pgd, (unsigned long)pud, (unsigned long)pmd,
+            (unsigned long)ptep, (unsigned long)page, (unsigned long)pageref);
+    printk("mtier: page=0x%lx pageref=0x%lx pte_pfn=0x%lx mm=0x%lx mm->pgd=0x%lx\n", 
+            (unsigned long)page_address(page),
+            (unsigned long)page_address(pageref),
+            (unsigned long)ptep->pte,
+            (unsigned long)mm,
+            (unsigned long)mm->pgd);
+    */
+out_unlock:
+    //pte_unmap_unlock(ptep, ptelock);
+    return 0;
+}
+
+static int mod_mtier_duplicate(struct task_struct *tsk) {
+    int pages_moved = 0;
+    struct mm_struct *mm = NULL;
+    const struct cred *cred = current_cred(), *tcred;
+    struct page *cursor, *tmp;
+    unsigned long start, end, cur_addr;
+    int err;
+    struct vm_area_struct *vma = NULL, *fvma;
+
+    rcu_read_lock();
+    get_task_struct(tsk);
+    tcred = __task_cred(tsk);
+    if( !uid_eq(cred->euid, tcred->suid) && !uid_eq(cred->euid, tcred->uid) &&
+        !uid_eq(cred->uid,  tcred->suid) && !uid_eq(cred->uid,  tcred->uid) &&
+        !capable(CAP_SYS_NICE)) {
+
+        rcu_read_unlock();
+        printk("mtier: credential failure.\n");
+        goto fail;
+    }
+
+    rcu_read_unlock();
+
+    err = security_task_movememory(tsk);
+    if(err) {
+        printk("mtier: security_task_movememory failure.\n");
+        goto fail_put;
+    }
+
+    mm = get_task_mm(tsk);
+    put_task_struct(tsk);
+    
+    /* Call next function here */
+    if(mod_iter % 10 == 0) {
+        mod_iter = 1;
+        ++tot_iter;
+        return mod_mtier_generate_pagelist(mm);
+    }
+    else {
+        ++mod_iter;
+        ++tot_iter;
+        /*list_for_each_entry_safe(cursor, tmp, pagelist, lru) {
+            printk("mtier: iter %d migrating 0x%lx to 0x%lx\n", tot_iter,
+                    (unsigned long)page_to_phys(tmp),
+                    (unsigned long)page_to_phys(tier_entries[unused_idx].fast_page));
+        }*/
+        for(pages_moved = 0; pages_moved < iter_pages && 
+                !list_empty(pagelist); ++pages_moved) {
+            tmp = list_first_entry(pagelist, struct page, lru);
+            /*printk("mtier: iter %d migrating 0x%lx (v 0x%lx) to 0x%lx, mm=0x%lx\n", tot_iter,
+                    (unsigned long)page_to_phys(tmp),
+                    (unsigned long)page_address(tmp),
+                    (unsigned long)page_to_phys(tier_entries[unused_idx].fast_page),
+                    (unsigned long)mm);*/
+            swap_mapping(mm, tmp);
+            list_del(&tmp->lru);
+            if(list_empty(pagelist)) {
+                printk("mtier: list empty :-(\n");
+            }
+        }
+    }
+    
+    /* Test walk process VMAs for addr. range confirmation */
+    printk("mtier: walk of vmas for mm 0x%lx\n", (unsigned long)mm);
+    for(vma = mm->mmap; vma != NULL; vma = vma->vm_next) {
+        printk("mtier: vma_from_task: vma=0x%lx start=0x%lx end=0x%lx "
+                "vm_mm=0x%lx\n",
+                (unsigned long)vma,
+                (unsigned long)vma->vm_start,
+                (unsigned long)vma->vm_end,
+                (unsigned long)vma->vm_mm);
+    }
+
+    /* This needs to be the last thing the module does. */
+    mmput(mm);
+    ++mod_iter;
+    return 0;
+
+fail_put:
+    put_task_struct(tsk);
+fail:
+    return -1;
+
+}
+
+int thr_run(void *dat) {
+    int numpages = 100;
+    //int nsdelay  = 1000;
+    struct task_struct *tsk;
+    pid_t pid = 0;
+    int pages;
+    ktime_t call_start;
+    ktime_t call_end;
+    NODEMASK_ALLOC(nodemask_t, old, GFP_KERNEL);
+    NODEMASK_ALLOC(nodemask_t, new, GFP_KERNEL);
+    nodes_clear(*old);
+    nodes_clear(*new);
+    node_set(0, *old);
+    node_set(1, *new);
+    printk("old: %lu\nnew: %lu\n", *(unsigned long *)old, *(unsigned long *)new);
+   
+    printk("mod_mtier: thread entry\n"); 
+    while(!kthread_should_stop()) {
+        //ndelay(nsdelay);
+        ssleep(1);
+        for_each_process(tsk) {
+            if(tsk->should_tier == 1) {
+                printk("tiering-eligible process: %lu\n", 
+                        (unsigned long)tsk->pid);
+                pid = tsk->pid;
+                call_start = ktime_get();
+                //pages = mod_do_mtier_management(pid, numpages, old, new, 2);
+                pages = mod_mtier_duplicate(tsk);
+                call_end = ktime_get();
+                printk("mod_mtier: moved %d pages in %lu ns\n", pages, 
+                        (unsigned long)call_end.tv64 - (unsigned long)call_start.tv64);
+            }
+        }
+    }
+    
+    printk("mtier: worker thread termination\n");
+    return counter;
+}
+
+static int mod_mtier_init(void) {
+    int curr_node, i;
+
+    pagelist = (struct list_head *)kmalloc(sizeof(struct list_head),
+            GFP_KERNEL);
+
+    INIT_LIST_HEAD(pagelist);
+    printk("mtier: module entry\n");
+    printk("mtier: mb_size = %d, total_pages = %d\n", size_mb, PAGES(size_mb));
+
+    counter = 0;
+
+    /* BEGIN INITIAL DUPLICATION CODE */
+    /* This code just reserves memory on the fast tier by allocating an array
+     * of pages. There's really nothing magical about it. By making sure that 
+     * the entire fast-tier size is reserved from the get-go, we both improve
+     * performance and prevent OOM issues from occuring in the middle of
+     * process execution. If this fails, the machine crashes (for now).
+     */
+    for_each_online_node(curr_node) {
+        if(curr_node != fast_node) {
+            printk("Node %d breaking (not %d)\n", curr_node, fast_node);
+            continue;
+        }
+        printk("Node %d reporting!\n", curr_node);
+        for(i = 0; i < PAGES(size_mb); i++) {
+            tier_entries[i].owner = 0;
+            tier_entries[i].fast_in_use = 0;
+            tier_entries[i].fast_valid = 0;
+            tier_entries[i].slow_page = NULL;
+            tier_entries[i].fast_page = alloc_page_interleave(
+                    (gfp_t *)GFP_HIGHUSER_MOVABLE, 0, curr_node);
+            if(!tier_entries[i].fast_page) {
+                goto oom;
+            }
+            //printk("mtier: fast page paddr=0x%lx\n",
+            //        (unsigned long)page_to_phys(tier_entries[i].fast_page));
+        }
+    }
+    /* END INITIAL DUPLICATION CODE */
+
+    kthread = kthread_run(thr_run, NULL, "mtier_worker");
+    if(IS_ERR(kthread)) {
+        printk("mtier: your thread done blowed up\n");
+        return PTR_ERR(kthread);
+    }
+    return 0;
+
+oom:
+    printk("Error allocating memory for page, i = %d\n", i);
+    BUG_ON(1);
+}
+
+module_init(mod_mtier_init);
+
+static void mod_mtier_exit(void) {
+    int thr_rv = kthread_stop(kthread);
+    int i;
+
+    if(thr_rv != -EINTR) {
+        printk("mtier: worker thread has stopped.\n");
+    }
+
+    /* BEGIN REPLICATION FREE CODE */
+    for(i = 0; i < PAGES(size_mb); i++) {
+        __free_pages(tier_entries[i].fast_page, 0);
+    }
+
+    /* END REPLICATION FREE CODE */
+
+    printk("mtier: module exit with count %d\n", counter);
+}
+
+module_exit(mod_mtier_exit);

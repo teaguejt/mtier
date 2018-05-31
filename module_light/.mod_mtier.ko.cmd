@@ -1,0 +1,1 @@
+cmd_/home/jteague6/projects/mtier/module_light/mod_mtier.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/jteague6/projects/mtier/module_light/mod_mtier.ko /home/jteague6/projects/mtier/module_light/mod_mtier.o /home/jteague6/projects/mtier/module_light/mod_mtier.mod.o

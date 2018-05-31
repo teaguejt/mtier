@@ -44,7 +44,7 @@ MODULE_DESCRIPTION("The module for the mtier kthread worker");
 
 //#define SIZE_MB 3000        /* Used for testing 100% migration with STREAM */
 //#define SIZE_MB 1024  /* Standard size > 100% STREAM RO RSS */
-#define SIZE_MB 68      /* 12.5% STREAM RO RSS */
+#define SIZE_MB 92      /* 12.5% STREAM RO RSS */
 //#define SIZE_MB 2         /* Fun size, for testing */
 #define ENTRY_NAME  "mod_mtier"
 #define PROCFS_NAME "mod_mtier"
@@ -592,13 +592,13 @@ int swap_fast_to_slow(struct tier_struct *ts) {
     move_page_mapping(source, dest);
     //spin_lock(ts->ptl);
     *(ts->pte) = ts->slow_pte;
-    spin_unlock(ts->ptl);
+    //spin_unlock(ts->ptl);
     ts->fast_in_use = 0;
     ts->fast_valid = 0;
     hash_del(&ts->hl_node);
-    unlock_page(source);
+    //unlock_page(source);
 out_unlock:
-    unlock_page(dest);
+    //unlock_page(dest);
 out:
     return rv;
 }

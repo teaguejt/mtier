@@ -27,14 +27,14 @@ __NR_mtier_list	mtier.h	2;"	d
 a	stream.c	/^STREAM_TYPE *a, *b, *c;$/;"	v
 abs	stream.c	484;"	d	file:
 add	exp.py	/^from operator import add$/;"	i
-all_stream_cfgs	exp.py	/^all_stream_cfgs = ['baseline-local', 'baseline-remote', '1000-100-1-20']$/;"	v
+all_stream_cfgs	exp.py	/^all_stream_cfgs = stream_cfgs_1000$/;"	v
 analysis	exp.py	/^analysis = ['time', 'bandwidth']$/;"	v
 analyze_stream	exp.py	/^def analyze_stream(cfg, is_baseline):$/;"	f
 arr	tracee.c	/^static int *arr[ALLOC_MEMBERS];$/;"	v	file:
 avgtime	stream.c	/^static double	avgtime[4] = {0}, maxtime[4] = {0},$/;"	v	file:
 b	stream.c	/^STREAM_TYPE *a, *b, *c;$/;"	v
-bw	exp.py	/^bw         = 'pcm-memory.x'$/;"	v
-bwdir	exp.py	/^bwdir      = '\/home\/jteague6\/IntelPerformanceCounterMonitorV2.7\/'$/;"	v
+bw	exp.py	/^bw              = 'pcm-memory.x'$/;"	v
+bwdir	exp.py	/^bwdir           = '\/home\/jteague6\/IntelPerformanceCounterMonitorV2.7\/'$/;"	v
 bytes	stream.c	/^static double	bytes[4] = {$/;"	v	file:
 c	stream.c	/^STREAM_TYPE *a, *b, *c;$/;"	v
 checkSTREAMresults	stream.c	/^void checkSTREAMresults ()$/;"	f
@@ -64,20 +64,24 @@ migrate_pages_end	process_trace.py	/^migrate_pages_end         = 'exit_migrate_p
 migrate_pages_start	process_trace.py	/^migrate_pages_start       = 'enter_migrate_pages'$/;"	v
 mintime	stream.c	/^		mintime[4] = {FLT_MAX,FLT_MAX,FLT_MAX,FLT_MAX};$/;"	v	file:
 mm_sizes	exp.py	/^mm_sizes = [1024, 2048, 4096]$/;"	v
-mod	exp.py	/^mod        = 'mod_mtier.ko'$/;"	v
-moddir	exp.py	/^moddir     = '\/home\/jteague6\/projects\/mtier\/module\/'$/;"	v
-mtier	exp.py	/^mtier     = 'mtier3'$/;"	v
+mod	exp.py	/^mod             = 'mod_mtier.ko'$/;"	v
+moddir	exp.py	/^moddir          = '\/home\/jteague6\/projects\/mtier\/module\/'$/;"	v
+modheavydir	exp.py	/^modheavydir     = '\/home\/jteague6\/projects\/mtier\/module_heavy\/'$/;"	v
+modlightdir	exp.py	/^modlightdir     = '\/home\/jteague6\/projects\/mtier\/module_light\/'$/;"	v
+modmassivedir	exp.py	/^modmassivedir   = '\/home\/jteague6\/projects\/mtier\/module_massive\/'$/;"	v
+module_variants	exp.py	/^module_variants = {$/;"	v
+mtier	exp.py	/^mtier           = 'mtier3'$/;"	v
 mtier_management	process_trace.py	/^mtier_management  = []$/;"	v
-mtierargs	exp.py	/^mtierargs = ['--ftnode', '1', '--stnode', '0', '--verbose']$/;"	v
-mtierbind	exp.py	/^mtierbind  = remotebind$/;"	v
+mtierargs	exp.py	/^mtierargs       = ['--ftnode', '1', '--stnode', '0', '--verbose']$/;"	v
+mtierbind	exp.py	/^mtierbind       = remotebind$/;"	v
 mysecond	stream.c	/^double mysecond()$/;"	f
-numactl	exp.py	/^numactl    = 'numactl'$/;"	v
+numactl	exp.py	/^numactl         = 'numactl'$/;"	v
 os	exp.py	/^import os$/;"	i
 pid	process_trace.py	/^    pid = int(sys.argv[1])$/;"	v
 process_stream_analysis	exp.py	/^def process_stream_analysis(runs):$/;"	f
 process_stream_runs	exp.py	/^def process_stream_runs(runs):$/;"	f
 progs	exp.py	/^progs = ['mm', 'stream']$/;"	v
-progsdir	exp.py	/^progsdir   = '\/home\/jteague6\/projects\/mtier\/mtier_utils\/'$/;"	v
+progsdir	exp.py	/^progsdir        = '\/home\/jteague6\/projects\/mtier\/mtier_utils\/'$/;"	v
 queue_pages_range	process_trace.py	/^queue_pages_range = []$/;"	v
 queue_pages_range_end	process_trace.py	/^queue_pages_range_end     = 'exit_mtier_queue_pages_range'$/;"	v
 queue_pages_range_start	process_trace.py	/^queue_pages_range_start   = 'enter_mtier_queue_pages_range'$/;"	v
@@ -91,6 +95,7 @@ shrink_pagelist	process_trace.py	/^shrink_pagelist   = []$/;"	v
 shrink_pagelist_end	process_trace.py	/^shrink_pagelist_end       = 'exit_mtier_shrink_pagelist'$/;"	v
 shrink_pagelist_start	process_trace.py	/^shrink_pagelist_start     = 'enter_mtier_shrink_pagelist'$/;"	v
 signal	exp.py	/^import signal$/;"	i
+stream_cfgs_1000	exp.py	/^stream_cfgs_1000 = [#'baseline-local',$/;"	v
 stream_process	exp.py	/^stream_process = []$/;"	v
 stream_runs	exp.py	/^stream_runs = []$/;"	v
 subprocess	exp.py	/^import subprocess$/;"	i

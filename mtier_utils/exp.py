@@ -8,17 +8,26 @@ import os
 from operator import add
 
 # Set up what we need for invoking numactl and mtier
-moddir     = '/home/jteague6/projects/mtier/module/'
-mod        = 'mod_mtier.ko'
-progsdir   = '/home/jteague6/projects/mtier/mtier_utils/'
-numactl    = 'numactl'
-bwdir      = '/home/jteague6/IntelPerformanceCounterMonitorV2.7/'
-bw         = 'pcm-memory.x'
-localbind  = ['--membind=1', '--cpunodebind=1']
-remotebind = ['--membind=0', '--cpunodebind=1']
-mtierbind  = remotebind
-mtier     = 'mtier3'
-mtierargs = ['--ftnode', '1', '--stnode', '0', '--verbose']
+moddir          = '/home/jteague6/projects/mtier/module/'
+modheavydir     = '/home/jteague6/projects/mtier/module_heavy/'
+modlightdir     = '/home/jteague6/projects/mtier/module_light/'
+modmassivedir   = '/home/jteague6/projects/mtier/module_massive/'
+mod             = 'mod_mtier.ko'
+progsdir        = '/home/jteague6/projects/mtier/mtier_utils/'
+numactl         = 'numactl'
+bwdir           = '/home/jteague6/IntelPerformanceCounterMonitorV2.7/'
+bw              = 'pcm-memory.x'
+localbind       = ['--membind=1', '--cpunodebind=1']
+remotebind      = ['--membind=0', '--cpunodebind=1']
+mtierbind       = remotebind
+mtier           = 'mtier3'
+mtierargs       = ['--ftnode', '1', '--stnode', '0', '--verbose']
+
+module_variants = {
+    'base'    : moddir,
+    'heavy'   : modheavydir,
+    'massive' : modmassivedir,
+}
 
 progs = ['mm', 'stream']
 mm_sizes = [1024, 2048, 4096]
@@ -35,51 +44,66 @@ def run_stream(threads, cfg, is_baseline, mtier_params = None):
                         'ft_fraction': '1',
                         'ft_delay':    '100',
                         'ft_bk_iters': '20'}
-    for i in range(0, 10):
-        expfname = 'results/stream-' + cfg + '-' + str(threads) + '-stdout-' + str(i) + '.txt'
-        bwfname  = 'results/stream-' + cfg + '-' + str(threads) + '-bw-' + str(i) + '.txt'
-        print(expfname)
-        print(bwfname)
-        if is_baseline == True and cfg == 'baseline-local':
-            invoke = [numactl] + localbind + [progsdir + 'stream']
-            print(invoke)
-        elif is_baseline == True and cfg == 'baseline-remote':
-            invoke = [numactl] + remotebind + [progsdir + 'stream']
-            print(invoke)
-        elif is_baseline == False:
-            invoke = [numactl] + remotebind + [progsdir + mtier]
-            invoke = invoke + mtierargs
-            invoke.append(progsdir + 'stream')
-            print(invoke)
+
+    for n, v in module_variants.items():
+        res_dir = 'results_' + n + '/'
+        l_moddir = v
+        print(res_dir, l_moddir)
+        for i in range(0, 10):
+            expfname = res_dir + cfg + '-' + str(threads) + '-stdout-' + str(i) + '.txt'
+            bwfname  = res_dir + cfg + '-' + str(threads) + '-bw-' + str(i) + '.txt'
+            dmfname  = res_dir + cfg + '-' + str(threads) + '-dmesg' + str(i) + '.txt'
+            print(expfname)
+            print(bwfname)
+            print(dmfname)
+            if is_baseline == True and cfg == 'baseline-local':
+                invoke = [numactl] + localbind + [progsdir + 'stream']
+                print(invoke)
+            elif is_baseline == True and cfg == 'baseline-remote':
+                invoke = [numactl] + remotebind + [progsdir + 'stream']
+                print(invoke)
+            elif is_baseline == False:
+                invoke = [numactl] + remotebind + [progsdir + mtier]
+                invoke = invoke + mtierargs
+                invoke.append(progsdir + 'stream')
+                dmf = open(dmfname, 'w')
+                dm_invoke = ['tail', '-f', '/var/log/messages']
+                print(invoke)
             
         
-        expf = open(expfname, 'w')
-        bwf  = open(bwfname, 'w')
+            expf = open(expfname, 'w')
+            bwf  = open(bwfname, 'w')
 
-        # Handle module setup and insertion if needed
-        if is_baseline == False:
-            module_invoke = ['insmod', moddir + mod]
-            for k, v in mtier_params.items():
-                module_invoke.append(k + '=' + v)
-            print(module_invoke)
-            modmon = subprocess.Popen(module_invoke)
-            modmon.wait()
-            time.sleep(5)
+            # Handle module setup and insertion if needed
+            if is_baseline == False:
+                module_invoke = ['insmod', l_moddir + mod]
+                for k, v in mtier_params.items():
+                    module_invoke.append(k + '=' + v)
+                print(module_invoke)
+                dmmon = subprocess.Popen(dm_invoke, stdout = dmf)
+                modmon = subprocess.Popen(module_invoke)
+                modmon.wait()
+                time.sleep(5)
 
-        bwmon = subprocess.Popen([bwdir + bw], stdout = bwf)
-        time.sleep(1)
-        exp = subprocess.Popen(invoke, stdout = expf)
-        exp.wait()
-        time.sleep(1)
-        expf.close()
-        bwf.close()
-        bwmon.send_signal(signal.SIGTERM)
+            bwmon = subprocess.Popen([bwdir + bw], stdout = bwf)
+            time.sleep(1)
+            exp = subprocess.Popen(invoke, stdout = expf)
+            exp.wait()
+            time.sleep(1)
+            expf.close()
+            bwf.close()
+            bwmon.send_signal(signal.SIGTERM)
 
-        if is_baseline == False:
-            time.sleep(5)
-            module_invoke = ['rmmod', 'mod_mtier']
-            modmon = subprocess.Popen(module_invoke)
-            modmon.wait()
+            if is_baseline == False:
+                time.sleep(5)
+                module_invoke = ['rmmod', 'mod_mtier']
+                modmon = subprocess.Popen(module_invoke)
+                modmon.wait()
+                dmmon.send_signal(signal.SIGTERM)
+                dmf.close()
+                os.system('sync')
+                os.system('echo 1 > /proc/sys/vm/drop_caches')
+                time.sleep(10)
 
 def analyze_stream(cfg, is_baseline):
     #numthreads = [1]
@@ -230,10 +254,17 @@ def analyze_stream(cfg, is_baseline):
               '{0:9.2f} |'.format((total_time / 1000000000) / total_iters))
         print('')
 
-all_stream_cfgs = ['baseline-local', 'baseline-remote', '1000-100-1-20']
+stream_cfgs_1000 = [#'baseline-local',
+                    #'baseline-remote',
+                    '92-50-1-20',
+                    '92-100-1-20',
+                    '92-250-1-20',
+                    '92-500-1-20',
+                    '92-1000-1-20']
+all_stream_cfgs = stream_cfgs_1000
 
 def process_stream_runs(runs):
-    threads = 12
+    threads = [1, 2, 4, 6, 8, 12]
     cfgs = []
     if 'all' in runs:
         cfgs = all_stream_cfgs
@@ -243,7 +274,8 @@ def process_stream_runs(runs):
 
     for cfg in cfgs:
         if 'baseline' in cfg:
-            run_stream(threads, cfg, True)
+            for thread in threads:
+                run_stream(thread, cfg, True)
         else:
             # Put together the mtier params dict
             cfgsplit = cfg.split('-')
@@ -254,7 +286,9 @@ def process_stream_runs(runs):
                                 'ft_delay'    : cfgsplit[1],
                                 'ft_fraction' : cfgsplit[2],
                                 'ft_bk_iters' : cfgsplit[3]}
-            run_stream(threads, cfg, False, mtier_params)
+            for thread in threads:
+                os.environ['OMP_NUM_THREADS'] = str(thread)
+                run_stream(thread, cfg, False, mtier_params)
 
 def process_stream_analysis(runs):
     cfgs = []
@@ -271,6 +305,7 @@ def process_stream_analysis(runs):
         else:
             analyze_stream(cfg, False)
 
+#==================#
 #### START HERE ####
 #==================#
 stream_runs = []
