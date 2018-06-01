@@ -1,0 +1,54 @@
+malloc: done. a=0x7f503e4f5000 b=0x7f50276bd000 c=0x7f5010885000
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 48000000 (elements), Offset = 0 (elements)
+Memory per array = 366.2 MiB (= 0.4 GiB).
+Total memory required = 1098.6 MiB (= 1.1 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 2
+Number of Threads counted = 2
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 121560 microseconds.
+   (= 121560 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+stream: completed 21 intervals in 100835614110 microseconds
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:            6700.1     0.116545     0.114625     0.118047
+Scale:           6607.0     0.117182     0.116240     0.118190
+Add:             9650.1     0.120460     0.119377     0.121662
+Triad:           9421.1     0.123891     0.122279     0.125899
+-------------------------------------------------------------
+Failed Validation on array a[], AvgRelAbsErr > epsilon (1.000000e-13)
+     Expected Value: 1.153301e+12, AvgAbsErr: 1.153301e+12, AvgRelAbsErr: 1.000000e+00
+     For array a[], 48000000 errors were found.
+Failed Validation on array b[], AvgRelAbsErr > epsilon (1.000000e-13)
+     Expected Value: 2.306602e+11, AvgAbsErr: 2.306602e+11, AvgRelAbsErr: 1.000000e+00
+     AvgRelAbsErr > Epsilon (1.000000e-13)
+     For array b[], 48000000 errors were found.
+Failed Validation on array c[], AvgRelAbsErr > epsilon (1.000000e-13)
+     Expected Value: 3.075469e+11, AvgAbsErr: 3.075469e+11, AvgRelAbsErr: 1.000000e+00
+     AvgRelAbsErr > Epsilon (1.000000e-13)
+     For array c[], 48000000 errors were found.
+-------------------------------------------------------------
+mtier settings:
+slow node: 0
+fast node: 1
+fast size: 512
+seconds: 0
+milliseconds: 500
+pages per run:100
+Forking...
+child pid is 60879
