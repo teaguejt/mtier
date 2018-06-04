@@ -27,9 +27,9 @@ __NR_mtier_list	mtier.h	2;"	d
 a	stream.c	/^STREAM_TYPE *a, *b, *c;$/;"	v
 abs	stream.c	484;"	d	file:
 add	exp.py	/^from operator import add$/;"	i
-all_stream_cfgs	exp.py	/^all_stream_cfgs = stream_cfgs_1000$/;"	v
+all_stream_cfgs	exp.py	/^all_stream_cfgs = stream_cfgs_base + stream_cfgs_1000 + stream_cfgs_92$/;"	v
 analysis	exp.py	/^analysis = ['time', 'bandwidth']$/;"	v
-analyze_stream	exp.py	/^def analyze_stream(cfg, is_baseline):$/;"	f
+analyze_stream	exp.py	/^def analyze_stream(cfg, path, is_baseline):$/;"	f
 arr	tracee.c	/^static int *arr[ALLOC_MEMBERS];$/;"	v	file:
 avgtime	stream.c	/^static double	avgtime[4] = {0}, maxtime[4] = {0},$/;"	v	file:
 b	stream.c	/^STREAM_TYPE *a, *b, *c;$/;"	v
@@ -95,7 +95,9 @@ shrink_pagelist	process_trace.py	/^shrink_pagelist   = []$/;"	v
 shrink_pagelist_end	process_trace.py	/^shrink_pagelist_end       = 'exit_mtier_shrink_pagelist'$/;"	v
 shrink_pagelist_start	process_trace.py	/^shrink_pagelist_start     = 'enter_mtier_shrink_pagelist'$/;"	v
 signal	exp.py	/^import signal$/;"	i
-stream_cfgs_1000	exp.py	/^stream_cfgs_1000 = [#'baseline-local',$/;"	v
+stream_cfgs_1000	exp.py	/^stream_cfgs_1000 = ['1000-50-1-20',$/;"	v
+stream_cfgs_92	exp.py	/^stream_cfgs_92 = [  '92-50-1-20',$/;"	v
+stream_cfgs_base	exp.py	/^stream_cfgs_base = ['baseline-local',$/;"	v
 stream_process	exp.py	/^stream_process = []$/;"	v
 stream_runs	exp.py	/^stream_runs = []$/;"	v
 subprocess	exp.py	/^import subprocess$/;"	i

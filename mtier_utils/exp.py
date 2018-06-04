@@ -105,12 +105,15 @@ def run_stream(threads, cfg, is_baseline, mtier_params = None):
                 os.system('echo 1 > /proc/sys/vm/drop_caches')
                 time.sleep(10)
 
-def analyze_stream(cfg, is_baseline):
+def analyze_stream(cfg, path, is_baseline):
     #numthreads = [1]
     numthreads = [1, 2, 4, 6, 8, 12]
-    print(cfg + ':')
-    print('Threads | Channel | Node 0 Read | Node 0 Write | Node 1 Read | ' + \
-          'Node 1 Write | Total Iters | Total Time | Time/Iter |')
+    print(path + cfg + ':')
+    print('Bandwidth Table:')
+    print('Threads | Node 0 Read | Node 0 Write | Node 0 Total |' + \
+          ' Node 1 Read | Node 1 Write | Node 1 Total | Total Read |' + \
+          ' Total Write | Grand Total | Node 0 % | Node 1 % |')
+    # Get bandwidth info from pcmtools output
     for threads in numthreads:
         last_channel = 1
         n0_channel_reads = {0: [], 1: [], 2: [], 3: []}
@@ -121,10 +124,9 @@ def analyze_stream(cfg, is_baseline):
         node_writes = {0: [], 1: []}
         total_reads = []
         total_writes = []
-        total_iters = 0
-        total_time = 0.0
+
         for i in range(0, 10):
-            bwfname = 'results/stream-' + cfg + '-' + str(threads) + '-bw-' + str(i) + '.txt'
+            bwfname = path + cfg + '-' + str(threads) + '-bw-' + str(i) + '.txt'
             bwf = open(bwfname, 'r')
             for line in bwf:
                 if 'Reads' in line:
@@ -155,19 +157,11 @@ def analyze_stream(cfg, is_baseline):
                 elif 'System Write Throughput' in line:
                     linesplit = line.split()
                     total_writes.append(float(linesplit[4]))
-
             bwf.close()
-
-            stdoutfname = 'results/stream-' + cfg + '-' + str(threads) + '-stdout-' + str(i) + '.txt'
-            stdoutf = open(stdoutfname, 'r')
-            for line in stdoutf:
-                if 'stream: ' in line:
-                    linesplit = line.split()
-                    total_iters = total_iters + int(linesplit[2])
-                    total_time = total_time + int(linesplit[5])
 
         # Why didn't I just loop this?
         # Channel 0
+        '''
         n0_read_avg = sum(n0_channel_reads[0]) / len(n0_channel_reads[0])
         n0_write_avg = sum(n0_channel_writes[0]) / len(n0_channel_writes[0])
         n1_read_avg = sum(n1_channel_reads[0]) / len(n1_channel_reads[0])
@@ -222,6 +216,7 @@ def analyze_stream(cfg, is_baseline):
               '        --- | ' +                                \
               '       --- | '+                                  \
               '      --- |')
+        '''
         
         # TOTAL
         n0_total_reads = [sum(x) for x in zip(n0_channel_reads[0],  \
@@ -244,24 +239,137 @@ def analyze_stream(cfg, is_baseline):
         n0_write_avg = sum(n0_total_writes) / len(n0_total_writes)
         n1_read_avg = sum(n1_total_reads) / len(n1_total_reads)
         n1_write_avg = sum(n1_total_writes) / len(n1_total_writes)
-        print('{0:7d} |  TOTAL  | '.format(threads) +           \
+        n0_total_avg = n0_read_avg + n0_write_avg
+        n1_total_avg = n1_read_avg + n1_write_avg
+        total_read = n0_read_avg + n1_read_avg
+        total_write = n0_write_avg + n1_write_avg
+        grand_total = total_read + total_write
+        n0_pct = n0_total_avg / (n0_total_avg + n1_total_avg) * 100
+        n1_pct = n1_total_avg / (n0_total_avg + n1_total_avg) * 100
+        print('{0:7d} | '.format(threads) +                     \
               '{0:11.3f} | '.format(n0_read_avg) +              \
               '{0:12.3f} | '.format(n0_write_avg) +             \
+              '{0:12.3f} | '.format(n0_total_avg) +             \
               '{0:11.3f} | '.format(n1_read_avg) +              \
               '{0:12.3f} | '.format(n1_write_avg) +             \
-              '{0:11d} | '.format(total_iters) +                \
-              '{0:10.3f} | '.format(total_time / 1000000000) +  \
-              '{0:9.2f} |'.format((total_time / 1000000000) / total_iters))
-        print('')
+              '{0:12.3f} | '.format(n1_total_avg) +             \
+              '{0:10.3f} | '.format(total_read) +               \
+              '{0:11.3f} | '.format(total_write) +              \
+              '{0:11.3f} | '.format(grand_total) +              \
+              '{0:8.2f} | '.format(n0_pct) +                   \
+              '{0:8.2f} | '.format(n1_pct))
+        #print('')
 
-stream_cfgs_1000 = [#'baseline-local',
-                    #'baseline-remote',
-                    '92-50-1-20',
+
+    print()
+    print()
+
+    # Get benchmark output from stdout
+    print('STREAM Table (times in seconds):')
+    print('Threads | Iterations | Total Time | Time / Iter |')
+    for threads in numthreads:
+        total_iters = 0
+        total_time = 0.0
+        
+        for i in range(0, 10):
+            stdoutfname = path + cfg + '-' + str(threads) + '-stdout-' + str(i) + '.txt'
+            stdoutf = open(stdoutfname, 'r')
+            for line in stdoutf:
+                if 'stream: ' in line:
+                    linesplit = line.split()
+                    total_iters = total_iters + int(linesplit[2])
+                    total_time = total_time + int(linesplit[5])
+            stdoutf.close()
+
+        time_secs = total_time / 1000000000
+        secs_per_iter = time_secs / total_iters
+        print('{0:7d} |'.format(threads),
+              '{0:10d} |'.format(total_iters),
+              '{0:10.3f} |'.format(time_secs),
+              '{0:11.3f} |'.format(secs_per_iter))
+
+    print()
+    print()
+
+    if is_baseline == True:
+        print('No dmesg information for baseline runs.')
+        print()
+        print()
+        print('#' * 50)
+        return 0
+
+    # Get behind-the-scenes information from dmesg output
+    print('Kernel Output Table (time in microseconds):')
+    print('Threads | Iterations | Heavy Copies | Heavy Copy Pages |',
+          'Heavy Copy Time | Light Swaps | Light Swap Pages |',
+          'Light Swap Time |')
+    
+    for threads in numthreads:
+        mtier_iters = 0
+        heavy_copies = 0
+        light_copies = 0
+        shortest_heavy_copy = 0.0
+        shortest_light_copy = 0.0
+        longest_heavy_copy = 0.0
+        longest_light_copy = 0.0
+        total_heavy_time = 0.0
+        total_light_time = 0.0
+        total_heavy_pages = 0
+        total_light_pages = 0
+        num_heavy_copies = 0.0
+        num_light_copies = 0.0
+
+        for i in range(0, 10):
+            dmfname = path + cfg + '-' + str(threads) + '-dmesg' + str(i) + '.txt'
+            dmf = open(dmfname, 'r')
+            for line in dmf:
+                if 'mod_iter:' in line:
+                    mtier_iters = mtier_iters + 1
+                elif 'mtier duplicate heavy-copied' in line:
+                    linesplit = line.split(']')
+                    deetsplit = linesplit[1].split()
+                    heavy_copies += 1
+                    total_heavy_time += float(deetsplit[6])
+                    total_heavy_pages += int(deetsplit[3])
+                elif 'evict_unused_tier_structs' in line:
+                    linesplit = line.split(']')
+                    deetsplit = linesplit[1].split()
+                    light_copies += 1
+                    total_light_time += float(deetsplit[5])
+                    total_light_pages += int(deetsplit[2])
+            dmf.close()
+
+        heavy_microtime = total_heavy_time / 1000
+        light_microtime = total_light_time / 1000
+        print('{0:7d} |'.format(threads),
+              '{0:10d} |'.format(mtier_iters),
+              '{0:12d} |'.format(heavy_copies),
+              '{0:16d} |'.format(total_heavy_pages),
+              '{0:15.2f} |'.format(heavy_microtime),
+              '{0:11d} |'.format(light_copies),
+              '{0:16d} |'.format(total_light_pages),
+              '{0:15.2f} |'.format(light_microtime))
+
+    print()
+    print()
+    print('#' * 50)
+    print()
+    print()
+
+
+stream_cfgs_base = ['baseline-local',
+                    'baseline-remote']
+stream_cfgs_1000 = ['1000-50-1-20',
+                    '1000-100-1-20',
+                    '1000-250-1-20',
+                    '1000-500-1-20',
+                    '1000-1000-1-20']
+stream_cfgs_92 = [  '92-50-1-20',
                     '92-100-1-20',
                     '92-250-1-20',
                     '92-500-1-20',
                     '92-1000-1-20']
-all_stream_cfgs = stream_cfgs_1000
+all_stream_cfgs = stream_cfgs_base + stream_cfgs_1000 + stream_cfgs_92
 
 def process_stream_runs(runs):
     threads = [1, 2, 4, 6, 8, 12]
@@ -275,6 +383,7 @@ def process_stream_runs(runs):
     for cfg in cfgs:
         if 'baseline' in cfg:
             for thread in threads:
+                os.environ['OMP_NUM_THREADS'] = str(thread)
                 run_stream(thread, cfg, True)
         else:
             # Put together the mtier params dict
@@ -299,11 +408,13 @@ def process_stream_analysis(runs):
             cfgs.append(run)
 
     #print(cfgs)
-    for cfg in cfgs:
-        if 'baseline' in cfg:
-            analyze_stream(cfg, True)
-        else:
-            analyze_stream(cfg, False)
+    for key, path in module_variants.items():
+        path = 'results_' + key + '/'
+        for cfg in cfgs:
+            if 'baseline' in cfg:
+                analyze_stream(cfg, path, True)
+            else:
+                analyze_stream(cfg, path, False)
 
 #==================#
 #### START HERE ####

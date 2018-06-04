@@ -45,6 +45,8 @@ MODULE_DESCRIPTION("The module for the mtier kthread worker");
 //#define SIZE_MB 3000        /* Used for testing 100% migration with STREAM */
 //#define SIZE_MB 1024  /* Standard size > 100% STREAM RO RSS */
 #define SIZE_MB 92      /* 12.5% STREAM RO RSS */
+//#define SIZE_MB 183     /* 25% STREAM RO RSS */
+//#define SIZE_MB 366     /* 50% STREAM RO RSS */
 //#define SIZE_MB 2         /* Fun size, for testing */
 #define ENTRY_NAME  "mod_mtier"
 #define PROCFS_NAME "mod_mtier"
@@ -666,6 +668,12 @@ int evict_pid_tier_structs(pid_t pid) {
 int evict_all_tier_structs(void) {
     struct tier_struct *cursor, *tmp;
     int unfreed_count = 0;
+    int freed_count = 0;
+#ifdef MTIER_TIMING
+    ktime_t start, end;
+
+    start = ktime_get();
+#endif
 
     DEBUG_CODE(printk("mtier evict_all_tier_structs: entry\n"));
     list_for_each_entry_safe(cursor, tmp, usedlist, list) {
@@ -675,10 +683,17 @@ int evict_all_tier_structs(void) {
         else {
             list_del(&(cursor->list));
             list_add(&(cursor->list), freelist);
+            ++freed_count;
         }
     }
     DEBUG_CODE(printk("mtier evict_all_tier_structs: failed to free %d\n",
                 unfreed_count));
+
+#ifdef MTIER_TIMING
+    end = ktime_get();
+    printk("mtier evict_all_tier_structs: %d pages in %lu nanoseconds\n",
+            freed_count, (unsigned long)(end.tv64 - start.tv64));
+#endif
 
     return unfreed_count;
 }

@@ -1,4 +1,4 @@
-malloc: done. a=0x7f24660c0000 b=0x7f244f288000 c=0x7f2438450000
+malloc: done. a=0x7ff1a89a5000 b=0x7ff191b6d000 c=0x7ff17ad35000
 -------------------------------------------------------------
 STREAM version $Revision: 5.10 $
 -------------------------------------------------------------
@@ -11,12 +11,12 @@ Each kernel will be executed 10 times.
  The *best* time for each kernel (excluding the first iteration)
  will be used to compute the reported bandwidth.
 -------------------------------------------------------------
-Number of Threads requested = 12
-Number of Threads counted = 12
+Number of Threads requested = 4
+Number of Threads counted = 4
 -------------------------------------------------------------
 Your clock granularity/precision appears to be 1 microseconds.
-Each test below will take on the order of 24904 microseconds.
-   (= 24904 clock ticks)
+Each test below will take on the order of 60405 microseconds.
+   (= 60405 clock ticks)
 Increase the size of the arrays if this shows that
 you are not getting at least 20 clock ticks per test.
 -------------------------------------------------------------
@@ -24,12 +24,12 @@ WARNING -- The above is only a rough guideline.
 For best results, please be sure you know the
 precision of your system timer.
 -------------------------------------------------------------
-stream: completed 79 intervals in 100339586436 microseconds
+stream: completed 48 intervals in 101232963029 microseconds
 Function    Best Rate MB/s  Avg time     Min time     Max time
-Copy:           36148.1     0.021844     0.021246     0.022569
-Scale:          31631.2     0.025120     0.024280     0.025916
-Add:            31143.6     0.040359     0.036990     0.041176
-Triad:          29293.6     0.040086     0.039326     0.041640
+Copy:           15213.0     0.050685     0.050483     0.050989
+Scale:          15031.7     0.051385     0.051092     0.051937
+Add:            21748.6     0.053216     0.052969     0.053633
+Triad:          21112.0     0.054831     0.054566     0.055014
 -------------------------------------------------------------
 Failed Validation on array a[], AvgRelAbsErr > epsilon (1.000000e-13)
      Expected Value: 1.153301e+12, AvgAbsErr: 1.153301e+12, AvgRelAbsErr: 1.000000e+00
