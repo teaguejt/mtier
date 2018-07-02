@@ -335,7 +335,9 @@ static inline void flush_tlb_others(const struct cpumask *cpumask,
 				    unsigned long start,
 				    unsigned long end)
 {
+    //printk("Inside flush_tlb_others (generic call)\n");
 	PVOP_VCALL4(pv_mmu_ops.flush_tlb_others, cpumask, mm, start, end);
+    //printk("Leaving flush_tlb_others (generic call)\n");
 }
 
 static inline int paravirt_pgd_alloc(struct mm_struct *mm)

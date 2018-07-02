@@ -256,7 +256,6 @@ static inline void __flush_tlb_up(void)
 
 void mtier_flush_tlb_mm(struct mm_struct *mm)
 {
-	if (mm == current->active_mm)
-		__flush_tlb_up();
+    flush_tlb_mm(mm);
 }
 EXPORT_SYMBOL(mtier_flush_tlb_mm);

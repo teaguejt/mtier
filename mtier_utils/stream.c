@@ -184,8 +184,9 @@
 			b[STREAM_ARRAY_SIZE+OFFSET],
 			c[STREAM_ARRAY_SIZE+OFFSET]; */
 /* mtier arrays */
-STREAM_TYPE *a, *b, *c;
+STREAM_TYPE *a, *b, *c, *v1, *v2;
 STREAM_TYPE d;
+int num_errors;
 
 static double	avgtime[4] = {0}, maxtime[4] = {0},
 		mintime[4] = {FLT_MAX,FLT_MAX,FLT_MAX,FLT_MAX};
@@ -233,6 +234,8 @@ main()
     a = valloc(sizeof(STREAM_TYPE) * STREAM_ARRAY_SIZE);
     b = valloc(sizeof(STREAM_TYPE) * STREAM_ARRAY_SIZE);
     c = valloc(sizeof(STREAM_TYPE) * STREAM_ARRAY_SIZE);
+    v1 = valloc(sizeof(STREAM_TYPE) * STREAM_ARRAY_SIZE);
+    v2 = valloc(sizeof(STREAM_TYPE) * STREAM_ARRAY_SIZE);
     if(!a || !b || !c) {
         printf("mtier: problem allocating array *sad trombone *\n");
     }
@@ -292,6 +295,9 @@ main()
     for (j=0; j<STREAM_ARRAY_SIZE; j++) {
 	    a[j] = 1.0;
 	    b[j] = 2.0;
+        c[j] = 0.0;
+        v1[j] = 1.0;
+        v2[j] = 2.0;
 	}
 
     printf(HLINE);
@@ -307,8 +313,10 @@ main()
 
     t = mysecond();
 #pragma omp parallel for
-    for (j = 0; j < STREAM_ARRAY_SIZE; j++)
+    for (j = 0; j < STREAM_ARRAY_SIZE; j++) {
 		a[j] = 2.0E0 * a[j];
+        v1[j] = 2.0E0 * v1[j];
+    }
     t = 1.0E6 * (mysecond() - t);
 
     printf("Each test below will take on the order"
@@ -347,6 +355,9 @@ main()
 #pragma omp parallel for
             for (j=0; j<STREAM_ARRAY_SIZE; j++) {
                 d += a[j];
+                /*if(d != v1[j]) {
+                    num_errors++;
+                }*/
                 //c[j] += a[j];
             }
 #endif
@@ -358,9 +369,13 @@ main()
 #else
             d = 0;
 #pragma omp parallel for
-            for (j=0; j<STREAM_ARRAY_SIZE; j++)
+            for (j=0; j<STREAM_ARRAY_SIZE; j++) {
                 d += scalar * b[j];
+                /*if(d != scalar * v2[j]) {
+                    num_errors++;
+                }*/    
                 //c[j] += scalar * b[j];
+            }
 #endif
             times[1][k] = mysecond() - times[1][k];
 
@@ -370,9 +385,13 @@ main()
 #else
             d = 0;
 #pragma omp parallel for
-            for (j=0; j<STREAM_ARRAY_SIZE; j++)
+            for (j=0; j<STREAM_ARRAY_SIZE; j++) {
                 d += a[j]+b[j];
+                /*if(d != v1[j] + v2[j]) {
+                    num_errors++;
+                }*/
                 //c[j] += a[j]+b[j];
+            }
 #endif
             times[2][k] = mysecond() - times[2][k];
 
@@ -382,9 +401,13 @@ main()
 #else
             d = 0;
 #pragma omp parallel for
-            for (j=0; j<STREAM_ARRAY_SIZE; j++)
+            for (j=0; j<STREAM_ARRAY_SIZE; j++) {
                 d += b[j]+scalar*a[j];
+                /*if(d != v2[j] + scalar * v1[j]) {
+                    ++num_errors;
+                }*/
                 //c[j] += b[j]+scalar*a[j];
+            }
 #endif
             times[3][k] = mysecond() - times[3][k];
         }
@@ -599,6 +622,7 @@ void checkSTREAMresults ()
 	printf ("    Observed a(1), b(1), c(1): %f %f %f \n",a[1],b[1],c[1]);
 	printf ("    Rel Errors on a, b, c:     %e %e %e \n",abs(aAvgErr/aj),abs(bAvgErr/bj),abs(cAvgErr/cj));
 #endif
+    printf("Number of errors = %d\n", num_errors);
 }
 
 #ifdef TUNED

@@ -237,8 +237,10 @@ out:
 		start = 0UL;
 		end = TLB_FLUSH_ALL;
 	}
-	if (cpumask_any_but(mm_cpumask(mm), smp_processor_id()) < nr_cpu_ids)
+	if (cpumask_any_but(mm_cpumask(mm), smp_processor_id()) < nr_cpu_ids) {
+        //printk("calling flush_tlb_others from tlb_flush_mm\n");
 		flush_tlb_others(mm_cpumask(mm), mm, start, end);
+    }
 	preempt_enable();
 }
 
@@ -264,6 +266,7 @@ void flush_tlb_page(struct vm_area_struct *vma, unsigned long start)
 	}
 
 	if (cpumask_any_but(mm_cpumask(mm), smp_processor_id()) < nr_cpu_ids)
+        //printk("calling flush_tlb_others from flush_tlb_mm\n");
 		flush_tlb_others(mm_cpumask(mm), mm, start, 0UL);
 
 	preempt_enable();

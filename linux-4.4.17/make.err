@@ -2,6 +2,9 @@ arch/x86/xen/mmu.c: In function ‘xen_cleanhighmap’:
 arch/x86/xen/mmu.c:1116:57: warning: array subscript is above array bounds [-Warray-bounds]
   for (; vaddr <= vaddr_end && (pmd < (level2_kernel_pgt + PAGE_SIZE));
                                       ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+mm/mtier.c:12:12: warning: ‘bigCount’ defined but not used [-Wunused-variable]
+ static int bigCount = 0;
+            ^~~~~~~~
 In file included from include/linux/perf_event.h:47:0,
                  from kernel/sched/core.c:41:
 kernel/sched/core.c: In function ‘get_parent_ip’:
@@ -53,12 +56,6 @@ include/linux/ftrace.h:690:38: note: in expansion of macro ‘ftrace_return_addr
 kernel/trace/trace_sched_wakeup.c:472:47: note: in expansion of macro ‘CALLER_ADDR1’
   __trace_function(wakeup_trace, CALLER_ADDR0, CALLER_ADDR1, flags, pc);
                                                ^~~~~~~~~~~~
-mm/mtier.c:12:12: warning: ‘bigCount’ defined but not used [-Wunused-variable]
- static int bigCount = 0;
-            ^~~~~~~~
-lib/raid6/recov_avx2.c:322:2: warning: #warning "your version of binutils lacks AVX2 support" [-Wcpp]
- #warning "your version of binutils lacks AVX2 support"
-  ^~~~~~~
 In file included from include/linux/mmzone.h:16:0,
                  from include/linux/mempolicy.h:9,
                  from mm/mempolicy.c:70:
@@ -102,6 +99,13 @@ At top level:
 mm/mempolicy.c:491:12: warning: ‘mtier_queue_pages_pte_range’ defined but not used [-Wunused-function]
  static int mtier_queue_pages_pte_range(pmd_t *pmd, unsigned long addr,
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+fs/proc/task_mmu.c: In function ‘proc_maps_open’:
+fs/proc/task_mmu.c:217:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  struct proc_maps_private *priv = __seq_open_private(file, ops, psize);
+  ^~~~~~
+lib/raid6/recov_avx2.c:322:2: warning: #warning "your version of binutils lacks AVX2 support" [-Wcpp]
+ #warning "your version of binutils lacks AVX2 support"
+  ^~~~~~~
 drivers/iommu/dmar.c: In function ‘dmar_hp_remove_drhd’:
 drivers/iommu/dmar.c:1861:5: warning: suggest explicit braces to avoid ambiguous ‘else’ [-Wparentheses]
   if (!dmaru->include_all && dmaru->devices && dmaru->devices_cnt)
@@ -110,10 +114,23 @@ drivers/iommu/intel-iommu.c: In function ‘dmar_check_one_atsr’:
 drivers/iommu/intel-iommu.c:4185:5: warning: suggest explicit braces to avoid ambiguous ‘else’ [-Wparentheses]
   if (!atsru->include_all && atsru->devices && atsru->devices_cnt)
      ^
-fs/proc/task_mmu.c: In function ‘proc_maps_open’:
-fs/proc/task_mmu.c:217:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
-  struct proc_maps_private *priv = __seq_open_private(file, ops, psize);
-  ^~~~~~
+drivers/gpu/drm/radeon/r100.c: In function ‘r100_bandwidth_update’:
+drivers/gpu/drm/radeon/r100.c:3583:42: warning: ‘disp_drain_rate.full’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     temp_ff.full = read_return_rate.full - disp_drain_rate.full;
+                    ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+In file included from drivers/gpu/drm/radeon/radeon_mode.h:37:0,
+                 from drivers/gpu/drm/radeon/radeon.h:80,
+                 from drivers/gpu/drm/radeon/r100.c:33:
+include/drm/drm_fixed.h:64:13: warning: ‘crit_point_ff.full’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  u64 tmp = ((u64)A.full << 13);
+             ^~~~~~~~~~~
+drivers/gpu/drm/radeon/r100.c:3153:63: note: ‘crit_point_ff.full’ was declared here
+  fixed20_12 peak_disp_bw, mem_bw, pix_clk, pix_clk2, temp_ff, crit_point_ff;
+                                                               ^~~~~~~~~~~~~
+drivers/tty/nozomi.c: In function ‘receive_data’:
+drivers/tty/nozomi.c:857:9: warning: ‘size’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+    size -= i;
+         ^~
 drivers/net/wireless/ath/ath9k/init.c: In function ‘ath9k_set_hw_capab’:
 drivers/net/wireless/ath/ath9k/init.c:868:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
    if (ath9k_is_chanctx_enabled())
@@ -121,10 +138,6 @@ drivers/net/wireless/ath/ath9k/init.c:868:3: warning: this ‘if’ clause does 
 drivers/net/wireless/ath/ath9k/init.c:872:4: note: ...this statement, but the latter is misleadingly indented as if it is guarded by the ‘if’
     hw->wiphy->iface_combinations = if_comb;
     ^~
-drivers/tty/nozomi.c: In function ‘receive_data’:
-drivers/tty/nozomi.c:857:9: warning: ‘size’ may be used uninitialized in this function [-Wmaybe-uninitialized]
-    size -= i;
-         ^~
 drivers/net/ethernet/intel/i40e/i40e_txrx.c: In function ‘i40e_xmit_frame_ring’:
 drivers/net/ethernet/intel/i40e/i40e_txrx.c:2357:20: warning: ‘oiph’ may be used uninitialized in this function [-Wmaybe-uninitialized]
     oudph->check = ~csum_tcpudp_magic(oiph->saddr,
@@ -168,21 +181,8 @@ drivers/scsi/mvsas/mv_sas.c:736:3: warning: this ‘else’ clause does not guar
 drivers/scsi/mvsas/mv_sas.c:740:4: note: ...this statement, but the latter is misleadingly indented as if it is guarded by the ‘else’
     rc = SAS_PHY_DOWN;
     ^~
-drivers/gpu/drm/radeon/r100.c: In function ‘r100_bandwidth_update’:
-drivers/gpu/drm/radeon/r100.c:3583:42: warning: ‘disp_drain_rate.full’ may be used uninitialized in this function [-Wmaybe-uninitialized]
-     temp_ff.full = read_return_rate.full - disp_drain_rate.full;
-                    ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
-In file included from drivers/gpu/drm/radeon/radeon_mode.h:37:0,
-                 from drivers/gpu/drm/radeon/radeon.h:80,
-                 from drivers/gpu/drm/radeon/r100.c:33:
-include/drm/drm_fixed.h:64:13: warning: ‘crit_point_ff.full’ may be used uninitialized in this function [-Wmaybe-uninitialized]
-  u64 tmp = ((u64)A.full << 13);
-             ^~~~~~~~~~~
-drivers/gpu/drm/radeon/r100.c:3153:63: note: ‘crit_point_ff.full’ was declared here
-  fixed20_12 peak_disp_bw, mem_bw, pix_clk, pix_clk2, temp_ff, crit_point_ff;
-                                                               ^~~~~~~~~~~~~
 drivers/gpu/drm/nouveau/nvkm/engine/pm/nv40.c: In function ‘nv40_perfctr_next’:
 drivers/gpu/drm/nouveau/nvkm/engine/pm/nv40.c:62:19: warning: self-comparison always evaluates to false [-Wtautological-compare]
   if (pm->sequence != pm->sequence) {
                    ^~
-Succeed: decoded and checked 1781184 instructions
+Succeed: decoded and checked 1781197 instructions

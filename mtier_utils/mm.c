@@ -32,62 +32,71 @@ int main(int argc, char **argv) {
   seed    = atoi(argv[4]);
   printf("multiplying two %dx%d matrices (%d iterations)\n",
       dim, dim, iters);
+  srand(seed);
 
-  for(run = 0; run < iters; run++) {
-    srand(seed);
-    /* Allocate room for the matrices, make sure they're filled*/
-    m1 = malloc(sizeof(double) * dim * dim);
-    m2 = malloc(sizeof(double) * dim * dim);
-    r  = malloc(sizeof(double) * dim * dim);
+  /* Allocate and fill the matrices */
+  m1 = valloc(sizeof(double) * dim * dim);
+  m2 = valloc(sizeof(double) * dim * dim);
+  r  = valloc(sizeof(double) * dim * dim);
 
-    if(!m1 || !m2 || !r) {
+  if(!m1 || !m2 || !r) {
       fprintf(stderr, "one or more matrix could not be allocated. Aborting\n");
       return -1;
-    }
+  }
 
-    for(i = 0; i < dim; i++) {
+  for(i = 0; i < dim; i++) {
       for(j = 0; j < dim; j++) {
-        m1[P2A(dim, i, j)] = (double)rand() / (double)RAND_MAX;
-        m2[P2A(dim, i, j)] = (double)rand() / (double)RAND_MAX;
-        r[P2A(dim, i, j)]  = 0;
+          m1[P2A(dim, i, j)] = (double)rand() / (double)RAND_MAX;
+          m2[P2A(dim, i, j)] = (double)rand() / (double)RAND_MAX;
+          r[P2A(dim, i, j)]  = 0;
       }
-    }
+  }
 
-    if(protect) {
-      if(mprotect((int *)PTR_TO_PAGE(m1), SIZE(dim, double), PROT_READ) != 0) {
-        fprintf(stderr, "failed to mprotect m1: %d\n", errno);
-        return -2;
+  if(protect) {
+      if(mprotect((void *)m1, SIZE(dim, double), PROT_READ) != 0) {
+          fprintf(stderr, "failed to mprotect m1: %d\n", errno);
+          return -2;
       }
 
-      if(mprotect((int *)PTR_TO_PAGE(m2), SIZE(dim, double), PROT_READ) != 0) {
-        fprintf(stderr, "failed to mprotect m2: $d\n", errno);
-        return -2;
+      if(mprotect((void *)m2, SIZE(dim, double), PROT_READ) != 0) {
+          fprintf(stderr, "failed to mprotect m2: $d\n", errno);
+          return -2;
       }
       printf("m1: 0x%lx - 0x%lx\n", (unsigned long)m1,
               (unsigned long)&(m1[dim * dim - 1]));
       printf("m2: 0x%lx - 0x%lx\n", (unsigned long)m2,
               (unsigned long)&(m2[dim * dim - 1]));
-    }
+  }
 
-    /* Print small matrices */
-    if(dim <= 8) {
+  /* Print small matrices */
+  if(dim <= 8) {
       printf("m1:\n");
       for(i = 0; i < dim; i++) {
-        for(j = 0; j < dim; j++) {
-          printf("%1.4f ", m1[P2A(dim, i, j)]);
-        }
-        printf("\n");
+          for(j = 0; j < dim; j++) {
+              printf("%1.4f ", m1[P2A(dim, i, j)]);
+          }
+          printf("\n");
       }
 
       printf("\nm2:\n");
       for(i = 0; i < dim; i++) {
-        for(j = 0; j < dim; j++) {
-          printf("%1.4f ", m2[P2A(dim, i, j)]);
-        }
-        printf("\n");
+          for(j = 0; j < dim; j++) {
+              printf("%1.4f ", m2[P2A(dim, i, j)]);
+          }
+          printf("\n");
       }
       printf("\n\n");
+  }
+
+  for(run = 0; run < iters; run++) {
+    /* Zero-out result matrix */
+    printf("Zeroing result matrix... ");
+    for(i = 0; i < dim; i++) {
+      for(j = 0; j < dim; j++) {
+        r[P2A(dim, i, j)] = 0;
+      }
     }
+    printf("done.\n");
 
     gettimeofday(&begin, NULL);
     /* Perform the mulriplication */
@@ -106,7 +115,7 @@ int main(int argc, char **argv) {
     printf("Iter %d: finished in %.5f seconds\n", run, run_time);
     total_time += run_time;
 
-    if(dim <= 8) {
+    /*if(dim <= 8) {
       printf("r:\n");
       for(i = 0; i < dim; i++) {
         for(j = 0; j < dim; j++) {
@@ -114,9 +123,9 @@ int main(int argc, char **argv) {
         }
         printf("\n");
       }
-    }
+    }*/
 
-    if(protect) {
+    /*if(protect) {
       if(mprotect((int *)PTR_TO_PAGE(m1), SIZE(dim, double), PROT_WRITE) != 0) {
         fprintf(stderr, "Failed to restore writability to m1: %d\n", errno);
         return -3;
@@ -126,7 +135,7 @@ int main(int argc, char **argv) {
         fprintf(stderr, "Failed to restore writability to m2: %d\n", errno);
         return -3;
       }
-    }
+    }*/
     //free(m1);
     //free(m2);
     //free(r);

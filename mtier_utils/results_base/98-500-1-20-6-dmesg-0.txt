@@ -1,0 +1,943 @@
+Jun 30 20:02:17 ecuador kernel: [28286.960470] mtier: entered module exit function.
+Jun 30 20:02:17 ecuador kernel: [28286.960489] mtier: worker thread has stopped.
+Jun 30 20:02:17 ecuador kernel: [28286.960491] mtier: putting back pagelist.
+Jun 30 20:02:17 ecuador kernel: [28287.045089] mtier: pagelist put back.
+Jun 30 20:02:17 ecuador kernel: [28287.045092] mtier: freeing fast tier simulant.
+Jun 30 20:02:17 ecuador kernel: [28287.054541] mtier: fast tier simulant freed.
+Jun 30 20:02:17 ecuador kernel: [28287.054544] mtier: about to free shuffled pages.
+Jun 30 20:02:17 ecuador kernel: [28287.054699] mtier: shuffled pages freed
+Jun 30 20:02:17 ecuador kernel: [28287.054702] mtier: module exit with count 0
+Jun 30 20:02:18 ecuador kernel: [28287.750978] sh (20274): drop_caches: 1
+Jun 30 20:02:28 ecuador kernel: [28297.922248] mtier: module entry
+Jun 30 20:02:28 ecuador kernel: [28297.922252] mtier: reserved 98 mb (25088 pages), using 98 mb (25088 pages)
+Jun 30 20:02:28 ecuador kernel: [28297.922254] mtier: will move 1/1 of fast tier (98 mb, 25088 pages) each
+Jun 30 20:02:28 ecuador kernel: [28297.922256] mtier: delay is 500 ms with a bookeeping iter every 20 iters
+Jun 30 20:02:28 ecuador kernel: [28297.946719] Node 0 breaking (not 1)
+Jun 30 20:02:28 ecuador kernel: [28297.946722] Node 1 reporting!
+Jun 30 20:02:28 ecuador kernel: [28297.957229] mtier: first page: 0xffffea004048df80
+Jun 30 20:02:28 ecuador kernel: [28297.957389] old: 1
+Jun 30 20:02:28 ecuador kernel: [28297.957389] new: 2
+Jun 30 20:02:28 ecuador kernel: [28297.957394] mod_mtier: thread entry
+Jun 30 20:02:34 ecuador kernel: [28304.127767] mtier: enqueue process with pid 20287
+Jun 30 20:02:34 ecuador kernel: [28304.127771] mtier: enqueue called from pid 20286
+Jun 30 20:02:34 ecuador kernel: [28304.127773] mtier: checking for task... found task_struct with pid 20287 and addr 0xffff88101a770000
+Jun 30 20:02:34 ecuador kernel: [28304.127778] mtier: task stack located at virt. addr. 0x7ffea7c0ddc0
+Jun 30 20:02:34 ecuador kernel: [28304.127781] mtier: struct created: pid 20287	addr 0xffff88101a770000
+Jun 30 20:02:34 ecuador kernel: [28304.127783] mtier: hash table now consists of:
+Jun 30 20:02:34 ecuador kernel: [28304.127785] 2: 7268 0xffff881019512b00
+Jun 30 20:02:34 ecuador kernel: [28304.127788] 137: 20287 0xffff88101a770000
+Jun 30 20:02:34 ecuador kernel: [28304.470463] mod_iter: 0
+Jun 30 20:02:34 ecuador kernel: [28304.470468] mtier evict_all_tier_structs: 0 pages in 345 nanoseconds
+Jun 30 20:02:34 ecuador kernel: [28304.470473] mtier: entering mtier_get_ro_pagelist
+Jun 30 20:02:34 ecuador kernel: [28304.470478] mtier: queue found valid VMA (brk): 0x7f49ea607000 - 0x7f4a0143d000
+Jun 30 20:02:34 ecuador kernel: [28304.488350] mtier: queue found valid VMA (brk): 0x7f4a0143f000 - 0x7f4a18275000
+Jun 30 20:02:34 ecuador kernel: [28304.513798] mtier mod_mtier_generate_pagelist: rebuilt pagelist f size 187490 in 43323712 nanoseconds.
+Jun 30 20:02:35 ecuador kernel: [28305.014834] mod_iter: 1
+Jun 30 20:02:35 ecuador kernel: [28305.023689] mtier check_used_pages completed in 2985806 nanoseconds.
+Jun 30 20:02:35 ecuador kernel: [28305.023692] mtier: stay_entries: 0
+Jun 30 20:02:35 ecuador kernel: [28305.023696] mtier evict_unused_tier_structs: 0 pages in 387 nanoseconds
+Jun 30 20:02:35 ecuador kernel: [28305.088999] mtier duplicate heavy-copied 25088 pages in 65277061 nanoseconds
+Jun 30 20:02:36 ecuador kernel: [28305.589608] mod_iter: 2
+Jun 30 20:02:36 ecuador kernel: [28305.603669] mtier check_used_pages completed in 7188138 nanoseconds.
+Jun 30 20:02:36 ecuador kernel: [28305.603672] mtier: stay_entries: 5306
+Jun 30 20:02:36 ecuador kernel: [28305.610040] mtier evict_unused_tier_structs: 19781 pages in 6363946 nanoseconds
+Jun 30 20:02:36 ecuador kernel: [28305.663389] mtier duplicate heavy-copied 19782 pages in 53321860 nanoseconds
+Jun 30 20:02:36 ecuador kernel: [28306.163609] mod_iter: 3
+Jun 30 20:02:36 ecuador kernel: [28306.175914] mtier check_used_pages completed in 5953242 nanoseconds.
+Jun 30 20:02:36 ecuador kernel: [28306.175918] mtier: stay_entries: 2890
+Jun 30 20:02:36 ecuador kernel: [28306.183104] mtier evict_unused_tier_structs: 22198 pages in 7181888 nanoseconds
+Jun 30 20:02:36 ecuador kernel: [28306.243015] mtier duplicate heavy-copied 22198 pages in 59882343 nanoseconds
+Jun 30 20:02:37 ecuador kernel: [28306.743644] mod_iter: 4
+Jun 30 20:02:37 ecuador kernel: [28306.755785] mtier check_used_pages completed in 5524885 nanoseconds.
+Jun 30 20:02:37 ecuador kernel: [28306.755789] mtier: stay_entries: 4569
+Jun 30 20:02:37 ecuador kernel: [28306.762957] mtier evict_unused_tier_structs: 20518 pages in 7164053 nanoseconds
+Jun 30 20:02:37 ecuador kernel: [28306.817736] mtier duplicate heavy-copied 20519 pages in 54752588 nanoseconds
+Jun 30 20:02:37 ecuador kernel: [28307.318684] mod_iter: 5
+Jun 30 20:02:37 ecuador kernel: [28307.330737] mtier check_used_pages completed in 5756474 nanoseconds.
+Jun 30 20:02:37 ecuador kernel: [28307.330741] mtier: stay_entries: 4692
+Jun 30 20:02:37 ecuador kernel: [28307.337467] mtier evict_unused_tier_structs: 20395 pages in 6721895 nanoseconds
+Jun 30 20:02:37 ecuador kernel: [28307.393163] mtier duplicate heavy-copied 20396 pages in 55670374 nanoseconds
+Jun 30 20:02:38 ecuador kernel: [28307.893686] mod_iter: 6
+Jun 30 20:02:38 ecuador kernel: [28307.905470] mtier check_used_pages completed in 5498225 nanoseconds.
+Jun 30 20:02:38 ecuador kernel: [28307.905474] mtier: stay_entries: 4637
+Jun 30 20:02:38 ecuador kernel: [28307.911692] mtier evict_unused_tier_structs: 20450 pages in 6213667 nanoseconds
+Jun 30 20:02:38 ecuador kernel: [28307.966747] mtier duplicate heavy-copied 20451 pages in 55029615 nanoseconds
+Jun 30 20:02:38 ecuador kernel: [28308.467759] mod_iter: 7
+Jun 30 20:02:38 ecuador kernel: [28308.479488] mtier check_used_pages completed in 5453833 nanoseconds.
+Jun 30 20:02:38 ecuador kernel: [28308.479492] mtier: stay_entries: 4615
+Jun 30 20:02:38 ecuador kernel: [28308.486374] mtier evict_unused_tier_structs: 20473 pages in 6878446 nanoseconds
+Jun 30 20:02:38 ecuador kernel: [28308.543875] mtier duplicate heavy-copied 20473 pages in 57474923 nanoseconds
+Jun 30 20:02:39 ecuador kernel: [28309.044777] mod_iter: 8
+Jun 30 20:02:39 ecuador kernel: [28309.055983] mtier check_used_pages completed in 5332404 nanoseconds.
+Jun 30 20:02:39 ecuador kernel: [28309.055986] mtier: stay_entries: 2911
+Jun 30 20:02:39 ecuador kernel: [28309.062302] mtier evict_unused_tier_structs: 22177 pages in 6311531 nanoseconds
+Jun 30 20:02:39 ecuador kernel: [28309.122415] mtier duplicate heavy-copied 22177 pages in 60088038 nanoseconds
+Jun 30 20:02:40 ecuador kernel: [28309.623118] mod_iter: 9
+Jun 30 20:02:40 ecuador kernel: [28309.635892] mtier check_used_pages completed in 6103789 nanoseconds.
+Jun 30 20:02:40 ecuador kernel: [28309.635896] mtier: stay_entries: 2934
+Jun 30 20:02:40 ecuador kernel: [28309.643028] mtier evict_unused_tier_structs: 22153 pages in 7128572 nanoseconds
+Jun 30 20:02:40 ecuador kernel: [28309.705000] mtier duplicate heavy-copied 22154 pages in 61946608 nanoseconds
+Jun 30 20:02:40 ecuador kernel: [28310.205828] mod_iter: 10
+Jun 30 20:02:40 ecuador kernel: [28310.217845] mtier check_used_pages completed in 5663495 nanoseconds.
+Jun 30 20:02:40 ecuador kernel: [28310.217849] mtier: stay_entries: 3051
+Jun 30 20:02:40 ecuador kernel: [28310.224620] mtier evict_unused_tier_structs: 22037 pages in 6766580 nanoseconds
+Jun 30 20:02:40 ecuador kernel: [28310.283959] mtier duplicate heavy-copied 22037 pages in 59313230 nanoseconds
+Jun 30 20:02:41 ecuador kernel: [28310.784894] mod_iter: 11
+Jun 30 20:02:41 ecuador kernel: [28310.796682] mtier check_used_pages completed in 5476815 nanoseconds.
+Jun 30 20:02:41 ecuador kernel: [28310.796686] mtier: stay_entries: 5333
+Jun 30 20:02:41 ecuador kernel: [28310.802899] mtier evict_unused_tier_structs: 19755 pages in 6209606 nanoseconds
+Jun 30 20:02:41 ecuador kernel: [28310.856245] mtier duplicate heavy-copied 19755 pages in 53319536 nanoseconds
+Jun 30 20:02:41 ecuador kernel: [28311.356913] mod_iter: 12
+Jun 30 20:02:41 ecuador kernel: [28311.369172] mtier check_used_pages completed in 5987890 nanoseconds.
+Jun 30 20:02:41 ecuador kernel: [28311.369176] mtier: stay_entries: 5361
+Jun 30 20:02:41 ecuador kernel: [28311.375634] mtier evict_unused_tier_structs: 19726 pages in 6453346 nanoseconds
+Jun 30 20:02:41 ecuador kernel: [28311.429214] mtier duplicate heavy-copied 19727 pages in 53553698 nanoseconds
+Jun 30 20:02:42 ecuador kernel: [28311.929955] mod_iter: 13
+Jun 30 20:02:42 ecuador kernel: [28311.941878] mtier check_used_pages completed in 5639117 nanoseconds.
+Jun 30 20:02:42 ecuador kernel: [28311.941882] mtier: stay_entries: 3335
+Jun 30 20:02:42 ecuador kernel: [28311.948556] mtier evict_unused_tier_structs: 21753 pages in 6669848 nanoseconds
+Jun 30 20:02:42 ecuador kernel: [28312.006899] mtier duplicate heavy-copied 21753 pages in 58316827 nanoseconds
+Jun 30 20:02:42 ecuador kernel: [28312.508008] mod_iter: 14
+Jun 30 20:02:42 ecuador kernel: [28312.519991] mtier check_used_pages completed in 5694549 nanoseconds.
+Jun 30 20:02:42 ecuador kernel: [28312.519995] mtier: stay_entries: 3042
+Jun 30 20:02:42 ecuador kernel: [28312.527185] mtier evict_unused_tier_structs: 22046 pages in 7185537 nanoseconds
+Jun 30 20:02:43 ecuador kernel: [28312.588544] mtier duplicate heavy-copied 22046 pages in 61334257 nanoseconds
+Jun 30 20:02:43 ecuador kernel: [28313.089039] mod_iter: 15
+Jun 30 20:02:43 ecuador kernel: [28313.100259] mtier check_used_pages completed in 5379468 nanoseconds.
+Jun 30 20:02:43 ecuador kernel: [28313.100262] mtier: stay_entries: 2948
+Jun 30 20:02:43 ecuador kernel: [28313.106791] mtier evict_unused_tier_structs: 22138 pages in 6524697 nanoseconds
+Jun 30 20:02:43 ecuador kernel: [28313.166275] mtier duplicate heavy-copied 22140 pages in 59458520 nanoseconds
+Jun 30 20:02:44 ecuador kernel: [28313.667358] mod_iter: 16
+Jun 30 20:02:44 ecuador kernel: [28313.679326] mtier check_used_pages completed in 5647247 nanoseconds.
+Jun 30 20:02:44 ecuador kernel: [28313.679329] mtier: stay_entries: 4250
+Jun 30 20:02:44 ecuador kernel: [28313.685862] mtier evict_unused_tier_structs: 20838 pages in 6528531 nanoseconds
+Jun 30 20:02:44 ecuador kernel: [28313.741746] mtier duplicate heavy-copied 20838 pages in 55858245 nanoseconds
+Jun 30 20:02:44 ecuador kernel: [28314.242393] mod_iter: 17
+Jun 30 20:02:44 ecuador kernel: [28314.255458] mtier check_used_pages completed in 5995044 nanoseconds.
+Jun 30 20:02:44 ecuador kernel: [28314.255462] mtier: stay_entries: 2963
+Jun 30 20:02:44 ecuador kernel: [28314.262442] mtier evict_unused_tier_structs: 22123 pages in 6976651 nanoseconds
+Jun 30 20:02:44 ecuador kernel: [28314.324392] mtier duplicate heavy-copied 22125 pages in 61923585 nanoseconds
+Jun 30 20:02:45 ecuador kernel: [28314.825126] mod_iter: 18
+Jun 30 20:02:45 ecuador kernel: [28314.837833] mtier check_used_pages completed in 6059952 nanoseconds.
+Jun 30 20:02:45 ecuador kernel: [28314.837837] mtier: stay_entries: 5251
+Jun 30 20:02:45 ecuador kernel: [28314.844111] mtier evict_unused_tier_structs: 19837 pages in 6269911 nanoseconds
+Jun 30 20:02:45 ecuador kernel: [28314.896729] mtier duplicate heavy-copied 19837 pages in 52591699 nanoseconds
+Jun 30 20:02:45 ecuador kernel: [28315.397167] mod_iter: 19
+Jun 30 20:02:45 ecuador kernel: [28315.410135] mtier check_used_pages completed in 6439044 nanoseconds.
+Jun 30 20:02:45 ecuador kernel: [28315.410139] mtier: stay_entries: 2897
+Jun 30 20:02:45 ecuador kernel: [28315.418164] mtier evict_unused_tier_structs: 22190 pages in 8020722 nanoseconds
+Jun 30 20:02:45 ecuador kernel: [28315.476303] mtier duplicate heavy-copied 22191 pages in 58115388 nanoseconds
+Jun 30 20:02:46 ecuador kernel: [28315.977214] mod_iter: 20
+Jun 30 20:02:46 ecuador kernel: [28315.988749] mtier evict_all_tier_structs: 25088 pages in 11526936 nanoseconds
+Jun 30 20:02:46 ecuador kernel: [28316.030182] mtier: entering mtier_get_ro_pagelist
+Jun 30 20:02:46 ecuador kernel: [28316.030191] mtier: queue found valid VMA (brk): 0x7f49ea607000 - 0x7f4a0143d000
+Jun 30 20:02:46 ecuador kernel: [28316.040035] mtier: queue found valid VMA (brk): 0x7f4a0143f000 - 0x7f4a18275000
+Jun 30 20:02:46 ecuador kernel: [28316.049734] mtier mod_mtier_generate_pagelist: rebuilt pagelist f size 187488 in 19873959 nanoseconds.
+Jun 30 20:02:46 ecuador kernel: [28316.550531] mod_iter: 1
+Jun 30 20:02:46 ecuador kernel: [28316.558853] mtier check_used_pages completed in 2396191 nanoseconds.
+Jun 30 20:02:46 ecuador kernel: [28316.558857] mtier: stay_entries: 0
+Jun 30 20:02:46 ecuador kernel: [28316.558860] mtier evict_unused_tier_structs: 0 pages in 371 nanoseconds
+Jun 30 20:02:47 ecuador kernel: [28316.628761] mtier duplicate heavy-copied 25088 pages in 69873054 nanoseconds
+Jun 30 20:02:47 ecuador kernel: [28317.129277] mod_iter: 2
+Jun 30 20:02:47 ecuador kernel: [28317.142599] mtier check_used_pages completed in 6392625 nanoseconds.
+Jun 30 20:02:47 ecuador kernel: [28317.142603] mtier: stay_entries: 2945
+Jun 30 20:02:47 ecuador kernel: [28317.150680] mtier evict_unused_tier_structs: 22143 pages in 8073681 nanoseconds
+Jun 30 20:02:47 ecuador kernel: [28317.211120] mtier duplicate heavy-copied 22143 pages in 60414270 nanoseconds
+Jun 30 20:02:48 ecuador kernel: [28317.711312] mod_iter: 3
+Jun 30 20:02:48 ecuador kernel: [28317.724167] mtier check_used_pages completed in 6235368 nanoseconds.
+Jun 30 20:02:48 ecuador kernel: [28317.724171] mtier: stay_entries: 5326
+Jun 30 20:02:48 ecuador kernel: [28317.731038] mtier evict_unused_tier_structs: 19762 pages in 6862883 nanoseconds
+Jun 30 20:02:48 ecuador kernel: [28317.785403] mtier duplicate heavy-copied 19762 pages in 54338703 nanoseconds
+Jun 30 20:02:48 ecuador kernel: [28318.286346] mod_iter: 4
+Jun 30 20:02:48 ecuador kernel: [28318.299279] mtier check_used_pages completed in 6361808 nanoseconds.
+Jun 30 20:02:48 ecuador kernel: [28318.299283] mtier: stay_entries: 3103
+Jun 30 20:02:48 ecuador kernel: [28318.306775] mtier evict_unused_tier_structs: 21984 pages in 7487953 nanoseconds
+Jun 30 20:02:48 ecuador kernel: [28318.366368] mtier duplicate heavy-copied 21985 pages in 59564562 nanoseconds
+Jun 30 20:02:49 ecuador kernel: [28318.867377] mod_iter: 5
+Jun 30 20:02:49 ecuador kernel: [28318.880771] mtier check_used_pages completed in 6883071 nanoseconds.
+Jun 30 20:02:49 ecuador kernel: [28318.880775] mtier: stay_entries: 4452
+Jun 30 20:02:49 ecuador kernel: [28318.887837] mtier evict_unused_tier_structs: 20635 pages in 7057387 nanoseconds
+Jun 30 20:02:49 ecuador kernel: [28318.945621] mtier duplicate heavy-copied 20636 pages in 57759095 nanoseconds
+Jun 30 20:02:49 ecuador kernel: [28319.446402] mod_iter: 6
+Jun 30 20:02:49 ecuador kernel: [28319.459394] mtier check_used_pages completed in 6443980 nanoseconds.
+Jun 30 20:02:49 ecuador kernel: [28319.459398] mtier: stay_entries: 2984
+Jun 30 20:02:49 ecuador kernel: [28319.466894] mtier evict_unused_tier_structs: 22103 pages in 7491957 nanoseconds
+Jun 30 20:02:49 ecuador kernel: [28319.526625] mtier duplicate heavy-copied 22104 pages in 59704254 nanoseconds
+Jun 30 20:02:50 ecuador kernel: [28320.027444] mod_iter: 7
+Jun 30 20:02:50 ecuador kernel: [28320.040416] mtier check_used_pages completed in 6396200 nanoseconds.
+Jun 30 20:02:50 ecuador kernel: [28320.040420] mtier: stay_entries: 3018
+Jun 30 20:02:50 ecuador kernel: [28320.047806] mtier evict_unused_tier_structs: 22070 pages in 7381393 nanoseconds
+Jun 30 20:02:50 ecuador kernel: [28320.109321] mtier duplicate heavy-copied 22070 pages in 61488749 nanoseconds
+Jun 30 20:02:51 ecuador kernel: [28320.609490] mod_iter: 8
+Jun 30 20:02:51 ecuador kernel: [28320.622426] mtier check_used_pages completed in 6393667 nanoseconds.
+Jun 30 20:02:51 ecuador kernel: [28320.622431] mtier: stay_entries: 3080
+Jun 30 20:02:51 ecuador kernel: [28320.629820] mtier evict_unused_tier_structs: 22008 pages in 7385533 nanoseconds
+Jun 30 20:02:51 ecuador kernel: [28320.690870] mtier duplicate heavy-copied 22008 pages in 61023623 nanoseconds
+Jun 30 20:02:51 ecuador kernel: [28321.191502] mod_iter: 9
+Jun 30 20:02:51 ecuador kernel: [28321.205004] mtier check_used_pages completed in 7018323 nanoseconds.
+Jun 30 20:02:51 ecuador kernel: [28321.205008] mtier: stay_entries: 3016
+Jun 30 20:02:51 ecuador kernel: [28321.212510] mtier evict_unused_tier_structs: 22071 pages in 7497891 nanoseconds
+Jun 30 20:02:51 ecuador kernel: [28321.273711] mtier duplicate heavy-copied 22072 pages in 61175100 nanoseconds
+Jun 30 20:02:52 ecuador kernel: [28321.774560] mod_iter: 10
+Jun 30 20:02:52 ecuador kernel: [28321.787942] mtier check_used_pages completed in 6699422 nanoseconds.
+Jun 30 20:02:52 ecuador kernel: [28321.787946] mtier: stay_entries: 3054
+Jun 30 20:02:52 ecuador kernel: [28321.795730] mtier evict_unused_tier_structs: 22034 pages in 7779643 nanoseconds
+Jun 30 20:02:52 ecuador kernel: [28321.856753] mtier duplicate heavy-copied 22034 pages in 60996740 nanoseconds
+Jun 30 20:02:52 ecuador kernel: [28322.357589] mod_iter: 11
+Jun 30 20:02:52 ecuador kernel: [28322.370346] mtier check_used_pages completed in 6191040 nanoseconds.
+Jun 30 20:02:52 ecuador kernel: [28322.370349] mtier: stay_entries: 5412
+Jun 30 20:02:52 ecuador kernel: [28322.377165] mtier evict_unused_tier_structs: 19676 pages in 6811091 nanoseconds
+Jun 30 20:02:52 ecuador kernel: [28322.432059] mtier duplicate heavy-copied 19676 pages in 54867133 nanoseconds
+Jun 30 20:02:53 ecuador kernel: [28322.932632] mod_iter: 12
+Jun 30 20:02:53 ecuador kernel: [28322.945879] mtier check_used_pages completed in 7070035 nanoseconds.
+Jun 30 20:02:53 ecuador kernel: [28322.945883] mtier: stay_entries: 3022
+Jun 30 20:02:53 ecuador kernel: [28322.953991] mtier evict_unused_tier_structs: 22066 pages in 8103736 nanoseconds
+Jun 30 20:02:53 ecuador kernel: [28323.015805] mtier duplicate heavy-copied 22066 pages in 61786753 nanoseconds
+Jun 30 20:02:53 ecuador kernel: [28323.516666] mod_iter: 13
+Jun 30 20:02:53 ecuador kernel: [28323.528714] mtier check_used_pages completed in 5877950 nanoseconds.
+Jun 30 20:02:53 ecuador kernel: [28323.528718] mtier: stay_entries: 4422
+Jun 30 20:02:53 ecuador kernel: [28323.535707] mtier evict_unused_tier_structs: 20666 pages in 6983960 nanoseconds
+Jun 30 20:02:54 ecuador kernel: [28323.591824] mtier duplicate heavy-copied 20666 pages in 56093015 nanoseconds
+Jun 30 20:02:54 ecuador kernel: [28324.092981] mod_iter: 14
+Jun 30 20:02:54 ecuador kernel: [28324.104705] mtier check_used_pages completed in 5558107 nanoseconds.
+Jun 30 20:02:54 ecuador kernel: [28324.104709] mtier: stay_entries: 4546
+Jun 30 20:02:54 ecuador kernel: [28324.111667] mtier evict_unused_tier_structs: 20542 pages in 6954095 nanoseconds
+Jun 30 20:02:54 ecuador kernel: [28324.168131] mtier duplicate heavy-copied 20542 pages in 56437166 nanoseconds
+Jun 30 20:02:55 ecuador kernel: [28324.669001] mod_iter: 15
+Jun 30 20:02:55 ecuador kernel: [28324.680830] mtier check_used_pages completed in 5857855 nanoseconds.
+Jun 30 20:02:55 ecuador kernel: [28324.680835] mtier: stay_entries: 3028
+Jun 30 20:02:55 ecuador kernel: [28324.687638] mtier evict_unused_tier_structs: 22060 pages in 6799474 nanoseconds
+Jun 30 20:02:55 ecuador kernel: [28324.752578] mtier duplicate heavy-copied 22060 pages in 64915650 nanoseconds
+Jun 30 20:02:55 ecuador kernel: [28325.253049] mod_iter: 16
+Jun 30 20:02:55 ecuador kernel: [28325.264831] mtier check_used_pages completed in 5517082 nanoseconds.
+Jun 30 20:02:55 ecuador kernel: [28325.264835] mtier: stay_entries: 5345
+Jun 30 20:02:55 ecuador kernel: [28325.271402] mtier evict_unused_tier_structs: 19742 pages in 6563361 nanoseconds
+Jun 30 20:02:55 ecuador kernel: [28325.325384] mtier duplicate heavy-copied 19743 pages in 53956899 nanoseconds
+Jun 30 20:02:56 ecuador kernel: [28325.825789] mod_iter: 17
+Jun 30 20:02:56 ecuador kernel: [28325.838250] mtier check_used_pages completed in 5990967 nanoseconds.
+Jun 30 20:02:56 ecuador kernel: [28325.838254] mtier: stay_entries: 2956
+Jun 30 20:02:56 ecuador kernel: [28325.846061] mtier evict_unused_tier_structs: 22132 pages in 7803074 nanoseconds
+Jun 30 20:02:56 ecuador kernel: [28325.907628] mtier duplicate heavy-copied 22132 pages in 61542977 nanoseconds
+Jun 30 20:02:56 ecuador kernel: [28326.407832] mod_iter: 18
+Jun 30 20:02:56 ecuador kernel: [28326.419487] mtier check_used_pages completed in 5504427 nanoseconds.
+Jun 30 20:02:56 ecuador kernel: [28326.419491] mtier: stay_entries: 4388
+Jun 30 20:02:56 ecuador kernel: [28326.426582] mtier evict_unused_tier_structs: 20700 pages in 7086817 nanoseconds
+Jun 30 20:02:56 ecuador kernel: [28326.482871] mtier duplicate heavy-copied 20700 pages in 56262560 nanoseconds
+Jun 30 20:02:57 ecuador kernel: [28326.983873] mod_iter: 19
+Jun 30 20:02:57 ecuador kernel: [28326.995579] mtier check_used_pages completed in 5486792 nanoseconds.
+Jun 30 20:02:57 ecuador kernel: [28326.995583] mtier: stay_entries: 4535
+Jun 30 20:02:57 ecuador kernel: [28327.002018] mtier evict_unused_tier_structs: 20552 pages in 6431231 nanoseconds
+Jun 30 20:02:57 ecuador kernel: [28327.057962] mtier duplicate heavy-copied 20553 pages in 55917371 nanoseconds
+Jun 30 20:02:57 ecuador kernel: [28327.558904] mod_iter: 20
+Jun 30 20:02:57 ecuador kernel: [28327.569556] mtier evict_all_tier_structs: 25088 pages in 10644609 nanoseconds
+Jun 30 20:02:58 ecuador kernel: [28327.611545] mtier: entering mtier_get_ro_pagelist
+Jun 30 20:02:58 ecuador kernel: [28327.611552] mtier: queue found valid VMA (brk): 0x7f49ea607000 - 0x7f4a0143d000
+Jun 30 20:02:58 ecuador kernel: [28327.620017] mtier: queue found valid VMA (brk): 0x7f4a0143f000 - 0x7f4a18275000
+Jun 30 20:02:58 ecuador kernel: [28327.630057] mtier mod_mtier_generate_pagelist: rebuilt pagelist f size 187493 in 18833622 nanoseconds.
+Jun 30 20:02:58 ecuador kernel: [28328.130938] mod_iter: 1
+Jun 30 20:02:58 ecuador kernel: [28328.138917] mtier check_used_pages completed in 2389424 nanoseconds.
+Jun 30 20:02:58 ecuador kernel: [28328.138921] mtier: stay_entries: 0
+Jun 30 20:02:58 ecuador kernel: [28328.138923] mtier evict_unused_tier_structs: 0 pages in 455 nanoseconds
+Jun 30 20:02:58 ecuador kernel: [28328.207057] mtier duplicate heavy-copied 25088 pages in 68107978 nanoseconds
+Jun 30 20:02:59 ecuador kernel: [28328.708280] mod_iter: 2
+Jun 30 20:02:59 ecuador kernel: [28328.721401] mtier check_used_pages completed in 6484895 nanoseconds.
+Jun 30 20:02:59 ecuador kernel: [28328.721405] mtier: stay_entries: 3081
+Jun 30 20:02:59 ecuador kernel: [28328.728672] mtier evict_unused_tier_structs: 22007 pages in 7262884 nanoseconds
+Jun 30 20:02:59 ecuador kernel: [28328.789599] mtier duplicate heavy-copied 22007 pages in 60900879 nanoseconds
+Jun 30 20:02:59 ecuador kernel: [28329.290015] mod_iter: 3
+Jun 30 20:02:59 ecuador kernel: [28329.303597] mtier check_used_pages completed in 6972411 nanoseconds.
+Jun 30 20:02:59 ecuador kernel: [28329.303601] mtier: stay_entries: 2899
+Jun 30 20:02:59 ecuador kernel: [28329.311488] mtier evict_unused_tier_structs: 22188 pages in 7883028 nanoseconds
+Jun 30 20:02:59 ecuador kernel: [28329.372065] mtier duplicate heavy-copied 22189 pages in 60551419 nanoseconds
+Jun 30 20:03:00 ecuador kernel: [28329.873046] mod_iter: 4
+Jun 30 20:03:00 ecuador kernel: [28329.886429] mtier check_used_pages completed in 6837246 nanoseconds.
+Jun 30 20:03:00 ecuador kernel: [28329.886433] mtier: stay_entries: 4602
+Jun 30 20:03:00 ecuador kernel: [28329.893502] mtier evict_unused_tier_structs: 20486 pages in 7065396 nanoseconds
+Jun 30 20:03:00 ecuador kernel: [28329.947483] mtier duplicate heavy-copied 20486 pages in 53956262 nanoseconds
+Jun 30 20:03:00 ecuador kernel: [28330.448085] mod_iter: 5
+Jun 30 20:03:00 ecuador kernel: [28330.461236] mtier check_used_pages completed in 6603655 nanoseconds.
+Jun 30 20:03:00 ecuador kernel: [28330.461240] mtier: stay_entries: 4447
+Jun 30 20:03:00 ecuador kernel: [28330.468555] mtier evict_unused_tier_structs: 20641 pages in 7310967 nanoseconds
+Jun 30 20:03:00 ecuador kernel: [28330.523162] mtier duplicate heavy-copied 20641 pages in 54581608 nanoseconds
+Jun 30 20:03:01 ecuador kernel: [28331.024111] mod_iter: 6
+Jun 30 20:03:01 ecuador kernel: [28331.037310] mtier check_used_pages completed in 6386509 nanoseconds.
+Jun 30 20:03:01 ecuador kernel: [28331.037315] mtier: stay_entries: 3045
+Jun 30 20:03:01 ecuador kernel: [28331.044738] mtier evict_unused_tier_structs: 22043 pages in 7419231 nanoseconds
+Jun 30 20:03:01 ecuador kernel: [28331.103919] mtier duplicate heavy-copied 22043 pages in 59153796 nanoseconds
+Jun 30 20:03:02 ecuador kernel: [28331.604149] mod_iter: 7
+Jun 30 20:03:02 ecuador kernel: [28331.616284] mtier check_used_pages completed in 6034417 nanoseconds.
+Jun 30 20:03:02 ecuador kernel: [28331.616287] mtier: stay_entries: 3017
+Jun 30 20:03:02 ecuador kernel: [28331.623326] mtier evict_unused_tier_structs: 22070 pages in 7034925 nanoseconds
+Jun 30 20:03:02 ecuador kernel: [28331.682441] mtier duplicate heavy-copied 22071 pages in 59089221 nanoseconds
+Jun 30 20:03:02 ecuador kernel: [28332.183186] mod_iter: 8
+Jun 30 20:03:02 ecuador kernel: [28332.195632] mtier check_used_pages completed in 6054536 nanoseconds.
+Jun 30 20:03:02 ecuador kernel: [28332.195636] mtier: stay_entries: 2922
+Jun 30 20:03:02 ecuador kernel: [28332.203263] mtier evict_unused_tier_structs: 22166 pages in 7623322 nanoseconds
+Jun 30 20:03:02 ecuador kernel: [28332.263134] mtier duplicate heavy-copied 22166 pages in 59846860 nanoseconds
+Jun 30 20:03:03 ecuador kernel: [28332.764511] mod_iter: 9
+Jun 30 20:03:03 ecuador kernel: [28332.778203] mtier check_used_pages completed in 7019164 nanoseconds.
+Jun 30 20:03:03 ecuador kernel: [28332.778208] mtier: stay_entries: 2906
+Jun 30 20:03:03 ecuador kernel: [28332.785760] mtier evict_unused_tier_structs: 22181 pages in 7547469 nanoseconds
+Jun 30 20:03:03 ecuador kernel: [28332.845389] mtier duplicate heavy-copied 22182 pages in 59603815 nanoseconds
+Jun 30 20:03:03 ecuador kernel: [28333.346252] mod_iter: 10
+Jun 30 20:03:03 ecuador kernel: [28333.359149] mtier check_used_pages completed in 6288605 nanoseconds.
+Jun 30 20:03:03 ecuador kernel: [28333.359153] mtier: stay_entries: 4567
+Jun 30 20:03:03 ecuador kernel: [28333.366198] mtier evict_unused_tier_structs: 20521 pages in 7041491 nanoseconds
+Jun 30 20:03:03 ecuador kernel: [28333.421215] mtier duplicate heavy-copied 20521 pages in 54990594 nanoseconds
+Jun 30 20:03:04 ecuador kernel: [28333.922289] mod_iter: 11
+Jun 30 20:03:04 ecuador kernel: [28333.935091] mtier check_used_pages completed in 6271117 nanoseconds.
+Jun 30 20:03:04 ecuador kernel: [28333.935095] mtier: stay_entries: 4338
+Jun 30 20:03:04 ecuador kernel: [28333.942184] mtier evict_unused_tier_structs: 20749 pages in 7085891 nanoseconds
+Jun 30 20:03:04 ecuador kernel: [28333.997759] mtier duplicate heavy-copied 20750 pages in 55548747 nanoseconds
+Jun 30 20:03:04 ecuador kernel: [28334.498861] mod_iter: 12
+Jun 30 20:03:04 ecuador kernel: [28334.512026] mtier check_used_pages completed in 6670686 nanoseconds.
+Jun 30 20:03:04 ecuador kernel: [28334.512029] mtier: stay_entries: 3126
+Jun 30 20:03:04 ecuador kernel: [28334.519390] mtier evict_unused_tier_structs: 21962 pages in 7357226 nanoseconds
+Jun 30 20:03:04 ecuador kernel: [28334.579177] mtier duplicate heavy-copied 21962 pages in 59760223 nanoseconds
+Jun 30 20:03:05 ecuador kernel: [28335.079353] mod_iter: 13
+Jun 30 20:03:05 ecuador kernel: [28335.092086] mtier check_used_pages completed in 6181661 nanoseconds.
+Jun 30 20:03:05 ecuador kernel: [28335.092090] mtier: stay_entries: 5347
+Jun 30 20:03:05 ecuador kernel: [28335.098900] mtier evict_unused_tier_structs: 19741 pages in 6806205 nanoseconds
+Jun 30 20:03:05 ecuador kernel: [28335.152756] mtier duplicate heavy-copied 19741 pages in 53828833 nanoseconds
+Jun 30 20:03:06 ecuador kernel: [28335.653936] mod_iter: 14
+Jun 30 20:03:06 ecuador kernel: [28335.667057] mtier check_used_pages completed in 6629336 nanoseconds.
+Jun 30 20:03:06 ecuador kernel: [28335.667061] mtier: stay_entries: 2955
+Jun 30 20:03:06 ecuador kernel: [28335.674761] mtier evict_unused_tier_structs: 22133 pages in 7696255 nanoseconds
+Jun 30 20:03:06 ecuador kernel: [28335.736493] mtier duplicate heavy-copied 22133 pages in 61706225 nanoseconds
+Jun 30 20:03:06 ecuador kernel: [28336.237730] mod_iter: 15
+Jun 30 20:03:06 ecuador kernel: [28336.249836] mtier check_used_pages completed in 5962901 nanoseconds.
+Jun 30 20:03:06 ecuador kernel: [28336.249840] mtier: stay_entries: 4455
+Jun 30 20:03:06 ecuador kernel: [28336.256872] mtier evict_unused_tier_structs: 20633 pages in 7027965 nanoseconds
+Jun 30 20:03:06 ecuador kernel: [28336.312894] mtier duplicate heavy-copied 20633 pages in 55996710 nanoseconds
+Jun 30 20:03:07 ecuador kernel: [28336.814025] mod_iter: 16
+Jun 30 20:03:07 ecuador kernel: [28336.827463] mtier check_used_pages completed in 6587406 nanoseconds.
+Jun 30 20:03:07 ecuador kernel: [28336.827467] mtier: stay_entries: 4474
+Jun 30 20:03:07 ecuador kernel: [28336.835154] mtier evict_unused_tier_structs: 20614 pages in 7683159 nanoseconds
+Jun 30 20:03:07 ecuador kernel: [28336.891168] mtier duplicate heavy-copied 20614 pages in 55987384 nanoseconds
+Jun 30 20:03:07 ecuador kernel: [28337.391498] mod_iter: 17
+Jun 30 20:03:07 ecuador kernel: [28337.404606] mtier check_used_pages completed in 6277807 nanoseconds.
+Jun 30 20:03:07 ecuador kernel: [28337.404610] mtier: stay_entries: 4367
+Jun 30 20:03:07 ecuador kernel: [28337.412283] mtier evict_unused_tier_structs: 20720 pages in 7669286 nanoseconds
+Jun 30 20:03:07 ecuador kernel: [28337.469138] mtier duplicate heavy-copied 20721 pages in 56828654 nanoseconds
+Jun 30 20:03:08 ecuador kernel: [28337.969521] mod_iter: 18
+Jun 30 20:03:08 ecuador kernel: [28337.982577] mtier check_used_pages completed in 6199632 nanoseconds.
+Jun 30 20:03:08 ecuador kernel: [28337.982581] mtier: stay_entries: 4580
+Jun 30 20:03:08 ecuador kernel: [28337.989841] mtier evict_unused_tier_structs: 20508 pages in 7255863 nanoseconds
+Jun 30 20:03:08 ecuador kernel: [28338.047070] mtier duplicate heavy-copied 20508 pages in 57202772 nanoseconds
+Jun 30 20:03:08 ecuador kernel: [28338.547540] mod_iter: 19
+Jun 30 20:03:08 ecuador kernel: [28338.559996] mtier check_used_pages completed in 6236748 nanoseconds.
+Jun 30 20:03:08 ecuador kernel: [28338.560000] mtier: stay_entries: 4674
+Jun 30 20:03:08 ecuador kernel: [28338.567557] mtier evict_unused_tier_structs: 20413 pages in 7553150 nanoseconds
+Jun 30 20:03:09 ecuador kernel: [28338.622735] mtier duplicate heavy-copied 20414 pages in 55152378 nanoseconds
+Jun 30 20:03:09 ecuador kernel: [28339.123614] mod_iter: 20
+Jun 30 20:03:09 ecuador kernel: [28339.133844] mtier evict_all_tier_structs: 25088 pages in 10223956 nanoseconds
+Jun 30 20:03:09 ecuador kernel: [28339.172846] mtier: entering mtier_get_ro_pagelist
+Jun 30 20:03:09 ecuador kernel: [28339.172854] mtier: queue found valid VMA (brk): 0x7f49ea607000 - 0x7f4a0143d000
+Jun 30 20:03:09 ecuador kernel: [28339.181600] mtier: queue found valid VMA (brk): 0x7f4a0143f000 - 0x7f4a18275000
+Jun 30 20:03:09 ecuador kernel: [28339.191113] mtier mod_mtier_generate_pagelist: rebuilt pagelist f size 187489 in 18573973 nanoseconds.
+Jun 30 20:03:10 ecuador kernel: [28339.691635] mod_iter: 1
+Jun 30 20:03:10 ecuador kernel: [28339.699376] mtier check_used_pages completed in 2329001 nanoseconds.
+Jun 30 20:03:10 ecuador kernel: [28339.699380] mtier: stay_entries: 0
+Jun 30 20:03:10 ecuador kernel: [28339.699382] mtier evict_unused_tier_structs: 0 pages in 377 nanoseconds
+Jun 30 20:03:10 ecuador kernel: [28339.768259] mtier duplicate heavy-copied 25088 pages in 68850138 nanoseconds
+Jun 30 20:03:10 ecuador kernel: [28340.268656] mod_iter: 2
+Jun 30 20:03:10 ecuador kernel: [28340.280326] mtier check_used_pages completed in 5485002 nanoseconds.
+Jun 30 20:03:10 ecuador kernel: [28340.280330] mtier: stay_entries: 4641
+Jun 30 20:03:10 ecuador kernel: [28340.287322] mtier evict_unused_tier_structs: 20447 pages in 6987813 nanoseconds
+Jun 30 20:03:10 ecuador kernel: [28340.342964] mtier duplicate heavy-copied 20447 pages in 55616419 nanoseconds
+Jun 30 20:03:11 ecuador kernel: [28340.843700] mod_iter: 3
+Jun 30 20:03:11 ecuador kernel: [28340.855806] mtier check_used_pages completed in 5889149 nanoseconds.
+Jun 30 20:03:11 ecuador kernel: [28340.855810] mtier: stay_entries: 4435
+Jun 30 20:03:11 ecuador kernel: [28340.862269] mtier evict_unused_tier_structs: 20653 pages in 6455058 nanoseconds
+Jun 30 20:03:11 ecuador kernel: [28340.917970] mtier duplicate heavy-copied 20653 pages in 55673987 nanoseconds
+Jun 30 20:03:11 ecuador kernel: [28341.419021] mod_iter: 4
+Jun 30 20:03:11 ecuador kernel: [28341.431353] mtier check_used_pages completed in 6088528 nanoseconds.
+Jun 30 20:03:11 ecuador kernel: [28341.431356] mtier: stay_entries: 2906
+Jun 30 20:03:11 ecuador kernel: [28341.438551] mtier evict_unused_tier_structs: 22182 pages in 7190472 nanoseconds
+Jun 30 20:03:11 ecuador kernel: [28341.497715] mtier duplicate heavy-copied 22182 pages in 59136430 nanoseconds
+Jun 30 20:03:12 ecuador kernel: [28341.998751] mod_iter: 5
+Jun 30 20:03:12 ecuador kernel: [28342.011034] mtier check_used_pages completed in 6012600 nanoseconds.
+Jun 30 20:03:12 ecuador kernel: [28342.011037] mtier: stay_entries: 2899
+Jun 30 20:03:12 ecuador kernel: [28342.017897] mtier evict_unused_tier_structs: 22188 pages in 6856268 nanoseconds
+Jun 30 20:03:12 ecuador kernel: [28342.077590] mtier duplicate heavy-copied 22189 pages in 59666681 nanoseconds
+Jun 30 20:03:12 ecuador kernel: [28342.577809] mod_iter: 6
+Jun 30 20:03:13 ecuador kernel: [28342.589946] mtier check_used_pages completed in 5814173 nanoseconds.
+Jun 30 20:03:13 ecuador kernel: [28342.589949] mtier: stay_entries: 3030
+Jun 30 20:03:13 ecuador kernel: [28342.597118] mtier evict_unused_tier_structs: 22058 pages in 7165419 nanoseconds
+Jun 30 20:03:13 ecuador kernel: [28342.656500] mtier duplicate heavy-copied 22058 pages in 59355709 nanoseconds
+Jun 30 20:03:13 ecuador kernel: [28343.156847] mod_iter: 7
+Jun 30 20:03:13 ecuador kernel: [28343.169076] mtier check_used_pages completed in 5676561 nanoseconds.
+Jun 30 20:03:13 ecuador kernel: [28343.169080] mtier: stay_entries: 3113
+Jun 30 20:03:13 ecuador kernel: [28343.176374] mtier evict_unused_tier_structs: 21974 pages in 7289497 nanoseconds
+Jun 30 20:03:13 ecuador kernel: [28343.234907] mtier duplicate heavy-copied 21975 pages in 58507564 nanoseconds
+Jun 30 20:03:14 ecuador kernel: [28343.736153] mod_iter: 8
+Jun 30 20:03:14 ecuador kernel: [28343.748633] mtier check_used_pages completed in 6261283 nanoseconds.
+Jun 30 20:03:14 ecuador kernel: [28343.748637] mtier: stay_entries: 2994
+Jun 30 20:03:14 ecuador kernel: [28343.756138] mtier evict_unused_tier_structs: 22094 pages in 7497527 nanoseconds
+Jun 30 20:03:14 ecuador kernel: [28343.815994] mtier duplicate heavy-copied 22094 pages in 59829108 nanoseconds
+Jun 30 20:03:14 ecuador kernel: [28344.316916] mod_iter: 9
+Jun 30 20:03:14 ecuador kernel: [28344.328661] mtier check_used_pages completed in 5508838 nanoseconds.
+Jun 30 20:03:14 ecuador kernel: [28344.328665] mtier: stay_entries: 5400
+Jun 30 20:03:14 ecuador kernel: [28344.334976] mtier evict_unused_tier_structs: 19688 pages in 6306686 nanoseconds
+Jun 30 20:03:14 ecuador kernel: [28344.387340] mtier duplicate heavy-copied 19688 pages in 52337910 nanoseconds
+Jun 30 20:03:15 ecuador kernel: [28344.887945] mod_iter: 10
+Jun 30 20:03:15 ecuador kernel: [28344.899790] mtier check_used_pages completed in 5555291 nanoseconds.
+Jun 30 20:03:15 ecuador kernel: [28344.899794] mtier: stay_entries: 5213
+Jun 30 20:03:15 ecuador kernel: [28344.906130] mtier evict_unused_tier_structs: 19875 pages in 6332039 nanoseconds
+Jun 30 20:03:15 ecuador kernel: [28344.958818] mtier duplicate heavy-copied 19875 pages in 52661870 nanoseconds
+Jun 30 20:03:15 ecuador kernel: [28345.459269] mod_iter: 11
+Jun 30 20:03:15 ecuador kernel: [28345.471783] mtier check_used_pages completed in 5906007 nanoseconds.
+Jun 30 20:03:15 ecuador kernel: [28345.471787] mtier: stay_entries: 3007
+Jun 30 20:03:15 ecuador kernel: [28345.478799] mtier evict_unused_tier_structs: 22081 pages in 7007759 nanoseconds
+Jun 30 20:03:15 ecuador kernel: [28345.538468] mtier duplicate heavy-copied 22081 pages in 59640923 nanoseconds
+Jun 30 20:03:16 ecuador kernel: [28346.039021] mod_iter: 12
+Jun 30 20:03:16 ecuador kernel: [28346.052427] mtier check_used_pages completed in 6486038 nanoseconds.
+Jun 30 20:03:16 ecuador kernel: [28346.052430] mtier: stay_entries: 2843
+Jun 30 20:03:16 ecuador kernel: [28346.059646] mtier evict_unused_tier_structs: 22245 pages in 7211114 nanoseconds
+Jun 30 20:03:16 ecuador kernel: [28346.120116] mtier duplicate heavy-copied 22245 pages in 60445434 nanoseconds
+Jun 30 20:03:17 ecuador kernel: [28346.621334] mod_iter: 13
+Jun 30 20:03:17 ecuador kernel: [28346.634062] mtier check_used_pages completed in 6151164 nanoseconds.
+Jun 30 20:03:17 ecuador kernel: [28346.634065] mtier: stay_entries: 5252
+Jun 30 20:03:17 ecuador kernel: [28346.640732] mtier evict_unused_tier_structs: 19836 pages in 6662460 nanoseconds
+Jun 30 20:03:17 ecuador kernel: [28346.694326] mtier duplicate heavy-copied 19836 pages in 53570690 nanoseconds
+Jun 30 20:03:17 ecuador kernel: [28347.195078] mod_iter: 14
+Jun 30 20:03:17 ecuador kernel: [28347.208111] mtier check_used_pages completed in 6427318 nanoseconds.
+Jun 30 20:03:17 ecuador kernel: [28347.208115] mtier: stay_entries: 2981
+Jun 30 20:03:17 ecuador kernel: [28347.215623] mtier evict_unused_tier_structs: 22107 pages in 7503262 nanoseconds
+Jun 30 20:03:17 ecuador kernel: [28347.274265] mtier duplicate heavy-copied 22107 pages in 58616222 nanoseconds
+Jun 30 20:03:18 ecuador kernel: [28347.775117] mod_iter: 15
+Jun 30 20:03:18 ecuador kernel: [28347.787905] mtier check_used_pages completed in 6258052 nanoseconds.
+Jun 30 20:03:18 ecuador kernel: [28347.787909] mtier: stay_entries: 4539
+Jun 30 20:03:18 ecuador kernel: [28347.795018] mtier evict_unused_tier_structs: 20549 pages in 7105123 nanoseconds
+Jun 30 20:03:18 ecuador kernel: [28347.849677] mtier duplicate heavy-copied 20549 pages in 54622393 nanoseconds
+Jun 30 20:03:18 ecuador kernel: [28348.350163] mod_iter: 16
+Jun 30 20:03:18 ecuador kernel: [28348.363029] mtier check_used_pages completed in 6370121 nanoseconds.
+Jun 30 20:03:18 ecuador kernel: [28348.363032] mtier: stay_entries: 3040
+Jun 30 20:03:18 ecuador kernel: [28348.370379] mtier evict_unused_tier_structs: 22048 pages in 7333741 nanoseconds
+Jun 30 20:03:18 ecuador kernel: [28348.429504] mtier duplicate heavy-copied 22048 pages in 59097491 nanoseconds
+Jun 30 20:03:19 ecuador kernel: [28348.930464] mod_iter: 17
+Jun 30 20:03:19 ecuador kernel: [28348.943204] mtier check_used_pages completed in 6193389 nanoseconds.
+Jun 30 20:03:19 ecuador kernel: [28348.943209] mtier: stay_entries: 5447
+Jun 30 20:03:19 ecuador kernel: [28348.949957] mtier evict_unused_tier_structs: 19641 pages in 6743612 nanoseconds
+Jun 30 20:03:19 ecuador kernel: [28349.003376] mtier duplicate heavy-copied 19641 pages in 53393646 nanoseconds
+Jun 30 20:03:19 ecuador kernel: [28349.504523] mod_iter: 18
+Jun 30 20:03:19 ecuador kernel: [28349.517032] mtier check_used_pages completed in 6057238 nanoseconds.
+Jun 30 20:03:19 ecuador kernel: [28349.517035] mtier: stay_entries: 3134
+Jun 30 20:03:19 ecuador kernel: [28349.524388] mtier evict_unused_tier_structs: 21954 pages in 7348975 nanoseconds
+Jun 30 20:03:19 ecuador kernel: [28349.583861] mtier duplicate heavy-copied 21954 pages in 59446768 nanoseconds
+Jun 30 20:03:20 ecuador kernel: [28350.084562] mod_iter: 19
+Jun 30 20:03:20 ecuador kernel: [28350.098242] mtier check_used_pages completed in 7144638 nanoseconds.
+Jun 30 20:03:20 ecuador kernel: [28350.098246] mtier: stay_entries: 4490
+Jun 30 20:03:20 ecuador kernel: [28350.105301] mtier evict_unused_tier_structs: 20598 pages in 7050830 nanoseconds
+Jun 30 20:03:20 ecuador kernel: [28350.160771] mtier duplicate heavy-copied 20598 pages in 55444526 nanoseconds
+Jun 30 20:03:21 ecuador kernel: [28350.661289] mod_iter: 20
+Jun 30 20:03:21 ecuador kernel: [28350.673162] mtier evict_all_tier_structs: 25088 pages in 11865823 nanoseconds
+Jun 30 20:03:21 ecuador kernel: [28350.715534] mtier: entering mtier_get_ro_pagelist
+Jun 30 20:03:21 ecuador kernel: [28350.715542] mtier: queue found valid VMA (brk): 0x7f49ea607000 - 0x7f4a0143d000
+Jun 30 20:03:21 ecuador kernel: [28350.723855] mtier: queue found valid VMA (brk): 0x7f4a0143f000 - 0x7f4a18275000
+Jun 30 20:03:21 ecuador kernel: [28350.733074] mtier mod_mtier_generate_pagelist: rebuilt pagelist f size 187482 in 17865412 nanoseconds.
+Jun 30 20:03:21 ecuador kernel: [28351.233299] mod_iter: 1
+Jun 30 20:03:21 ecuador kernel: [28351.241458] mtier check_used_pages completed in 2386059 nanoseconds.
+Jun 30 20:03:21 ecuador kernel: [28351.241462] mtier: stay_entries: 0
+Jun 30 20:03:21 ecuador kernel: [28351.241464] mtier evict_unused_tier_structs: 0 pages in 461 nanoseconds
+Jun 30 20:03:21 ecuador kernel: [28351.309900] mtier duplicate heavy-copied 25088 pages in 68408769 nanoseconds
+Jun 30 20:03:22 ecuador kernel: [28351.810367] mod_iter: 2
+Jun 30 20:03:22 ecuador kernel: [28351.823142] mtier check_used_pages completed in 6227107 nanoseconds.
+Jun 30 20:03:22 ecuador kernel: [28351.823146] mtier: stay_entries: 4536
+Jun 30 20:03:22 ecuador kernel: [28351.830123] mtier evict_unused_tier_structs: 20551 pages in 6972668 nanoseconds
+Jun 30 20:03:22 ecuador kernel: [28351.887986] mtier duplicate heavy-copied 20552 pages in 57836962 nanoseconds
+Jun 30 20:03:22 ecuador kernel: [28352.388402] mod_iter: 3
+Jun 30 20:03:22 ecuador kernel: [28352.401437] mtier check_used_pages completed in 6413049 nanoseconds.
+Jun 30 20:03:22 ecuador kernel: [28352.401440] mtier: stay_entries: 3084
+Jun 30 20:03:22 ecuador kernel: [28352.408859] mtier evict_unused_tier_structs: 22004 pages in 7414259 nanoseconds
+Jun 30 20:03:22 ecuador kernel: [28352.468526] mtier duplicate heavy-copied 22004 pages in 59640766 nanoseconds
+Jun 30 20:03:23 ecuador kernel: [28352.969716] mod_iter: 4
+Jun 30 20:03:23 ecuador kernel: [28352.982833] mtier check_used_pages completed in 6463538 nanoseconds.
+Jun 30 20:03:23 ecuador kernel: [28352.982837] mtier: stay_entries: 3040
+Jun 30 20:03:23 ecuador kernel: [28352.990708] mtier evict_unused_tier_structs: 22047 pages in 7866185 nanoseconds
+Jun 30 20:03:23 ecuador kernel: [28353.050678] mtier duplicate heavy-copied 22048 pages in 59943780 nanoseconds
+Jun 30 20:03:23 ecuador kernel: [28353.551479] mod_iter: 5
+Jun 30 20:03:23 ecuador kernel: [28353.564620] mtier check_used_pages completed in 6248157 nanoseconds.
+Jun 30 20:03:23 ecuador kernel: [28353.564623] mtier: stay_entries: 4659
+Jun 30 20:03:23 ecuador kernel: [28353.571680] mtier evict_unused_tier_structs: 20429 pages in 7052257 nanoseconds
+Jun 30 20:03:24 ecuador kernel: [28353.630284] mtier duplicate heavy-copied 20429 pages in 58578685 nanoseconds
+Jun 30 20:03:24 ecuador kernel: [28354.130505] mod_iter: 6
+Jun 30 20:03:24 ecuador kernel: [28354.143328] mtier check_used_pages completed in 6274281 nanoseconds.
+Jun 30 20:03:24 ecuador kernel: [28354.143332] mtier: stay_entries: 4416
+Jun 30 20:03:24 ecuador kernel: [28354.150378] mtier evict_unused_tier_structs: 20672 pages in 7042185 nanoseconds
+Jun 30 20:03:24 ecuador kernel: [28354.206869] mtier duplicate heavy-copied 20672 pages in 56457454 nanoseconds
+Jun 30 20:03:25 ecuador kernel: [28354.707538] mod_iter: 7
+Jun 30 20:03:25 ecuador kernel: [28354.719904] mtier check_used_pages completed in 6253507 nanoseconds.
+Jun 30 20:03:25 ecuador kernel: [28354.719908] mtier: stay_entries: 4384
+Jun 30 20:03:25 ecuador kernel: [28354.727550] mtier evict_unused_tier_structs: 20704 pages in 7637249 nanoseconds
+Jun 30 20:03:25 ecuador kernel: [28354.784193] mtier duplicate heavy-copied 20704 pages in 56615780 nanoseconds
+Jun 30 20:03:25 ecuador kernel: [28355.284853] mod_iter: 8
+Jun 30 20:03:25 ecuador kernel: [28355.297945] mtier check_used_pages completed in 6582814 nanoseconds.
+Jun 30 20:03:25 ecuador kernel: [28355.297949] mtier: stay_entries: 3142
+Jun 30 20:03:25 ecuador kernel: [28355.305656] mtier evict_unused_tier_structs: 21946 pages in 7703381 nanoseconds
+Jun 30 20:03:25 ecuador kernel: [28355.368157] mtier duplicate heavy-copied 21946 pages in 62474998 nanoseconds
+Jun 30 20:03:26 ecuador kernel: [28355.868595] mod_iter: 9
+Jun 30 20:03:26 ecuador kernel: [28355.881146] mtier check_used_pages completed in 5974382 nanoseconds.
+Jun 30 20:03:26 ecuador kernel: [28355.881150] mtier: stay_entries: 3076
+Jun 30 20:03:26 ecuador kernel: [28355.888549] mtier evict_unused_tier_structs: 22012 pages in 7394122 nanoseconds
+Jun 30 20:03:26 ecuador kernel: [28355.948979] mtier duplicate heavy-copied 22012 pages in 60403661 nanoseconds
+Jun 30 20:03:26 ecuador kernel: [28356.449951] mod_iter: 10
+Jun 30 20:03:26 ecuador kernel: [28356.461961] mtier check_used_pages completed in 5697202 nanoseconds.
+Jun 30 20:03:26 ecuador kernel: [28356.461964] mtier: stay_entries: 2929
+Jun 30 20:03:26 ecuador kernel: [28356.469515] mtier evict_unused_tier_structs: 22159 pages in 7545835 nanoseconds
+Jun 30 20:03:26 ecuador kernel: [28356.530838] mtier duplicate heavy-copied 22159 pages in 61285749 nanoseconds
+Jun 30 20:03:27 ecuador kernel: [28357.031965] mod_iter: 11
+Jun 30 20:03:27 ecuador kernel: [28357.044160] mtier check_used_pages completed in 5998014 nanoseconds.
+Jun 30 20:03:27 ecuador kernel: [28357.044164] mtier: stay_entries: 2940
+Jun 30 20:03:27 ecuador kernel: [28357.051067] mtier evict_unused_tier_structs: 22146 pages in 6898466 nanoseconds
+Jun 30 20:03:27 ecuador kernel: [28357.112604] mtier duplicate heavy-copied 22148 pages in 61510748 nanoseconds
+Jun 30 20:03:28 ecuador kernel: [28357.613716] mod_iter: 12
+Jun 30 20:03:28 ecuador kernel: [28357.625486] mtier check_used_pages completed in 5537780 nanoseconds.
+Jun 30 20:03:28 ecuador kernel: [28357.625490] mtier: stay_entries: 4419
+Jun 30 20:03:28 ecuador kernel: [28357.632007] mtier evict_unused_tier_structs: 20669 pages in 6513517 nanoseconds
+Jun 30 20:03:28 ecuador kernel: [28357.688736] mtier duplicate heavy-copied 20669 pages in 56702470 nanoseconds
+Jun 30 20:03:28 ecuador kernel: [28358.189754] mod_iter: 13
+Jun 30 20:03:28 ecuador kernel: [28358.201368] mtier check_used_pages completed in 5489286 nanoseconds.
+Jun 30 20:03:28 ecuador kernel: [28358.201372] mtier: stay_entries: 4373
+Jun 30 20:03:28 ecuador kernel: [28358.207873] mtier evict_unused_tier_structs: 20714 pages in 6497620 nanoseconds
+Jun 30 20:03:28 ecuador kernel: [28358.264246] mtier duplicate heavy-copied 20715 pages in 56347509 nanoseconds
+Jun 30 20:03:29 ecuador kernel: [28358.764771] mod_iter: 14
+Jun 30 20:03:29 ecuador kernel: [28358.776476] mtier check_used_pages completed in 5509877 nanoseconds.
+Jun 30 20:03:29 ecuador kernel: [28358.776480] mtier: stay_entries: 4371
+Jun 30 20:03:29 ecuador kernel: [28358.782960] mtier evict_unused_tier_structs: 20717 pages in 6476635 nanoseconds
+Jun 30 20:03:29 ecuador kernel: [28358.838888] mtier duplicate heavy-copied 20717 pages in 55902029 nanoseconds
+Jun 30 20:03:29 ecuador kernel: [28359.339819] mod_iter: 15
+Jun 30 20:03:29 ecuador kernel: [28359.350870] mtier check_used_pages completed in 5193443 nanoseconds.
+Jun 30 20:03:29 ecuador kernel: [28359.350873] mtier: stay_entries: 4613
+Jun 30 20:03:29 ecuador kernel: [28359.357513] mtier evict_unused_tier_structs: 20475 pages in 6636033 nanoseconds
+Jun 30 20:03:29 ecuador kernel: [28359.413096] mtier duplicate heavy-copied 20475 pages in 55559072 nanoseconds
+Jun 30 20:03:30 ecuador kernel: [28359.913854] mod_iter: 16
+Jun 30 20:03:30 ecuador kernel: [28359.925251] mtier check_used_pages completed in 5604817 nanoseconds.
+Jun 30 20:03:30 ecuador kernel: [28359.925255] mtier: stay_entries: 3072
+Jun 30 20:03:30 ecuador kernel: [28359.932282] mtier evict_unused_tier_structs: 22016 pages in 7023673 nanoseconds
+Jun 30 20:03:30 ecuador kernel: [28359.992645] mtier duplicate heavy-copied 22016 pages in 60336840 nanoseconds
+Jun 30 20:03:30 ecuador kernel: [28360.492861] mod_iter: 17
+Jun 30 20:03:30 ecuador kernel: [28360.505411] mtier check_used_pages completed in 6271662 nanoseconds.
+Jun 30 20:03:30 ecuador kernel: [28360.505415] mtier: stay_entries: 3160
+Jun 30 20:03:30 ecuador kernel: [28360.512605] mtier evict_unused_tier_structs: 21928 pages in 7185213 nanoseconds
+Jun 30 20:03:30 ecuador kernel: [28360.572993] mtier duplicate heavy-copied 21928 pages in 60363301 nanoseconds
+Jun 30 20:03:31 ecuador kernel: [28361.073929] mod_iter: 18
+Jun 30 20:03:31 ecuador kernel: [28361.085606] mtier check_used_pages completed in 5499339 nanoseconds.
+Jun 30 20:03:31 ecuador kernel: [28361.085610] mtier: stay_entries: 4733
+Jun 30 20:03:31 ecuador kernel: [28361.091689] mtier evict_unused_tier_structs: 20355 pages in 6074801 nanoseconds
+Jun 30 20:03:31 ecuador kernel: [28361.146234] mtier duplicate heavy-copied 20355 pages in 54521913 nanoseconds
+Jun 30 20:03:32 ecuador kernel: [28361.646945] mod_iter: 19
+Jun 30 20:03:32 ecuador kernel: [28361.659984] mtier check_used_pages completed in 6452658 nanoseconds.
+Jun 30 20:03:32 ecuador kernel: [28361.659988] mtier: stay_entries: 3070
+Jun 30 20:03:32 ecuador kernel: [28361.667886] mtier evict_unused_tier_structs: 22017 pages in 7894273 nanoseconds
+Jun 30 20:03:32 ecuador kernel: [28361.726031] mtier duplicate heavy-copied 22018 pages in 58107434 nanoseconds
+Jun 30 20:03:32 ecuador kernel: [28362.226990] mod_iter: 20
+Jun 30 20:03:32 ecuador kernel: [28362.238918] mtier evict_all_tier_structs: 25088 pages in 11920720 nanoseconds
+Jun 30 20:03:32 ecuador kernel: [28362.280576] mtier: entering mtier_get_ro_pagelist
+Jun 30 20:03:32 ecuador kernel: [28362.280584] mtier: queue found valid VMA (brk): 0x7f49ea607000 - 0x7f4a0143d000
+Jun 30 20:03:32 ecuador kernel: [28362.289256] mtier: queue found valid VMA (brk): 0x7f4a0143f000 - 0x7f4a18275000
+Jun 30 20:03:32 ecuador kernel: [28362.299022] mtier mod_mtier_generate_pagelist: rebuilt pagelist f size 187480 in 18769188 nanoseconds.
+Jun 30 20:03:33 ecuador kernel: [28362.800315] mod_iter: 1
+Jun 30 20:03:33 ecuador kernel: [28362.808286] mtier check_used_pages completed in 2399624 nanoseconds.
+Jun 30 20:03:33 ecuador kernel: [28362.808290] mtier: stay_entries: 0
+Jun 30 20:03:33 ecuador kernel: [28362.808293] mtier evict_unused_tier_structs: 0 pages in 411 nanoseconds
+Jun 30 20:03:33 ecuador kernel: [28362.877825] mtier duplicate heavy-copied 25088 pages in 69504627 nanoseconds
+Jun 30 20:03:33 ecuador kernel: [28363.378041] mod_iter: 2
+Jun 30 20:03:33 ecuador kernel: [28363.391781] mtier check_used_pages completed in 6540103 nanoseconds.
+Jun 30 20:03:33 ecuador kernel: [28363.391785] mtier: stay_entries: 4536
+Jun 30 20:03:33 ecuador kernel: [28363.399127] mtier evict_unused_tier_structs: 20552 pages in 7338299 nanoseconds
+Jun 30 20:03:33 ecuador kernel: [28363.456612] mtier duplicate heavy-copied 20552 pages in 57460573 nanoseconds
+Jun 30 20:03:34 ecuador kernel: [28363.957382] mod_iter: 3
+Jun 30 20:03:34 ecuador kernel: [28363.970925] mtier check_used_pages completed in 6912488 nanoseconds.
+Jun 30 20:03:34 ecuador kernel: [28363.970929] mtier: stay_entries: 4436
+Jun 30 20:03:34 ecuador kernel: [28363.978362] mtier evict_unused_tier_structs: 20652 pages in 7428394 nanoseconds
+Jun 30 20:03:34 ecuador kernel: [28364.034561] mtier duplicate heavy-copied 20652 pages in 56172288 nanoseconds
+Jun 30 20:03:34 ecuador kernel: [28364.535134] mod_iter: 4
+Jun 30 20:03:34 ecuador kernel: [28364.548570] mtier check_used_pages completed in 6840574 nanoseconds.
+Jun 30 20:03:34 ecuador kernel: [28364.548575] mtier: stay_entries: 4742
+Jun 30 20:03:34 ecuador kernel: [28364.555548] mtier evict_unused_tier_structs: 20346 pages in 6968447 nanoseconds
+Jun 30 20:03:35 ecuador kernel: [28364.613141] mtier duplicate heavy-copied 20346 pages in 57565113 nanoseconds
+Jun 30 20:03:35 ecuador kernel: [28365.114141] mod_iter: 5
+Jun 30 20:03:35 ecuador kernel: [28365.125835] mtier check_used_pages completed in 5922339 nanoseconds.
+Jun 30 20:03:35 ecuador kernel: [28365.125838] mtier: stay_entries: 4499
+Jun 30 20:03:35 ecuador kernel: [28365.132825] mtier evict_unused_tier_structs: 20589 pages in 6982643 nanoseconds
+Jun 30 20:03:35 ecuador kernel: [28365.189995] mtier duplicate heavy-copied 20589 pages in 57145396 nanoseconds
+Jun 30 20:03:36 ecuador kernel: [28365.690199] mod_iter: 6
+Jun 30 20:03:36 ecuador kernel: [28365.702487] mtier check_used_pages completed in 6116805 nanoseconds.
+Jun 30 20:03:36 ecuador kernel: [28365.702491] mtier: stay_entries: 4310
+Jun 30 20:03:36 ecuador kernel: [28365.709231] mtier evict_unused_tier_structs: 20778 pages in 6735709 nanoseconds
+Jun 30 20:03:36 ecuador kernel: [28365.765693] mtier duplicate heavy-copied 20778 pages in 56436490 nanoseconds
+Jun 30 20:03:36 ecuador kernel: [28366.266231] mod_iter: 7
+Jun 30 20:03:36 ecuador kernel: [28366.278458] mtier check_used_pages completed in 6095091 nanoseconds.
+Jun 30 20:03:36 ecuador kernel: [28366.278462] mtier: stay_entries: 4426
+Jun 30 20:03:36 ecuador kernel: [28366.285207] mtier evict_unused_tier_structs: 20662 pages in 6740641 nanoseconds
+Jun 30 20:03:36 ecuador kernel: [28366.343689] mtier duplicate heavy-copied 20662 pages in 58456801 nanoseconds
+Jun 30 20:03:37 ecuador kernel: [28366.844553] mod_iter: 8
+Jun 30 20:03:37 ecuador kernel: [28366.856303] mtier check_used_pages completed in 5540971 nanoseconds.
+Jun 30 20:03:37 ecuador kernel: [28366.856307] mtier: stay_entries: 4345
+Jun 30 20:03:37 ecuador kernel: [28366.862848] mtier evict_unused_tier_structs: 20743 pages in 6537116 nanoseconds
+Jun 30 20:03:37 ecuador kernel: [28366.921147] mtier duplicate heavy-copied 20743 pages in 58272649 nanoseconds
+Jun 30 20:03:37 ecuador kernel: [28367.422581] mod_iter: 9
+Jun 30 20:03:37 ecuador kernel: [28367.434681] mtier check_used_pages completed in 6018421 nanoseconds.
+Jun 30 20:03:37 ecuador kernel: [28367.434684] mtier: stay_entries: 3068
+Jun 30 20:03:37 ecuador kernel: [28367.441153] mtier evict_unused_tier_structs: 22020 pages in 6464676 nanoseconds
+Jun 30 20:03:37 ecuador kernel: [28367.503231] mtier duplicate heavy-copied 22020 pages in 62054260 nanoseconds
+Jun 30 20:03:38 ecuador kernel: [28368.004333] mod_iter: 10
+Jun 30 20:03:38 ecuador kernel: [28368.016339] mtier check_used_pages completed in 5731969 nanoseconds.
+Jun 30 20:03:38 ecuador kernel: [28368.016343] mtier: stay_entries: 3005
+Jun 30 20:03:38 ecuador kernel: [28368.023197] mtier evict_unused_tier_structs: 22083 pages in 6849945 nanoseconds
+Jun 30 20:03:38 ecuador kernel: [28368.083884] mtier duplicate heavy-copied 22083 pages in 60620325 nanoseconds
+Jun 30 20:03:38 ecuador kernel: [28368.584335] mod_iter: 11
+Jun 30 20:03:39 ecuador kernel: [28368.596336] mtier check_used_pages completed in 5738980 nanoseconds.
+Jun 30 20:03:39 ecuador kernel: [28368.596339] mtier: stay_entries: 3513
+Jun 30 20:03:39 ecuador kernel: [28368.603012] mtier evict_unused_tier_structs: 21574 pages in 6668500 nanoseconds
+Jun 30 20:03:39 ecuador kernel: [28368.659106] mtier duplicate heavy-copied 21575 pages in 56068481 nanoseconds
+Jun 30 20:03:39 ecuador kernel: [28369.159404] mod_iter: 12
+Jun 30 20:03:39 ecuador kernel: [28369.172206] mtier check_used_pages completed in 6525854 nanoseconds.
+Jun 30 20:03:39 ecuador kernel: [28369.172210] mtier: stay_entries: 3609
+Jun 30 20:03:39 ecuador kernel: [28369.177636] mtier evict_unused_tier_structs: 21479 pages in 5421476 nanoseconds
+Jun 30 20:03:39 ecuador kernel: [28369.236345] mtier duplicate heavy-copied 21479 pages in 58684409 nanoseconds
+Jun 30 20:03:40 ecuador kernel: [28369.737440] mod_iter: 13
+Jun 30 20:03:40 ecuador kernel: [28369.749766] mtier check_used_pages completed in 5837881 nanoseconds.
+Jun 30 20:03:40 ecuador kernel: [28369.749771] mtier: stay_entries: 4422
+Jun 30 20:03:40 ecuador kernel: [28369.756859] mtier evict_unused_tier_structs: 20665 pages in 7084004 nanoseconds
+Jun 30 20:03:40 ecuador kernel: [28369.814423] mtier duplicate heavy-copied 20666 pages in 57539039 nanoseconds
+Jun 30 20:03:40 ecuador kernel: [28370.315482] mod_iter: 14
+Jun 30 20:03:40 ecuador kernel: [28370.328013] mtier check_used_pages completed in 5681199 nanoseconds.
+Jun 30 20:03:40 ecuador kernel: [28370.328017] mtier: stay_entries: 2902
+Jun 30 20:03:40 ecuador kernel: [28370.334933] mtier evict_unused_tier_structs: 22186 pages in 6911284 nanoseconds
+Jun 30 20:03:40 ecuador kernel: [28370.394005] mtier duplicate heavy-copied 22186 pages in 59046197 nanoseconds
+Jun 30 20:03:41 ecuador kernel: [28370.894505] mod_iter: 15
+Jun 30 20:03:41 ecuador kernel: [28370.906850] mtier check_used_pages completed in 5829045 nanoseconds.
+Jun 30 20:03:41 ecuador kernel: [28370.906854] mtier: stay_entries: 5320
+Jun 30 20:03:41 ecuador kernel: [28370.913103] mtier evict_unused_tier_structs: 19768 pages in 6245045 nanoseconds
+Jun 30 20:03:41 ecuador kernel: [28370.966104] mtier duplicate heavy-copied 19768 pages in 52975877 nanoseconds
+Jun 30 20:03:41 ecuador kernel: [28371.466546] mod_iter: 16
+Jun 30 20:03:41 ecuador kernel: [28371.479537] mtier check_used_pages completed in 6397871 nanoseconds.
+Jun 30 20:03:41 ecuador kernel: [28371.479541] mtier: stay_entries: 3054
+Jun 30 20:03:41 ecuador kernel: [28371.487151] mtier evict_unused_tier_structs: 22033 pages in 7605006 nanoseconds
+Jun 30 20:03:41 ecuador kernel: [28371.546298] mtier duplicate heavy-copied 22034 pages in 59122585 nanoseconds
+Jun 30 20:03:42 ecuador kernel: [28372.046583] mod_iter: 17
+Jun 30 20:03:42 ecuador kernel: [28372.059452] mtier check_used_pages completed in 6290783 nanoseconds.
+Jun 30 20:03:42 ecuador kernel: [28372.059457] mtier: stay_entries: 4290
+Jun 30 20:03:42 ecuador kernel: [28372.066364] mtier evict_unused_tier_structs: 20798 pages in 6902817 nanoseconds
+Jun 30 20:03:42 ecuador kernel: [28372.122433] mtier duplicate heavy-copied 20798 pages in 56043531 nanoseconds
+Jun 30 20:03:43 ecuador kernel: [28372.622901] mod_iter: 18
+Jun 30 20:03:43 ecuador kernel: [28372.635878] mtier check_used_pages completed in 6389935 nanoseconds.
+Jun 30 20:03:43 ecuador kernel: [28372.635883] mtier: stay_entries: 3081
+Jun 30 20:03:43 ecuador kernel: [28372.643344] mtier evict_unused_tier_structs: 22007 pages in 7456879 nanoseconds
+Jun 30 20:03:43 ecuador kernel: [28372.702360] mtier duplicate heavy-copied 22007 pages in 58988728 nanoseconds
+Jun 30 20:03:43 ecuador kernel: [28373.202933] mod_iter: 19
+Jun 30 20:03:43 ecuador kernel: [28373.215982] mtier check_used_pages completed in 6486774 nanoseconds.
+Jun 30 20:03:43 ecuador kernel: [28373.215986] mtier: stay_entries: 5323
+Jun 30 20:03:43 ecuador kernel: [28373.222844] mtier evict_unused_tier_structs: 19764 pages in 6853537 nanoseconds
+Jun 30 20:03:43 ecuador kernel: [28373.275927] mtier duplicate heavy-copied 19765 pages in 53057380 nanoseconds
+Jun 30 20:03:44 ecuador kernel: [28373.776694] mod_iter: 20
+Jun 30 20:03:44 ecuador kernel: [28373.788626] mtier evict_all_tier_structs: 25088 pages in 11925142 nanoseconds
+Jun 30 20:03:44 ecuador kernel: [28373.832456] mtier: entering mtier_get_ro_pagelist
+Jun 30 20:03:44 ecuador kernel: [28373.832465] mtier: queue found valid VMA (brk): 0x7f49ea607000 - 0x7f4a0143d000
+Jun 30 20:03:44 ecuador kernel: [28373.842745] mtier: queue found valid VMA (brk): 0x7f4a0143f000 - 0x7f4a18275000
+Jun 30 20:03:44 ecuador kernel: [28373.851921] mtier mod_mtier_generate_pagelist: rebuilt pagelist f size 187485 in 19786132 nanoseconds.
+Jun 30 20:03:44 ecuador kernel: [28374.353030] mod_iter: 1
+Jun 30 20:03:44 ecuador kernel: [28374.361400] mtier check_used_pages completed in 2687215 nanoseconds.
+Jun 30 20:03:44 ecuador kernel: [28374.361404] mtier: stay_entries: 0
+Jun 30 20:03:44 ecuador kernel: [28374.361406] mtier evict_unused_tier_structs: 0 pages in 368 nanoseconds
+Jun 30 20:03:44 ecuador kernel: [28374.430909] mtier duplicate heavy-copied 25088 pages in 69472744 nanoseconds
+Jun 30 20:03:45 ecuador kernel: [28374.931742] mod_iter: 2
+Jun 30 20:03:45 ecuador kernel: [28374.944938] mtier check_used_pages completed in 6707763 nanoseconds.
+Jun 30 20:03:45 ecuador kernel: [28374.944942] mtier: stay_entries: 2966
+Jun 30 20:03:45 ecuador kernel: [28374.953068] mtier evict_unused_tier_structs: 22122 pages in 8121868 nanoseconds
+Jun 30 20:03:45 ecuador kernel: [28375.014228] mtier duplicate heavy-copied 22122 pages in 61133711 nanoseconds
+Jun 30 20:03:45 ecuador kernel: [28375.514784] mod_iter: 3
+Jun 30 20:03:45 ecuador kernel: [28375.527750] mtier check_used_pages completed in 6384608 nanoseconds.
+Jun 30 20:03:45 ecuador kernel: [28375.527754] mtier: stay_entries: 3432
+Jun 30 20:03:45 ecuador kernel: [28375.535154] mtier evict_unused_tier_structs: 21654 pages in 7395693 nanoseconds
+Jun 30 20:03:46 ecuador kernel: [28375.594776] mtier duplicate heavy-copied 21656 pages in 59595524 nanoseconds
+Jun 30 20:03:46 ecuador kernel: [28376.095832] mod_iter: 4
+Jun 30 20:03:46 ecuador kernel: [28376.108844] mtier check_used_pages completed in 6420504 nanoseconds.
+Jun 30 20:03:46 ecuador kernel: [28376.108847] mtier: stay_entries: 3409
+Jun 30 20:03:46 ecuador kernel: [28376.116138] mtier evict_unused_tier_structs: 21678 pages in 7286396 nanoseconds
+Jun 30 20:03:46 ecuador kernel: [28376.175576] mtier duplicate heavy-copied 21679 pages in 59410989 nanoseconds
+Jun 30 20:03:47 ecuador kernel: [28376.675853] mod_iter: 5
+Jun 30 20:03:47 ecuador kernel: [28376.688663] mtier check_used_pages completed in 6284912 nanoseconds.
+Jun 30 20:03:47 ecuador kernel: [28376.688667] mtier: stay_entries: 4562
+Jun 30 20:03:47 ecuador kernel: [28376.695698] mtier evict_unused_tier_structs: 20526 pages in 7026332 nanoseconds
+Jun 30 20:03:47 ecuador kernel: [28376.752634] mtier duplicate heavy-copied 20526 pages in 56909287 nanoseconds
+Jun 30 20:03:47 ecuador kernel: [28377.252895] mod_iter: 6
+Jun 30 20:03:47 ecuador kernel: [28377.266323] mtier check_used_pages completed in 7115369 nanoseconds.
+Jun 30 20:03:47 ecuador kernel: [28377.266327] mtier: stay_entries: 4399
+Jun 30 20:03:47 ecuador kernel: [28377.273686] mtier evict_unused_tier_structs: 20689 pages in 7355193 nanoseconds
+Jun 30 20:03:47 ecuador kernel: [28377.329813] mtier duplicate heavy-copied 20689 pages in 56100329 nanoseconds
+Jun 30 20:03:48 ecuador kernel: [28377.830940] mod_iter: 7
+Jun 30 20:03:48 ecuador kernel: [28377.842993] mtier check_used_pages completed in 5996365 nanoseconds.
+Jun 30 20:03:48 ecuador kernel: [28377.842997] mtier: stay_entries: 4509
+Jun 30 20:03:48 ecuador kernel: [28377.849925] mtier evict_unused_tier_structs: 20579 pages in 6924291 nanoseconds
+Jun 30 20:03:48 ecuador kernel: [28377.907328] mtier duplicate heavy-copied 20579 pages in 57378247 nanoseconds
+Jun 30 20:03:48 ecuador kernel: [28378.407966] mod_iter: 8
+Jun 30 20:03:48 ecuador kernel: [28378.420208] mtier check_used_pages completed in 5680223 nanoseconds.
+Jun 30 20:03:48 ecuador kernel: [28378.420212] mtier: stay_entries: 4419
+Jun 30 20:03:48 ecuador kernel: [28378.427964] mtier evict_unused_tier_structs: 20669 pages in 7748111 nanoseconds
+Jun 30 20:03:48 ecuador kernel: [28378.485568] mtier duplicate heavy-copied 20669 pages in 57578646 nanoseconds
+Jun 30 20:03:49 ecuador kernel: [28378.985999] mod_iter: 9
+Jun 30 20:03:49 ecuador kernel: [28378.997927] mtier check_used_pages completed in 5688711 nanoseconds.
+Jun 30 20:03:49 ecuador kernel: [28378.997931] mtier: stay_entries: 2919
+Jun 30 20:03:49 ecuador kernel: [28379.004824] mtier evict_unused_tier_structs: 22168 pages in 6889413 nanoseconds
+Jun 30 20:03:49 ecuador kernel: [28379.065925] mtier duplicate heavy-copied 22169 pages in 61074248 nanoseconds
+Jun 30 20:03:49 ecuador kernel: [28379.567008] mod_iter: 10
+Jun 30 20:03:49 ecuador kernel: [28379.578695] mtier check_used_pages completed in 5479732 nanoseconds.
+Jun 30 20:03:49 ecuador kernel: [28379.578698] mtier: stay_entries: 5345
+Jun 30 20:03:49 ecuador kernel: [28379.585806] mtier evict_unused_tier_structs: 19743 pages in 7103268 nanoseconds
+Jun 30 20:03:50 ecuador kernel: [28379.640654] mtier duplicate heavy-copied 19743 pages in 54822362 nanoseconds
+Jun 30 20:03:50 ecuador kernel: [28380.141066] mod_iter: 11
+Jun 30 20:03:50 ecuador kernel: [28380.153148] mtier check_used_pages completed in 5960320 nanoseconds.
+Jun 30 20:03:50 ecuador kernel: [28380.153152] mtier: stay_entries: 2984
+Jun 30 20:03:50 ecuador kernel: [28380.160339] mtier evict_unused_tier_structs: 22103 pages in 7182406 nanoseconds
+Jun 30 20:03:50 ecuador kernel: [28380.221592] mtier duplicate heavy-copied 22104 pages in 61226943 nanoseconds
+Jun 30 20:03:51 ecuador kernel: [28380.722095] mod_iter: 12
+Jun 30 20:03:51 ecuador kernel: [28380.734308] mtier check_used_pages completed in 6078747 nanoseconds.
+Jun 30 20:03:51 ecuador kernel: [28380.734311] mtier: stay_entries: 3045
+Jun 30 20:03:51 ecuador kernel: [28380.741422] mtier evict_unused_tier_structs: 22043 pages in 7105985 nanoseconds
+Jun 30 20:03:51 ecuador kernel: [28380.803794] mtier duplicate heavy-copied 22043 pages in 62346544 nanoseconds
+Jun 30 20:03:51 ecuador kernel: [28381.304133] mod_iter: 13
+Jun 30 20:03:51 ecuador kernel: [28381.316488] mtier check_used_pages completed in 6202643 nanoseconds.
+Jun 30 20:03:51 ecuador kernel: [28381.316492] mtier: stay_entries: 3067
+Jun 30 20:03:51 ecuador kernel: [28381.323702] mtier evict_unused_tier_structs: 22020 pages in 7205961 nanoseconds
+Jun 30 20:03:51 ecuador kernel: [28381.383697] mtier duplicate heavy-copied 22021 pages in 59968199 nanoseconds
+Jun 30 20:03:52 ecuador kernel: [28381.884174] mod_iter: 14
+Jun 30 20:03:52 ecuador kernel: [28381.895869] mtier check_used_pages completed in 5515077 nanoseconds.
+Jun 30 20:03:52 ecuador kernel: [28381.895873] mtier: stay_entries: 4406
+Jun 30 20:03:52 ecuador kernel: [28381.902330] mtier evict_unused_tier_structs: 20682 pages in 6453383 nanoseconds
+Jun 30 20:03:52 ecuador kernel: [28381.960040] mtier duplicate heavy-copied 20682 pages in 57684068 nanoseconds
+Jun 30 20:03:52 ecuador kernel: [28382.460203] mod_iter: 15
+Jun 30 20:03:52 ecuador kernel: [28382.471269] mtier check_used_pages completed in 5254444 nanoseconds.
+Jun 30 20:03:52 ecuador kernel: [28382.471273] mtier: stay_entries: 4678
+Jun 30 20:03:52 ecuador kernel: [28382.477704] mtier evict_unused_tier_structs: 20410 pages in 6426886 nanoseconds
+Jun 30 20:03:52 ecuador kernel: [28382.533307] mtier duplicate heavy-copied 20410 pages in 55579904 nanoseconds
+Jun 30 20:03:53 ecuador kernel: [28383.034231] mod_iter: 16
+Jun 30 20:03:53 ecuador kernel: [28383.046067] mtier check_used_pages completed in 5647805 nanoseconds.
+Jun 30 20:03:53 ecuador kernel: [28383.046070] mtier: stay_entries: 2948
+Jun 30 20:03:53 ecuador kernel: [28383.053046] mtier evict_unused_tier_structs: 22140 pages in 6971653 nanoseconds
+Jun 30 20:03:53 ecuador kernel: [28383.113937] mtier duplicate heavy-copied 22140 pages in 60865089 nanoseconds
+Jun 30 20:03:54 ecuador kernel: [28383.614269] mod_iter: 17
+Jun 30 20:03:54 ecuador kernel: [28383.625936] mtier check_used_pages completed in 5483685 nanoseconds.
+Jun 30 20:03:54 ecuador kernel: [28383.625940] mtier: stay_entries: 5267
+Jun 30 20:03:54 ecuador kernel: [28383.632533] mtier evict_unused_tier_structs: 19821 pages in 6588498 nanoseconds
+Jun 30 20:03:54 ecuador kernel: [28383.688112] mtier duplicate heavy-copied 19821 pages in 55553499 nanoseconds
+Jun 30 20:03:54 ecuador kernel: [28384.188311] mod_iter: 18
+Jun 30 20:03:54 ecuador kernel: [28384.199896] mtier check_used_pages completed in 5424507 nanoseconds.
+Jun 30 20:03:54 ecuador kernel: [28384.199900] mtier: stay_entries: 5455
+Jun 30 20:03:54 ecuador kernel: [28384.206142] mtier evict_unused_tier_structs: 19633 pages in 6237730 nanoseconds
+Jun 30 20:03:54 ecuador kernel: [28384.259595] mtier duplicate heavy-copied 19633 pages in 53428403 nanoseconds
+Jun 30 20:03:55 ecuador kernel: [28384.760309] mod_iter: 19
+Jun 30 20:03:55 ecuador kernel: [28384.771278] mtier check_used_pages completed in 5264410 nanoseconds.
+Jun 30 20:03:55 ecuador kernel: [28384.771282] mtier: stay_entries: 5233
+Jun 30 20:03:55 ecuador kernel: [28384.777276] mtier evict_unused_tier_structs: 19854 pages in 5990887 nanoseconds
+Jun 30 20:03:55 ecuador kernel: [28384.831360] mtier duplicate heavy-copied 19855 pages in 54058272 nanoseconds
+Jun 30 20:03:55 ecuador kernel: [28385.332660] mod_iter: 20
+Jun 30 20:03:55 ecuador kernel: [28385.343645] mtier evict_all_tier_structs: 25088 pages in 10977569 nanoseconds
+Jun 30 20:03:55 ecuador kernel: [28385.385002] mtier: entering mtier_get_ro_pagelist
+Jun 30 20:03:55 ecuador kernel: [28385.385012] mtier: queue found valid VMA (brk): 0x7f49ea607000 - 0x7f4a0143d000
+Jun 30 20:03:55 ecuador kernel: [28385.395880] mtier: queue found valid VMA (brk): 0x7f4a0143f000 - 0x7f4a18275000
+Jun 30 20:03:55 ecuador kernel: [28385.405111] mtier mod_mtier_generate_pagelist: rebuilt pagelist f size 187483 in 20126239 nanoseconds.
+Jun 30 20:03:56 ecuador kernel: [28385.905395] mod_iter: 1
+Jun 30 20:03:56 ecuador kernel: [28385.913431] mtier check_used_pages completed in 2404616 nanoseconds.
+Jun 30 20:03:56 ecuador kernel: [28385.913435] mtier: stay_entries: 0
+Jun 30 20:03:56 ecuador kernel: [28385.913438] mtier evict_unused_tier_structs: 0 pages in 542 nanoseconds
+Jun 30 20:03:56 ecuador kernel: [28385.981213] mtier duplicate heavy-copied 25088 pages in 67748336 nanoseconds
+Jun 30 20:03:56 ecuador kernel: [28386.481467] mod_iter: 2
+Jun 30 20:03:56 ecuador kernel: [28386.494535] mtier check_used_pages completed in 6457947 nanoseconds.
+Jun 30 20:03:56 ecuador kernel: [28386.494538] mtier: stay_entries: 2924
+Jun 30 20:03:56 ecuador kernel: [28386.502637] mtier evict_unused_tier_structs: 22164 pages in 8094754 nanoseconds
+Jun 30 20:03:56 ecuador kernel: [28386.563675] mtier duplicate heavy-copied 22164 pages in 61012002 nanoseconds
+Jun 30 20:03:57 ecuador kernel: [28387.064475] mod_iter: 3
+Jun 30 20:03:57 ecuador kernel: [28387.077996] mtier check_used_pages completed in 6288728 nanoseconds.
+Jun 30 20:03:57 ecuador kernel: [28387.078000] mtier: stay_entries: 4445
+Jun 30 20:03:57 ecuador kernel: [28387.085423] mtier evict_unused_tier_structs: 20643 pages in 7418791 nanoseconds
+Jun 30 20:03:57 ecuador kernel: [28387.140396] mtier duplicate heavy-copied 20643 pages in 54947727 nanoseconds
+Jun 30 20:03:58 ecuador kernel: [28387.641515] mod_iter: 4
+Jun 30 20:03:58 ecuador kernel: [28387.655111] mtier check_used_pages completed in 6736819 nanoseconds.
+Jun 30 20:03:58 ecuador kernel: [28387.655115] mtier: stay_entries: 3024
+Jun 30 20:03:58 ecuador kernel: [28387.663250] mtier evict_unused_tier_structs: 22063 pages in 8129811 nanoseconds
+Jun 30 20:03:58 ecuador kernel: [28387.724038] mtier duplicate heavy-copied 22064 pages in 60761417 nanoseconds
+Jun 30 20:03:58 ecuador kernel: [28388.224552] mod_iter: 5
+Jun 30 20:03:58 ecuador kernel: [28388.237769] mtier check_used_pages completed in 6438867 nanoseconds.
+Jun 30 20:03:58 ecuador kernel: [28388.237773] mtier: stay_entries: 5278
+Jun 30 20:03:58 ecuador kernel: [28388.245179] mtier evict_unused_tier_structs: 19809 pages in 7401240 nanoseconds
+Jun 30 20:03:58 ecuador kernel: [28388.298841] mtier duplicate heavy-copied 19810 pages in 53636760 nanoseconds
+Jun 30 20:03:59 ecuador kernel: [28388.799597] mod_iter: 6
+Jun 30 20:03:59 ecuador kernel: [28388.812291] mtier check_used_pages completed in 6143608 nanoseconds.
+Jun 30 20:03:59 ecuador kernel: [28388.812294] mtier: stay_entries: 5292
+Jun 30 20:03:59 ecuador kernel: [28388.819676] mtier evict_unused_tier_structs: 19796 pages in 7377140 nanoseconds
+Jun 30 20:03:59 ecuador kernel: [28388.873083] mtier duplicate heavy-copied 19796 pages in 53381796 nanoseconds
+Jun 30 20:03:59 ecuador kernel: [28389.373599] mod_iter: 7
+Jun 30 20:03:59 ecuador kernel: [28389.387269] mtier check_used_pages completed in 6193122 nanoseconds.
+Jun 30 20:03:59 ecuador kernel: [28389.387273] mtier: stay_entries: 5185
+Jun 30 20:03:59 ecuador kernel: [28389.394704] mtier evict_unused_tier_structs: 19903 pages in 7426794 nanoseconds
+Jun 30 20:03:59 ecuador kernel: [28389.449910] mtier duplicate heavy-copied 19903 pages in 55180126 nanoseconds
+Jun 30 20:04:00 ecuador kernel: [28389.950955] mod_iter: 8
+Jun 30 20:04:00 ecuador kernel: [28389.963830] mtier check_used_pages completed in 6241774 nanoseconds.
+Jun 30 20:04:00 ecuador kernel: [28389.963834] mtier: stay_entries: 5417
+Jun 30 20:04:00 ecuador kernel: [28389.970640] mtier evict_unused_tier_structs: 19671 pages in 6800986 nanoseconds
+Jun 30 20:04:00 ecuador kernel: [28390.023931] mtier duplicate heavy-copied 19671 pages in 53265612 nanoseconds
+Jun 30 20:04:00 ecuador kernel: [28390.524687] mod_iter: 9
+Jun 30 20:04:00 ecuador kernel: [28390.537494] mtier check_used_pages completed in 6215622 nanoseconds.
+Jun 30 20:04:00 ecuador kernel: [28390.537497] mtier: stay_entries: 5416
+Jun 30 20:04:00 ecuador kernel: [28390.544318] mtier evict_unused_tier_structs: 19671 pages in 6816000 nanoseconds
+Jun 30 20:04:01 ecuador kernel: [28390.597861] mtier duplicate heavy-copied 19672 pages in 53517352 nanoseconds
+Jun 30 20:04:01 ecuador kernel: [28391.099010] mod_iter: 10
+Jun 30 20:04:01 ecuador kernel: [28391.112692] mtier check_used_pages completed in 6806483 nanoseconds.
+Jun 30 20:04:01 ecuador kernel: [28391.112696] mtier: stay_entries: 5288
+Jun 30 20:04:01 ecuador kernel: [28391.120069] mtier evict_unused_tier_structs: 19800 pages in 7367912 nanoseconds
+Jun 30 20:04:01 ecuador kernel: [28391.174512] mtier duplicate heavy-copied 19800 pages in 54417559 nanoseconds
+Jun 30 20:04:02 ecuador kernel: [28391.674760] mod_iter: 11
+Jun 30 20:04:02 ecuador kernel: [28391.687474] mtier check_used_pages completed in 6183950 nanoseconds.
+Jun 30 20:04:02 ecuador kernel: [28391.687477] mtier: stay_entries: 5321
+Jun 30 20:04:02 ecuador kernel: [28391.694532] mtier evict_unused_tier_structs: 19766 pages in 7050226 nanoseconds
+Jun 30 20:04:02 ecuador kernel: [28391.749125] mtier duplicate heavy-copied 19767 pages in 54566922 nanoseconds
+Jun 30 20:04:02 ecuador kernel: [28392.249800] mod_iter: 12
+Jun 30 20:04:02 ecuador kernel: [28392.262532] mtier check_used_pages completed in 6484177 nanoseconds.
+Jun 30 20:04:02 ecuador kernel: [28392.262536] mtier: stay_entries: 5095
+Jun 30 20:04:02 ecuador kernel: [28392.269333] mtier evict_unused_tier_structs: 19993 pages in 6791916 nanoseconds
+Jun 30 20:04:02 ecuador kernel: [28392.323805] mtier duplicate heavy-copied 19993 pages in 54446561 nanoseconds
+Jun 30 20:04:03 ecuador kernel: [28392.825115] mod_iter: 13
+Jun 30 20:04:03 ecuador kernel: [28392.837342] mtier check_used_pages completed in 6009614 nanoseconds.
+Jun 30 20:04:03 ecuador kernel: [28392.837346] mtier: stay_entries: 2988
+Jun 30 20:04:03 ecuador kernel: [28392.845154] mtier evict_unused_tier_structs: 22098 pages in 7803312 nanoseconds
+Jun 30 20:04:03 ecuador kernel: [28392.905591] mtier duplicate heavy-copied 22100 pages in 60409518 nanoseconds
+Jun 30 20:04:03 ecuador kernel: [28393.405867] mod_iter: 14
+Jun 30 20:04:03 ecuador kernel: [28393.418237] mtier check_used_pages completed in 6070661 nanoseconds.
+Jun 30 20:04:03 ecuador kernel: [28393.418241] mtier: stay_entries: 2998
+Jun 30 20:04:03 ecuador kernel: [28393.426170] mtier evict_unused_tier_structs: 22090 pages in 7924622 nanoseconds
+Jun 30 20:04:03 ecuador kernel: [28393.487660] mtier duplicate heavy-copied 22090 pages in 61463474 nanoseconds
+Jun 30 20:04:04 ecuador kernel: [28393.987902] mod_iter: 15
+Jun 30 20:04:04 ecuador kernel: [28393.999869] mtier check_used_pages completed in 5508595 nanoseconds.
+Jun 30 20:04:04 ecuador kernel: [28393.999872] mtier: stay_entries: 5388
+Jun 30 20:04:04 ecuador kernel: [28394.006447] mtier evict_unused_tier_structs: 19699 pages in 6570506 nanoseconds
+Jun 30 20:04:04 ecuador kernel: [28394.060577] mtier duplicate heavy-copied 19700 pages in 54103123 nanoseconds
+Jun 30 20:04:04 ecuador kernel: [28394.560917] mod_iter: 16
+Jun 30 20:04:04 ecuador kernel: [28394.572675] mtier check_used_pages completed in 5571576 nanoseconds.
+Jun 30 20:04:04 ecuador kernel: [28394.572679] mtier: stay_entries: 5266
+Jun 30 20:04:04 ecuador kernel: [28394.579558] mtier evict_unused_tier_structs: 19822 pages in 6875755 nanoseconds
+Jun 30 20:04:05 ecuador kernel: [28394.634864] mtier duplicate heavy-copied 19822 pages in 55279490 nanoseconds
+Jun 30 20:04:05 ecuador kernel: [28395.136255] mod_iter: 17
+Jun 30 20:04:05 ecuador kernel: [28395.148156] mtier check_used_pages completed in 5457021 nanoseconds.
+Jun 30 20:04:05 ecuador kernel: [28395.148161] mtier: stay_entries: 5335
+Jun 30 20:04:05 ecuador kernel: [28395.154432] mtier evict_unused_tier_structs: 19752 pages in 6267150 nanoseconds
+Jun 30 20:04:05 ecuador kernel: [28395.209293] mtier duplicate heavy-copied 19753 pages in 54835960 nanoseconds
+Jun 30 20:04:06 ecuador kernel: [28395.710000] mod_iter: 18
+Jun 30 20:04:06 ecuador kernel: [28395.721692] mtier check_used_pages completed in 5464841 nanoseconds.
+Jun 30 20:04:06 ecuador kernel: [28395.721696] mtier: stay_entries: 5230
+Jun 30 20:04:06 ecuador kernel: [28395.728868] mtier evict_unused_tier_structs: 19857 pages in 7167739 nanoseconds
+Jun 30 20:04:06 ecuador kernel: [28395.782583] mtier duplicate heavy-copied 19858 pages in 53682445 nanoseconds
+Jun 30 20:04:06 ecuador kernel: [28396.283038] mod_iter: 19
+Jun 30 20:04:06 ecuador kernel: [28396.295019] mtier check_used_pages completed in 5685225 nanoseconds.
+Jun 30 20:04:06 ecuador kernel: [28396.295022] mtier: stay_entries: 3220
+Jun 30 20:04:06 ecuador kernel: [28396.301854] mtier evict_unused_tier_structs: 21867 pages in 6826997 nanoseconds
+Jun 30 20:04:06 ecuador kernel: [28396.359726] mtier duplicate heavy-copied 21868 pages in 57847712 nanoseconds
+Jun 30 20:04:07 ecuador kernel: [28396.860363] mod_iter: 20
+Jun 30 20:04:07 ecuador kernel: [28396.870583] mtier evict_all_tier_structs: 25086 pages in 10213078 nanoseconds
+Jun 30 20:04:07 ecuador kernel: [28396.910827] mtier: entering mtier_get_ro_pagelist
+Jun 30 20:04:07 ecuador kernel: [28396.910837] mtier: queue found valid VMA (brk): 0x7f49ea607000 - 0x7f4a0143d000
+Jun 30 20:04:07 ecuador kernel: [28396.919342] mtier: queue found valid VMA (brk): 0x7f4a0143f000 - 0x7f4a18275000
+Jun 30 20:04:07 ecuador kernel: [28396.928622] mtier mod_mtier_generate_pagelist: rebuilt pagelist f size 187478 in 18110896 nanoseconds.
+Jun 30 20:04:07 ecuador kernel: [28397.429110] mod_iter: 1
+Jun 30 20:04:07 ecuador kernel: [28397.437474] mtier check_used_pages completed in 2715647 nanoseconds.
+Jun 30 20:04:07 ecuador kernel: [28397.437478] mtier: stay_entries: 0
+Jun 30 20:04:07 ecuador kernel: [28397.437481] mtier evict_unused_tier_structs: 0 pages in 511 nanoseconds
+Jun 30 20:04:07 ecuador kernel: [28397.505223] mtier duplicate heavy-copied 25088 pages in 67713945 nanoseconds
+Jun 30 20:04:08 ecuador kernel: [28398.006117] mod_iter: 2
+Jun 30 20:04:08 ecuador kernel: [28398.019260] mtier check_used_pages completed in 6518326 nanoseconds.
+Jun 30 20:04:08 ecuador kernel: [28398.019265] mtier: stay_entries: 5385
+Jun 30 20:04:08 ecuador kernel: [28398.026099] mtier evict_unused_tier_structs: 19703 pages in 6829838 nanoseconds
+Jun 30 20:04:08 ecuador kernel: [28398.078007] mtier duplicate heavy-copied 19703 pages in 51881494 nanoseconds
+Jun 30 20:04:08 ecuador kernel: [28398.578471] mod_iter: 3
+Jun 30 20:04:08 ecuador kernel: [28398.592395] mtier check_used_pages completed in 6499499 nanoseconds.
+Jun 30 20:04:08 ecuador kernel: [28398.592399] mtier: stay_entries: 5321
+Jun 30 20:04:09 ecuador kernel: [28398.599854] mtier evict_unused_tier_structs: 19767 pages in 7450563 nanoseconds
+Jun 30 20:04:09 ecuador kernel: [28398.653150] mtier duplicate heavy-copied 19767 pages in 53269633 nanoseconds
+Jun 30 20:04:09 ecuador kernel: [28399.154215] mod_iter: 4
+Jun 30 20:04:09 ecuador kernel: [28399.166928] mtier check_used_pages completed in 6187539 nanoseconds.
+Jun 30 20:04:09 ecuador kernel: [28399.166932] mtier: stay_entries: 5355
+Jun 30 20:04:09 ecuador kernel: [28399.173929] mtier evict_unused_tier_structs: 19733 pages in 6992829 nanoseconds
+Jun 30 20:04:09 ecuador kernel: [28399.227399] mtier duplicate heavy-copied 19733 pages in 53443919 nanoseconds
+Jun 30 20:04:10 ecuador kernel: [28399.728244] mod_iter: 5
+Jun 30 20:04:10 ecuador kernel: [28399.740947] mtier check_used_pages completed in 6161026 nanoseconds.
+Jun 30 20:04:10 ecuador kernel: [28399.740951] mtier: stay_entries: 5379
+Jun 30 20:04:10 ecuador kernel: [28399.747720] mtier evict_unused_tier_structs: 19708 pages in 6764307 nanoseconds
+Jun 30 20:04:10 ecuador kernel: [28399.800810] mtier duplicate heavy-copied 19709 pages in 53063590 nanoseconds
+Jun 30 20:04:10 ecuador kernel: [28400.301573] mod_iter: 6
+Jun 30 20:04:10 ecuador kernel: [28400.315134] mtier check_used_pages completed in 6711041 nanoseconds.
+Jun 30 20:04:10 ecuador kernel: [28400.315138] mtier: stay_entries: 3034
+Jun 30 20:04:10 ecuador kernel: [28400.323121] mtier evict_unused_tier_structs: 22054 pages in 7978263 nanoseconds
+Jun 30 20:04:10 ecuador kernel: [28400.383094] mtier duplicate heavy-copied 22054 pages in 59947316 nanoseconds
+Jun 30 20:04:11 ecuador kernel: [28400.883612] mod_iter: 7
+Jun 30 20:04:11 ecuador kernel: [28400.896816] mtier check_used_pages completed in 6482175 nanoseconds.
+Jun 30 20:04:11 ecuador kernel: [28400.896820] mtier: stay_entries: 2968
+Jun 30 20:04:11 ecuador kernel: [28400.904703] mtier evict_unused_tier_structs: 22120 pages in 7879452 nanoseconds
+Jun 30 20:04:11 ecuador kernel: [28400.964652] mtier duplicate heavy-copied 22120 pages in 59921766 nanoseconds
+Jun 30 20:04:11 ecuador kernel: [28401.465644] mod_iter: 8
+Jun 30 20:04:11 ecuador kernel: [28401.478499] mtier check_used_pages completed in 6187699 nanoseconds.
+Jun 30 20:04:11 ecuador kernel: [28401.478502] mtier: stay_entries: 5383
+Jun 30 20:04:11 ecuador kernel: [28401.485961] mtier evict_unused_tier_structs: 19705 pages in 7454533 nanoseconds
+Jun 30 20:04:11 ecuador kernel: [28401.540863] mtier duplicate heavy-copied 19705 pages in 54874178 nanoseconds
+Jun 30 20:04:12 ecuador kernel: [28402.041389] mod_iter: 9
+Jun 30 20:04:12 ecuador kernel: [28402.054368] mtier check_used_pages completed in 6442894 nanoseconds.
+Jun 30 20:04:12 ecuador kernel: [28402.054373] mtier: stay_entries: 3010
+Jun 30 20:04:12 ecuador kernel: [28402.061848] mtier evict_unused_tier_structs: 22078 pages in 7471472 nanoseconds
+Jun 30 20:04:12 ecuador kernel: [28402.121048] mtier duplicate heavy-copied 22078 pages in 59173310 nanoseconds
+Jun 30 20:04:13 ecuador kernel: [28402.621424] mod_iter: 10
+Jun 30 20:04:13 ecuador kernel: [28402.635154] mtier check_used_pages completed in 7232685 nanoseconds.
+Jun 30 20:04:13 ecuador kernel: [28402.635158] mtier: stay_entries: 3280
+Jun 30 20:04:13 ecuador kernel: [28402.642827] mtier evict_unused_tier_structs: 21808 pages in 7665126 nanoseconds
+Jun 30 20:04:13 ecuador kernel: [28402.702435] mtier duplicate heavy-copied 21808 pages in 59581648 nanoseconds
+Jun 30 20:04:13 ecuador kernel: [28403.203456] mod_iter: 11
+Jun 30 20:04:13 ecuador kernel: [28403.216692] mtier check_used_pages completed in 6693359 nanoseconds.
+Jun 30 20:04:13 ecuador kernel: [28403.216695] mtier: stay_entries: 3055
+Jun 30 20:04:13 ecuador kernel: [28403.224528] mtier evict_unused_tier_structs: 22033 pages in 7828772 nanoseconds
+Jun 30 20:04:13 ecuador kernel: [28403.284595] mtier duplicate heavy-copied 22033 pages in 60042647 nanoseconds
+Jun 30 20:04:14 ecuador kernel: [28403.785477] mod_iter: 12
+Jun 30 20:04:14 ecuador kernel: [28403.798400] mtier check_used_pages completed in 6322388 nanoseconds.
+Jun 30 20:04:14 ecuador kernel: [28403.798404] mtier: stay_entries: 3798
+Jun 30 20:04:14 ecuador kernel: [28403.805596] mtier evict_unused_tier_structs: 21290 pages in 7188227 nanoseconds
+Jun 30 20:04:14 ecuador kernel: [28403.863099] mtier duplicate heavy-copied 21290 pages in 57475801 nanoseconds
+Jun 30 20:04:14 ecuador kernel: [28404.363824] mod_iter: 13
+Jun 30 20:04:14 ecuador kernel: [28404.376830] mtier check_used_pages completed in 6382897 nanoseconds.
+Jun 30 20:04:14 ecuador kernel: [28404.376834] mtier: stay_entries: 3560
+Jun 30 20:04:14 ecuador kernel: [28404.384058] mtier evict_unused_tier_structs: 21528 pages in 7219923 nanoseconds
+Jun 30 20:04:14 ecuador kernel: [28404.444017] mtier duplicate heavy-copied 21528 pages in 59933953 nanoseconds
+Jun 30 20:04:15 ecuador kernel: [28404.944561] mod_iter: 14
+Jun 30 20:04:15 ecuador kernel: [28404.957456] mtier check_used_pages completed in 6439171 nanoseconds.
+Jun 30 20:04:15 ecuador kernel: [28404.957460] mtier: stay_entries: 2893
+Jun 30 20:04:15 ecuador kernel: [28404.964983] mtier evict_unused_tier_structs: 22195 pages in 7519021 nanoseconds
+Jun 30 20:04:15 ecuador kernel: [28405.026478] mtier duplicate heavy-copied 22195 pages in 61467463 nanoseconds
+Jun 30 20:04:15 ecuador kernel: [28405.527585] mod_iter: 15
+Jun 30 20:04:15 ecuador kernel: [28405.539289] mtier check_used_pages completed in 5405731 nanoseconds.
+Jun 30 20:04:15 ecuador kernel: [28405.539293] mtier: stay_entries: 3060
+Jun 30 20:04:15 ecuador kernel: [28405.546722] mtier evict_unused_tier_structs: 22028 pages in 7425266 nanoseconds
+Jun 30 20:04:16 ecuador kernel: [28405.604532] mtier duplicate heavy-copied 22028 pages in 57786356 nanoseconds
+Jun 30 20:04:16 ecuador kernel: [28406.105630] mod_iter: 16
+Jun 30 20:04:16 ecuador kernel: [28406.116854] mtier check_used_pages completed in 5255431 nanoseconds.
+Jun 30 20:04:16 ecuador kernel: [28406.116858] mtier: stay_entries: 4727
+Jun 30 20:04:16 ecuador kernel: [28406.122832] mtier evict_unused_tier_structs: 20361 pages in 5970756 nanoseconds
+Jun 30 20:04:16 ecuador kernel: [28406.176809] mtier duplicate heavy-copied 20361 pages in 53953714 nanoseconds
+Jun 30 20:04:17 ecuador kernel: [28406.677667] mod_iter: 17
+Jun 30 20:04:17 ecuador kernel: [28406.689057] mtier check_used_pages completed in 5415511 nanoseconds.
+Jun 30 20:04:17 ecuador kernel: [28406.689061] mtier: stay_entries: 2950
+Jun 30 20:04:17 ecuador kernel: [28406.696163] mtier evict_unused_tier_structs: 22138 pages in 7098012 nanoseconds
+Jun 30 20:04:17 ecuador kernel: [28406.754126] mtier duplicate heavy-copied 22138 pages in 57939049 nanoseconds
+Jun 30 20:04:17 ecuador kernel: [28407.086713] mtier: inside do_exit for tiering task 20287 (state 0).
+Jun 30 20:04:17 ecuador kernel: [28407.086717] mtier: do_exit acquired lock... waiting on module to clean up
+Jun 30 20:04:17 ecuador kernel: [28407.254692] mtier: module failed to acquire exit lock.
+Jun 30 20:04:17 ecuador kernel: [28407.267034] mtier: do_exit back at it... finalizing.
+Jun 30 20:04:17 ecuador kernel: [28407.282449] mtier: dequeue process
+Jun 30 20:04:17 ecuador kernel: [28407.282454] mtier: found and deleted requested process (pid 20287).
+Jun 30 20:04:24 ecuador kernel: [28413.780365] mtier: worker thread termination
+Jun 30 20:04:24 ecuador kernel: [28413.780399] mtier: entered module exit function.
+Jun 30 20:04:24 ecuador kernel: [28413.780404] mtier: worker thread has stopped.
+Jun 30 20:04:24 ecuador kernel: [28413.780406] mtier: putting back pagelist.
+Jun 30 20:04:24 ecuador kernel: [28413.873380] mtier: pagelist put back.
+Jun 30 20:04:24 ecuador kernel: [28413.873384] mtier: freeing fast tier simulant.
+Jun 30 20:04:24 ecuador kernel: [28413.880382] mtier: fast tier simulant freed.
+Jun 30 20:04:24 ecuador kernel: [28413.880385] mtier: about to free shuffled pages.
+Jun 30 20:04:24 ecuador kernel: [28413.880539] mtier: shuffled pages freed
+Jun 30 20:04:24 ecuador kernel: [28413.880543] mtier: module exit with count 0

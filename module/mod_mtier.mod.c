@@ -28,6 +28,7 @@ __attribute__((section("__versions"))) = {
 	{ 0xc0a3d105, __VMLINUX_SYMBOL_STR(find_next_bit) },
 	{ 0xb352177e, __VMLINUX_SYMBOL_STR(find_first_bit) },
 	{ 0xf99d347e, __VMLINUX_SYMBOL_STR(node_states) },
+	{ 0x26587e1e, __VMLINUX_SYMBOL_STR(mtier_flush_tlb_mm) },
 	{ 0x189868d7, __VMLINUX_SYMBOL_STR(get_random_bytes_arch) },
 	{ 0xd6ee688f, __VMLINUX_SYMBOL_STR(vmalloc) },
 	{ 0x999e8297, __VMLINUX_SYMBOL_STR(vfree) },
@@ -76,4 +77,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "AB6CAEC24277CBA46219297");
+MODULE_INFO(srcversion, "1CF6DB968FBA3F27040F261");

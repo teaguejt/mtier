@@ -7,6 +7,9 @@ import time
 import os
 from operator import add
 
+# Important vars
+num_iters = 10
+
 # Set up what we need for invoking numactl and mtier
 moddir          = '/home/jteague6/projects/mtier/module/'
 modheavydir     = '/home/jteague6/projects/mtier/module_heavy/'
@@ -17,6 +20,9 @@ progsdir        = '/home/jteague6/projects/mtier/mtier_utils/'
 numactl         = 'numactl'
 bwdir           = '/home/jteague6/IntelPerformanceCounterMonitorV2.7/'
 bw              = 'pcm-memory.x'
+debugfsdir      = '/sys/kernel/debug/tracing/'
+tracedir        = debugfsdir + 'trace'
+intdir          = '/proc/interrupts'
 localbind       = ['--membind=1', '--cpunodebind=1']
 remotebind      = ['--membind=0', '--cpunodebind=1']
 mtierbind       = remotebind
@@ -49,10 +55,13 @@ def run_stream(threads, cfg, is_baseline, mtier_params = None):
         res_dir = 'results_' + n + '/'
         l_moddir = v
         print(res_dir, l_moddir)
-        for i in range(0, 10):
-            expfname = res_dir + cfg + '-' + str(threads) + '-stdout-' + str(i) + '.txt'
-            bwfname  = res_dir + cfg + '-' + str(threads) + '-bw-' + str(i) + '.txt'
-            dmfname  = res_dir + cfg + '-' + str(threads) + '-dmesg' + str(i) + '.txt'
+        for i in range(0, num_iters):
+            expfname    = res_dir + cfg + '-' + str(threads) + '-stdout-' + str(i) + '.txt'
+            bwfname     = res_dir + cfg + '-' + str(threads) + '-bw-' + str(i) + '.txt'
+            dmfname     = res_dir + cfg + '-' + str(threads) + '-dmesg-' + str(i) + '.txt'
+            tracename   = res_dir + cfg + '-' + str(threads) + '-tlb_trace-' + str(i) + '.txt'
+            preintname  = res_dir + cfg + '-' + str(threads) + '-int_base-' + str(i) + '.txt'
+            postintname = res_dir + cfg + '-' + str(threads) + '-int_res-' + str(i) + '.txt'
             print(expfname)
             print(bwfname)
             print(dmfname)
@@ -68,11 +77,16 @@ def run_stream(threads, cfg, is_baseline, mtier_params = None):
                 invoke.append(progsdir + 'stream')
                 dmf = open(dmfname, 'w')
                 dm_invoke = ['tail', '-f', '/var/log/messages']
+                tracef = open(tracename, 'w')
+                trace_clear = 'echo "" > ' + tracedir
+                trace_invoke = ['cat', tracedir]
                 print(invoke)
             
         
-            expf = open(expfname, 'w')
-            bwf  = open(bwfname, 'w')
+            expf     = open(expfname, 'w')
+            bwf      = open(bwfname, 'w')
+            preintf  = open(preintname, 'w')
+            postintf = open(postintname, 'w')
 
             # Handle module setup and insertion if needed
             if is_baseline == False:
@@ -84,17 +98,27 @@ def run_stream(threads, cfg, is_baseline, mtier_params = None):
                 modmon = subprocess.Popen(module_invoke)
                 modmon.wait()
                 time.sleep(5)
+                tclearmon = subprocess.Popen(trace_clear, shell=True)
+                tclearmon.wait()
 
             bwmon = subprocess.Popen([bwdir + bw], stdout = bwf)
             time.sleep(1)
+            intmon = subprocess.Popen(['cat', intdir], stdout = preintf)
+            intmon.wait()
+            preintf.close()
             exp = subprocess.Popen(invoke, stdout = expf)
             exp.wait()
+            intmon = subprocess.Popen(['cat', intdir], stdout = postintf)
+            intmon.wait()
+            postintf.close()
             time.sleep(1)
             expf.close()
             bwf.close()
             bwmon.send_signal(signal.SIGTERM)
 
             if is_baseline == False:
+                tracemon = subprocess.Popen(trace_invoke, stdout = tracef)
+                tracef.close()
                 time.sleep(5)
                 module_invoke = ['rmmod', 'mod_mtier']
                 modmon = subprocess.Popen(module_invoke)
@@ -107,7 +131,7 @@ def run_stream(threads, cfg, is_baseline, mtier_params = None):
 
 def analyze_stream(cfg, path, is_baseline):
     #numthreads = [1]
-    numthreads = [1, 2, 4, 6, 8, 12]
+    numthreads = [1, 2, 4, 6]
     print(path + cfg + ':')
     print('Bandwidth Table:')
     print('Threads | Node 0 Read | Node 0 Write | Node 0 Total |' + \
@@ -125,7 +149,7 @@ def analyze_stream(cfg, path, is_baseline):
         total_reads = []
         total_writes = []
 
-        for i in range(0, 10):
+        for i in range(0, num_iters):
             bwfname = path + cfg + '-' + str(threads) + '-bw-' + str(i) + '.txt'
             bwf = open(bwfname, 'r')
             for line in bwf:
@@ -271,7 +295,7 @@ def analyze_stream(cfg, path, is_baseline):
         total_iters = 0
         total_time = 0.0
         
-        for i in range(0, 10):
+        for i in range(0, num_iters):
             stdoutfname = path + cfg + '-' + str(threads) + '-stdout-' + str(i) + '.txt'
             stdoutf = open(stdoutfname, 'r')
             for line in stdoutf:
@@ -320,7 +344,7 @@ def analyze_stream(cfg, path, is_baseline):
         num_light_copies = 0.0
 
         for i in range(0, 10):
-            dmfname = path + cfg + '-' + str(threads) + '-dmesg' + str(i) + '.txt'
+            dmfname = path + cfg + '-' + str(threads) + '-dmesg-' + str(i) + '.txt'
             dmf = open(dmfname, 'r')
             for line in dmf:
                 if 'mod_iter:' in line:
@@ -364,15 +388,23 @@ stream_cfgs_1000 = ['1000-50-1-20',
                     '1000-250-1-20',
                     '1000-500-1-20',
                     '1000-1000-1-20']
-stream_cfgs_92 = [  '92-50-1-20',
-                    '92-100-1-20',
-                    '92-250-1-20',
-                    '92-500-1-20',
-                    '92-1000-1-20']
-all_stream_cfgs = stream_cfgs_base + stream_cfgs_1000 + stream_cfgs_92
+stream_cfgs_98 = [  '98-50-1-20',
+                    #'98-100-1-20',
+                    #'98-250-1-20',
+                    '98-500-1-20',
+                    '98-1000-1-20']
+stream_cfgs_196 = [ '196-50-1-20',
+                    '196-100-1-20',
+                    '196-500-1-20',
+                    '196-1000-1-20']
+stream_cfgs_392 = [ '392-50-1-20',
+                    '392-100-1-20',
+                    '392-500-1-20',
+                    '392-1000-1-20']
+all_stream_cfgs = stream_cfgs_392
 
 def process_stream_runs(runs):
-    threads = [1, 2, 4, 6, 8, 12]
+    threads = [1, 2, 4, 6]
     cfgs = []
     if 'all' in runs:
         cfgs = all_stream_cfgs
