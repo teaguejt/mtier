@@ -24,7 +24,7 @@ INT_TYPE	NPB3.3.1/NPB3.3-OMP/IS/is.c	/^typedef  int  INT_TYPE;$/;"	t	file:
 INT_TYPE	NPB3.3.1/NPB3.3-OMP/IS/is.c	/^typedef  long INT_TYPE;$/;"	t	file:
 KS	NPB3.3.1/NPB3.3-OMP/IS/is.c	/^static int      KS=0;$/;"	v	file:
 M	stream.c	457;"	d	file:
-M	stream_madvise.c	586;"	d	file:
+M	stream_madvise.c	594;"	d	file:
 M	stream_writeback.c	381;"	d	file:
 MAX	stream.c	176;"	d	file:
 MAX	stream_madvise.c	181;"	d	file:
@@ -99,15 +99,15 @@ a	stream.c	/^STREAM_TYPE *a, *b, *c, *v1, *v2;$/;"	v
 a	stream_madvise.c	/^STREAM_TYPE *a, *b, *c;$/;"	v
 a	stream_writeback.c	/^static STREAM_TYPE  a[STREAM_ARRAY_SIZE+OFFSET],$/;"	v	file:
 abs	stream.c	507;"	d	file:
-abs	stream_madvise.c	636;"	d	file:
+abs	stream_madvise.c	644;"	d	file:
 abs	stream_writeback.c	431;"	d	file:
 add	exp.py	/^from operator import add$/;"	i
 addr	stream_madvise.c	/^    unsigned long addr;$/;"	m	struct:bind_struct	file:
-all_stream_cfgs	exp.py	/^all_stream_cfgs = stream_cfgs_392$/;"	v
+all_stream_cfgs	exp.py	/^all_stream_cfgs = ['madvise-98-50-1-20']$/;"	v
 alloc_key_buff	NPB3.3.1/NPB3.3-OMP/IS/is.c	/^void alloc_key_buff( void )$/;"	f
 alloc_mem	NPB3.3.1/NPB3.3-OMP/IS/is.c	/^void *alloc_mem( size_t size )$/;"	f
 analysis	exp.py	/^analysis = ['time', 'bandwidth']$/;"	v
-analyze_stream	exp.py	/^def analyze_stream(cfg, path, is_baseline):$/;"	f
+analyze_stream	exp.py	/^def analyze_stream(cfg, path, is_baseline, is_madvise):$/;"	f
 arr	tracee.c	/^static int *arr[ALLOC_MEMBERS];$/;"	v	file:
 avgtime	stream.c	/^static double	avgtime[4] = {0}, maxtime[4] = {0},$/;"	v	file:
 avgtime	stream_madvise.c	/^static double	avgtime[4] = {0}, maxtime[4] = {0},$/;"	v	file:
@@ -212,7 +212,7 @@ randlc	NPB3.3.1/NPB3.3-OMP/IS/is.c	/^double	randlc( double *X, double *A )$/;"	f
 rank	NPB3.3.1/NPB3.3-OMP/IS/is.c	/^void rank( int iteration )$/;"	f
 results_dict	exp.py	/^results_dict = {}$/;"	v
 run_mm	exp.py	/^def run_mm():$/;"	f
-run_stream	exp.py	/^def run_stream(threads, cfg, is_baseline, mtier_params = None):$/;"	f
+run_stream	exp.py	/^def run_stream(threads, cfg, is_baseline, is_madvise, mtier_params = None):$/;"	f
 schedule_event	process_trace.py	/^schedule_event            = 'mtier_sched_switch'$/;"	v
 schedule_events	process_trace.py	/^schedule_events   = []$/;"	v
 scheduler_stats	process_trace.py	/^def scheduler_stats(events, caption):$/;"	f
@@ -235,7 +235,7 @@ sys	process_trace.py	/^import sys$/;"	i
 test_index_array	NPB3.3.1/NPB3.3-OMP/IS/is.c	/^INT_TYPE test_index_array[TEST_ARRAY_SIZE],$/;"	v
 test_rank_array	NPB3.3.1/NPB3.3-OMP/IS/is.c	/^         test_rank_array[TEST_ARRAY_SIZE],$/;"	v
 thr_func	stream_madvise.c	/^void *thr_func(void *args) {$/;"	f
-thr_params	stream_madvise.c	/^struct thr_params thr_params = {.size_mb = 92, .delay = 100, .bk_iters = 20};$/;"	v	typeref:struct:thr_params
+thr_params	stream_madvise.c	/^struct thr_params thr_params = {.size_mb = 784, .delay = 50, .bk_iters = 20};$/;"	v	typeref:struct:thr_params
 thr_params	stream_madvise.c	/^struct thr_params {$/;"	s	file:
 thread	stream_madvise.c	/^pthread_t thread;$/;"	v
 thread_has_stopped	stream_madvise.c	/^int thread_has_stopped = 0;$/;"	v

@@ -1,4 +1,4 @@
-malloc: done. a=0x7f90e5dc6000 b=0x7f90cef8e000 c=0x7f90b8156000
+malloc: done. a=0x7f74bc902000 b=0x7f74a5aca000 c=0x7f748ec92000
 -------------------------------------------------------------
 STREAM version $Revision: 5.10 $
 -------------------------------------------------------------
@@ -15,8 +15,8 @@ Number of Threads requested = 2
 Number of Threads counted = 2
 -------------------------------------------------------------
 Your clock granularity/precision appears to be 1 microseconds.
-Each test below will take on the order of 119141 microseconds.
-   (= 119141 clock ticks)
+Each test below will take on the order of 107792 microseconds.
+   (= 107792 clock ticks)
 Increase the size of the arrays if this shows that
 you are not getting at least 20 clock ticks per test.
 -------------------------------------------------------------
@@ -24,12 +24,12 @@ WARNING -- The above is only a rough guideline.
 For best results, please be sure you know the
 precision of your system timer.
 -------------------------------------------------------------
-stream: completed 25 intervals in 100708313932 microseconds
+stream: completed 26 intervals in 102843304694 microseconds
 Function    Best Rate MB/s  Avg time     Min time     Max time
-Copy:            8213.6     0.103668     0.093503     0.128736
-Scale:           8176.0     0.104833     0.093933     0.134689
-Add:            11870.0     0.108575     0.097051     0.140454
-Triad:          11529.3     0.111267     0.099919     0.142488
+Copy:            8311.3     0.093009     0.092405     0.094968
+Scale:           8279.6     0.094337     0.092758     0.097984
+Add:            12016.2     0.097072     0.095871     0.099041
+Triad:          11601.4     0.100056     0.099298     0.101261
 -------------------------------------------------------------
 Failed Validation on array a[], AvgRelAbsErr > epsilon (1.000000e-13)
      Expected Value: 1.153301e+12, AvgAbsErr: 1.153301e+12, AvgRelAbsErr: 1.000000e+00
@@ -42,6 +42,7 @@ Failed Validation on array c[], AvgRelAbsErr > epsilon (1.000000e-13)
      Expected Value: 3.075469e+11, AvgAbsErr: 3.075469e+11, AvgRelAbsErr: 1.000000e+00
      AvgRelAbsErr > Epsilon (1.000000e-13)
      For array c[], 48000000 errors were found.
+Number of errors = 0
 -------------------------------------------------------------
 mtier settings:
 slow node: 0
@@ -51,4 +52,4 @@ seconds: 0
 milliseconds: 500
 pages per run:100
 Forking...
-child pid is 50127
+child pid is 601

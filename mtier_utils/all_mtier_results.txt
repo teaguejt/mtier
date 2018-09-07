@@ -1,0 +1,2142 @@
+results_base/baseline-local:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |      27.644 |       20.695 |       48.339 |    3060.196 |       33.836 |     3094.032 |   3087.840 |      54.530 |    3142.370 |     1.54 |    98.46 | 
+      2 |      32.610 |       21.342 |       53.952 |    5989.972 |       46.191 |     6036.163 |   6022.581 |      67.534 |    6090.115 |     0.89 |    99.11 | 
+      4 |      38.500 |       21.168 |       59.669 |   11432.811 |       52.732 |    11485.543 |  11471.311 |      73.900 |   11545.212 |     0.52 |    99.48 | 
+      6 |      46.030 |       21.854 |       67.883 |   16942.897 |       59.869 |    17002.767 |  16988.927 |      81.723 |   17070.650 |     0.40 |    99.60 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        140 |   1025.962 |       7.328 |
+      2 |        270 |   1008.864 |       3.737 |
+      4 |        511 |   1001.002 |       1.959 |
+      6 |        757 |   1001.823 |       1.323 |
+
+
+No dmesg information for baseline and madvise runs.
+
+
+##################################################
+results_base/baseline-remote:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2894.355 |       48.114 |     2942.469 |       8.510 |        7.313 |       15.823 |   2902.865 |      55.427 |    2958.292 |    99.47 |     0.53 | 
+      2 |    5641.874 |       59.436 |     5701.310 |      10.508 |        8.284 |       18.792 |   5652.382 |      67.720 |    5720.102 |    99.67 |     0.33 | 
+      4 |   10738.470 |       64.125 |    10802.595 |      17.950 |        9.772 |       27.722 |  10756.420 |      73.897 |   10830.317 |    99.74 |     0.26 | 
+      6 |   14969.745 |       66.787 |    15036.532 |      34.778 |       14.071 |       48.849 |  15004.523 |      80.858 |   15085.381 |    99.68 |     0.32 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        130 |   1017.632 |       7.828 |
+      2 |        250 |    999.948 |       4.000 |
+      4 |        480 |   1006.628 |       2.097 |
+      6 |        668 |   1003.574 |       1.502 |
+
+
+No dmesg information for baseline and madvise runs.
+
+
+##################################################
+results_base/98-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    3130.574 |      172.600 |     3303.174 |     941.352 |      697.940 |     1639.292 |   4071.926 |     870.540 |    4942.466 |    66.83 |    33.17 | 
+      2 |    5829.692 |      175.497 |     6005.188 |    1266.435 |      742.578 |     2009.014 |   7096.127 |     918.075 |    8014.202 |    74.93 |    25.07 | 
+      4 |   10345.046 |      170.002 |    10515.048 |    1772.215 |      779.351 |     2551.566 |  12117.260 |     949.353 |   13066.614 |    80.47 |    19.53 | 
+      6 |   14511.656 |      167.282 |    14678.937 |    2245.899 |      800.021 |     3045.920 |  16757.554 |     967.303 |   17724.857 |    82.82 |    17.18 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        115 |   1045.562 |       9.092 |
+      2 |        250 |   1023.963 |       4.096 |
+      4 |        470 |   1001.713 |       2.131 |
+      6 |        678 |   1003.384 |       1.480 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       8854 |         8406 |        171105163 |    465774938.55 |        8406 |        160390354 |     48048930.98 |
+      2 |       8521 |         8093 |        168519732 |    450973914.55 |        8093 |        158031299 |     48079637.15 |
+      4 |       8175 |         7761 |        161272681 |    443729819.37 |        7761 |        151135480 |     47904684.82 |
+      6 |       8076 |         7667 |        159455122 |    447348334.22 |        7667 |        149443077 |     49639626.15 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |       1566 |          0 |       1579 |       6220 |       4746 |       1579 |      15690 |
+      2 |       4667 |       3473 |          0 |       3071 |      12288 |       7133 |      30632 |
+      4 |      10452 |      13481 |      10873 |       5514 |       5968 |      13542 |      59830 |
+      6 |      13890 |      14601 |      14370 |      14083 |      14395 |      14354 |      85693 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |           15692 |           15674 |            0 |             0 |      288712 |
+      2 |           15398 |           30593 |            0 |             0 |      270811 |
+      4 |           15063 |           59763 |            0 |             0 |      291059 |
+      6 |           14879 |           85583 |            0 |             0 |      346125 |
+
+
+##################################################
+
+
+results_base/98-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    3113.631 |      118.557 |     3232.189 |     826.066 |      532.085 |     1358.151 |   3939.697 |     650.643 |    4590.340 |    70.41 |    29.59 | 
+      2 |    5580.447 |      139.621 |     5720.068 |    1103.371 |      543.499 |     1646.870 |   6683.818 |     683.120 |    7366.938 |    77.65 |    22.35 | 
+      4 |   10099.937 |      146.386 |    10246.322 |    1633.040 |      561.235 |     2194.275 |  11732.977 |     707.620 |   12440.597 |    82.36 |    17.64 | 
+      6 |   14120.904 |      153.373 |    14274.277 |    2115.338 |      564.350 |     2679.688 |  16236.242 |     717.724 |   16953.965 |    84.19 |    15.81 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        128 |   1032.048 |       8.063 |
+      2 |        250 |   1013.586 |       4.054 |
+      4 |        473 |   1002.680 |       2.120 |
+      6 |        674 |   1001.014 |       1.485 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       6143 |         5832 |        120285735 |    324468622.38 |        5832 |        112757857 |     34280882.84 |
+      2 |       6019 |         5714 |        117807171 |    314481287.98 |        5714 |        110404819 |     33905672.64 |
+      4 |       5884 |         5584 |        114950321 |    313237538.55 |        5584 |        107723811 |     34419754.80 |
+      6 |       5831 |         5534 |        113914579 |    314563236.43 |        5534 |        106713083 |     35545484.00 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |       1315 |       1315 |       5256 |       1314 |       3921 |      13121 |
+      2 |       3903 |       5178 |       1298 |       5198 |       6460 |       3889 |      25926 |
+      4 |      10226 |       3820 |       7713 |      10266 |      10257 |       8966 |      51248 |
+      6 |      12295 |      12109 |      12340 |      12111 |      12403 |      12379 |      73637 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_base/98-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2724.560 |       70.904 |     2795.465 |     462.478 |      159.169 |      621.647 |   3187.039 |     230.073 |    3417.112 |    81.81 |    18.19 | 
+      2 |    5149.337 |       83.610 |     5232.947 |     755.816 |      161.084 |      916.900 |   5905.152 |     244.695 |    6149.847 |    85.09 |    14.91 | 
+      4 |    9629.977 |       90.293 |     9720.270 |    1303.277 |      164.119 |     1467.396 |  10933.254 |     254.412 |   11187.666 |    86.88 |    13.12 | 
+      6 |   13692.642 |       92.115 |    13784.757 |    1968.677 |      184.763 |     2153.440 |  15661.319 |     276.878 |   15938.197 |    86.49 |    13.51 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        130 |   1024.270 |       7.879 |
+      2 |        250 |   1008.878 |       4.036 |
+      4 |        475 |   1004.655 |       2.115 |
+      6 |        684 |   1002.055 |       1.465 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1865 |         1765 |         33563598 |     90351289.49 |        1765 |         31305160 |      9635452.15 |
+      2 |       1826 |         1726 |         32800203 |     87527532.20 |        1726 |         30566998 |      9517909.60 |
+      4 |       1809 |         1713 |         32486087 |     88406618.56 |        1713 |         30353163 |      9857816.78 |
+      6 |       1775 |         1685 |         34775405 |     96773933.48 |        1685 |         32592308 |     11027515.78 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |        905 |          0 |       2714 |       3616 |       1812 |       9047 |
+      2 |       4510 |       1803 |       3612 |       2706 |       1803 |       3605 |      18039 |
+      4 |       6300 |       1805 |       3606 |       8101 |       8098 |       8102 |      36012 |
+      6 |       8057 |       7906 |       8157 |       8119 |       8034 |       8159 |      48432 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |            9047 |            9045 |            0 |             0 |      111411 |
+      2 |            9031 |           18027 |            0 |             0 |       95327 |
+      4 |            9020 |           35981 |            0 |             0 |      114709 |
+      6 |            8991 |           48382 |            0 |             0 |      124555 |
+
+
+##################################################
+
+
+results_base/98-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2663.526 |       58.037 |     2721.563 |     359.286 |       81.114 |      440.400 |   3022.812 |     139.151 |    3161.963 |    86.07 |    13.93 | 
+      2 |    5047.888 |       71.007 |     5118.896 |     714.939 |       92.810 |      807.749 |   5762.827 |     163.817 |    5926.645 |    86.37 |    13.63 | 
+      4 |    9360.226 |       75.989 |     9436.215 |    1388.880 |      104.090 |     1492.970 |  10749.106 |     180.079 |   10929.185 |    86.34 |    13.66 | 
+      6 |   13507.504 |       79.690 |    13587.194 |    1982.989 |      108.525 |     2091.514 |  15490.493 |     188.215 |   15678.708 |    86.66 |    13.34 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        130 |   1024.283 |       7.879 |
+      2 |        250 |   1005.805 |       4.023 |
+      4 |        476 |   1007.941 |       2.118 |
+      6 |        687 |   1003.825 |       1.461 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        996 |          945 |         16125475 |     43416464.70 |         945 |         15096610 |      4661440.51 |
+      2 |        962 |          912 |         17820835 |     48098575.10 |         912 |         16666576 |      5199111.47 |
+      4 |        955 |          905 |         19301982 |     53526512.98 |         905 |         18047313 |      5859833.13 |
+      6 |        948 |          898 |         19131550 |     53461823.11 |         898 |         17876888 |      6037091.25 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |        826 |          0 |          0 |       4114 |       1644 |       1644 |       8228 |
+      2 |       4101 |       4103 |       1643 |       2462 |       2462 |       1639 |      16410 |
+      4 |       6641 |       6557 |       4911 |       5730 |       4835 |       4102 |      32776 |
+      6 |       8015 |       7826 |       7980 |       7453 |       8030 |       8029 |      47333 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |            8228 |            8224 |            0 |             0 |       70904 |
+      2 |            8215 |           16403 |            0 |             0 |       71323 |
+      4 |            8207 |           32757 |            0 |             0 |       93164 |
+      6 |            8204 |           47293 |            0 |             0 |      108867 |
+
+
+##################################################
+
+
+results_base/196-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    3178.586 |      180.019 |     3358.606 |    1402.428 |      864.691 |     2267.119 |   4581.014 |    1044.711 |    5625.725 |    59.70 |    40.30 | 
+      2 |    5537.167 |      204.831 |     5741.999 |    1987.463 |      900.069 |     2887.532 |   7524.630 |    1104.900 |    8629.531 |    66.54 |    33.46 | 
+      4 |    9527.228 |      193.508 |     9720.736 |    2979.338 |      931.892 |     3911.230 |  12506.565 |    1125.400 |   13631.965 |    71.31 |    28.69 | 
+      6 |   13393.782 |      195.574 |    13589.356 |    3943.859 |      944.590 |     4888.449 |  17337.641 |    1140.163 |   18477.805 |    73.54 |    26.46 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        121 |   1019.744 |       8.428 |
+      2 |        250 |   1012.756 |       4.051 |
+      4 |        474 |   1004.035 |       2.118 |
+      6 |        691 |   1002.007 |       1.450 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       6295 |         5975 |        203350037 |    550637904.73 |        5975 |        188294297 |     66600820.88 |
+      2 |       6130 |         5819 |        204940082 |    545246285.55 |        5819 |        189934452 |     66966795.72 |
+      4 |       5933 |         5634 |        197782507 |    540900634.01 |        5634 |        183278825 |     68059819.74 |
+      6 |       5832 |         5537 |        194521524 |    539583216.82 |        5537 |        180218667 |     69986852.45 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |       2694 |       1322 |       2615 |       5281 |       1345 |          0 |      13257 |
+      2 |       1322 |       5243 |       5218 |       5239 |       6514 |       2594 |      26130 |
+      4 |       7705 |       7706 |       5171 |      10278 |      11571 |       9020 |      51451 |
+      6 |      12038 |      11815 |      12024 |      12016 |      11951 |      11736 |      71580 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |           13286 |           13249 |            0 |             0 |      199149 |
+      2 |           13156 |           26101 |            0 |             0 |      213806 |
+      4 |           12978 |           51408 |            0 |             0 |      234387 |
+      6 |           12883 |           71467 |            0 |             0 |      243496 |
+
+
+##################################################
+
+
+results_base/196-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2869.429 |      129.736 |     2999.165 |    1256.914 |      691.846 |     1948.760 |   4126.343 |     821.582 |    4947.925 |    60.61 |    39.39 | 
+      2 |    5202.451 |      166.439 |     5368.890 |    1835.965 |      702.113 |     2538.078 |   7038.416 |     868.552 |    7906.967 |    67.90 |    32.10 | 
+      4 |    9230.632 |      193.773 |     9424.405 |    2857.173 |      706.649 |     3563.823 |  12087.805 |     900.422 |   12988.227 |    72.56 |    27.44 | 
+      6 |   13072.234 |      182.136 |    13254.370 |    3892.919 |      725.960 |     4618.879 |  16965.153 |     908.096 |   17873.249 |    74.16 |    25.84 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        122 |   1036.554 |       8.496 |
+      2 |        250 |   1014.439 |       4.058 |
+      4 |        475 |   1008.800 |       2.124 |
+      6 |        690 |    997.650 |       1.446 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       4801 |         4557 |        158732155 |    435975537.62 |        4557 |        146988328 |     54389968.02 |
+      2 |       4732 |         4491 |        156403875 |    420009003.90 |        4491 |        144861160 |     52884715.17 |
+      4 |       4691 |         4452 |        154677724 |    416069716.00 |        4452 |        143185438 |     53204198.17 |
+      6 |       4561 |         4330 |        150583843 |    414319615.23 |        4330 |        139543029 |     54469000.46 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          1 |          0 |          0 |       4735 |       5929 |       1177 |      11842 |
+      2 |       4704 |       2348 |          0 |       1168 |       8249 |       7041 |      23510 |
+      4 |       9353 |       4458 |       6067 |       8179 |      10545 |       8183 |      46785 |
+      6 |      10979 |      11054 |      11039 |      11013 |      10794 |      11045 |      65924 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |           11889 |           11835 |            0 |             0 |      181641 |
+      2 |           11823 |           23491 |            0 |             0 |      168043 |
+      4 |           11809 |           46733 |            0 |             0 |      197455 |
+      6 |           11673 |           65847 |            0 |             0 |      206127 |
+
+
+##################################################
+
+
+results_base/196-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2516.780 |       85.604 |     2602.384 |     844.555 |      237.519 |     1082.074 |   3361.335 |     323.123 |    3684.458 |    70.63 |    29.37 | 
+      2 |    4657.449 |       88.077 |     4745.527 |    1434.312 |      248.989 |     1683.301 |   6091.761 |     337.066 |    6428.828 |    73.82 |    26.18 | 
+      4 |    8674.801 |      102.672 |     8777.473 |    2508.416 |      246.441 |     2754.857 |  11183.217 |     349.113 |   11532.330 |    76.11 |    23.89 | 
+      6 |   12273.914 |       98.168 |    12372.082 |    3822.449 |      279.055 |     4101.504 |  16096.363 |     377.223 |   16473.586 |    75.10 |    24.90 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        129 |   1019.233 |       7.901 |
+      2 |        250 |   1005.467 |       4.022 |
+      4 |        480 |   1008.681 |       2.101 |
+      6 |        696 |   1001.408 |       1.439 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1724 |         1634 |         52654065 |    141151229.63 |        1634 |         48639000 |     17550205.72 |
+      2 |       1685 |         1595 |         51203029 |    139373341.76 |        1595 |         47188067 |     17551359.96 |
+      4 |       1686 |         1596 |         51068607 |    138941436.23 |        1596 |         47053729 |     17807885.99 |
+      6 |       1636 |         1546 |         53565221 |    150200796.30 |        1546 |         49249231 |     19849908.67 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |       1783 |          0 |       2678 |       3568 |        893 |       8922 |
+      2 |       1777 |       4441 |       6216 |       3553 |       1776 |          0 |      17763 |
+      4 |       7106 |       6216 |       5329 |       4443 |       5330 |       7107 |      35531 |
+      6 |       8429 |       8430 |       8432 |       7877 |       7910 |       8832 |      49910 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |            8966 |            8916 |            0 |             0 |       99411 |
+      2 |            8899 |           17747 |            0 |             0 |       87049 |
+      4 |            8900 |           35483 |            0 |             0 |      113050 |
+      6 |            8850 |           49881 |            0 |             0 |      122307 |
+
+
+##################################################
+
+
+results_base/196-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2441.537 |       65.545 |     2507.082 |     682.007 |      122.388 |      804.395 |   3123.544 |     187.933 |    3311.477 |    75.71 |    24.29 | 
+      2 |    4449.169 |       78.797 |     4527.966 |    1402.948 |      145.950 |     1548.898 |   5852.118 |     224.747 |    6076.864 |    74.51 |    25.49 | 
+      4 |    8222.294 |       88.350 |     8310.644 |    2713.297 |      155.472 |     2868.769 |  10935.591 |     243.822 |   11179.413 |    74.34 |    25.66 | 
+      6 |   12006.883 |       86.414 |    12093.297 |    3954.980 |      166.249 |     4121.229 |  15961.863 |     252.663 |   16214.527 |    74.58 |    25.42 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        130 |   1020.148 |       7.847 |
+      2 |        250 |   1007.250 |       4.029 |
+      4 |        477 |   1004.790 |       2.106 |
+      6 |        700 |   1001.349 |       1.430 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        956 |          906 |         26080060 |     69582712.64 |         906 |         24072524 |      8705159.59 |
+      2 |        925 |          875 |         29852744 |     80483034.68 |         875 |         27493982 |     10120144.96 |
+      4 |        910 |          860 |         31356005 |     85608055.44 |         860 |         28846647 |     10843772.14 |
+      6 |        903 |          853 |         30979688 |     86375571.40 |         853 |         28470348 |     11214706.08 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |        820 |          0 |       1637 |       4096 |          0 |       1635 |       8188 |
+      2 |       3269 |          0 |          0 |       4082 |       4081 |       4902 |      16334 |
+      4 |       7340 |       4891 |       4079 |       4075 |       6523 |       5708 |      32616 |
+      6 |       6646 |       5509 |       6398 |       6968 |       6727 |       7029 |      39277 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |            8188 |            8186 |            0 |             0 |       66111 |
+      2 |            8178 |           16326 |            0 |             0 |       89601 |
+      4 |            8167 |           32594 |            0 |             0 |      115096 |
+      6 |            8160 |           39246 |            0 |             0 |       99740 |
+
+
+##################################################
+
+
+results_base/392-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2627.048 |      160.220 |     2787.267 |    2173.981 |      902.953 |     3076.935 |   4801.029 |    1063.173 |    5864.202 |    47.53 |    52.47 | 
+      2 |    4175.971 |      175.955 |     4351.926 |    3354.065 |      929.623 |     4283.688 |   7530.036 |    1105.578 |    8635.614 |    50.40 |    49.60 | 
+      4 |    7133.377 |      196.460 |     7329.837 |    5527.980 |      944.188 |     6472.168 |  12661.358 |    1140.647 |   13802.005 |    53.11 |    46.89 | 
+      6 |    9965.917 |      187.115 |    10153.032 |    7745.469 |      966.207 |     8711.676 |  17711.386 |    1153.322 |   18864.709 |    53.82 |    46.18 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        129 |   1015.092 |       7.869 |
+      2 |        250 |   1006.604 |       4.026 |
+      4 |        480 |   1007.643 |       2.099 |
+      6 |        706 |   1002.312 |       1.420 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       4740 |         4498 |        199377424 |    537020020.05 |        4498 |        177094277 |     94342997.38 |
+      2 |       4501 |         4270 |        197873538 |    536479280.01 |        4270 |        175891483 |     93870780.15 |
+      4 |       4444 |         4216 |        195518230 |    538561333.63 |        4216 |        173736701 |     93736543.57 |
+      6 |       4358 |         4135 |        191204370 |    535971076.15 |        4135 |        169824311 |     94095659.48 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          1 |          3 |       1203 |       8209 |          9 |       2368 |      11793 |
+      2 |       4640 |       3429 |       4632 |       3464 |       4572 |       2313 |      23050 |
+      4 |       5883 |       4562 |       6901 |      10493 |      10147 |       7865 |      45851 |
+      6 |      11382 |      11374 |      11386 |      11367 |      11361 |      11364 |      68234 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |           11780 |           11771 |            0 |             0 |      162954 |
+      2 |           11571 |           23023 |            0 |             0 |      171776 |
+      4 |           11519 |           45813 |            0 |             0 |      196159 |
+      6 |           11476 |           68160 |            0 |             0 |      309273 |
+
+
+##################################################
+
+
+results_base/392-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2361.531 |      120.826 |     2482.358 |    2052.796 |      763.812 |     2816.608 |   4414.328 |     884.638 |    5298.966 |    46.85 |    53.15 | 
+      2 |    4001.502 |      177.435 |     4178.937 |    3200.432 |      758.819 |     3959.250 |   7201.934 |     936.253 |    8138.187 |    51.35 |    48.65 | 
+      4 |    6883.273 |      174.217 |     7057.489 |    5465.509 |      780.169 |     6245.678 |  12348.781 |     954.386 |   13303.167 |    53.05 |    46.95 | 
+      6 |    9712.884 |      165.561 |     9878.444 |    7726.552 |      796.278 |     8522.830 |  17439.436 |     961.838 |   18401.274 |    53.68 |    46.32 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        129 |   1026.099 |       7.954 |
+      2 |        250 |   1005.246 |       4.021 |
+      4 |        480 |   1004.250 |       2.092 |
+      6 |        710 |   1004.433 |       1.415 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       3758 |         3566 |        163923720 |    447650226.51 |        3566 |        145655177 |     81111918.76 |
+      2 |       3735 |         3540 |        162762615 |    439350946.01 |        3540 |        144192826 |     75730210.58 |
+      4 |       3661 |         3477 |        159583675 |    439266966.15 |        3477 |        142118145 |     77489434.74 |
+      6 |       3612 |         3429 |        156969906 |    438559384.38 |        3429 |        139604584 |     78898820.14 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |       3269 |       2166 |       1081 |       1091 |       3241 |          1 |      10849 |
+      2 |       4310 |       3230 |          0 |       3242 |       6510 |       4338 |      21630 |
+      4 |       6440 |       9653 |       8572 |       6467 |       7528 |       4261 |      42921 |
+      6 |      10608 |       9894 |      10509 |      10649 |      10600 |      10569 |      62829 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |           10882 |           10838 |            0 |             0 |      147668 |
+      2 |           10875 |           21611 |            0 |             0 |      157186 |
+      4 |           10808 |           42866 |            0 |             0 |      169327 |
+      6 |           10764 |           62765 |            0 |             0 |      188237 |
+
+
+##################################################
+
+
+results_base/392-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    1956.815 |       83.202 |     2040.017 |    1567.027 |      301.864 |     1868.892 |   3523.843 |     385.066 |    3908.909 |    52.19 |    47.81 | 
+      2 |    3522.032 |       99.259 |     3621.291 |    2744.110 |      307.993 |     3052.103 |   6266.141 |     407.252 |    6673.394 |    54.26 |    45.74 | 
+      4 |    6450.128 |      104.970 |     6555.098 |    4956.289 |      314.034 |     5270.323 |  11406.417 |     419.003 |   11825.421 |    55.43 |    44.57 | 
+      6 |    8936.043 |      114.246 |     9050.288 |    7686.992 |      336.736 |     8023.728 |  16623.034 |     450.982 |   17074.017 |    53.01 |    46.99 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        130 |   1007.531 |       7.750 |
+      2 |        255 |   1017.223 |       3.989 |
+      4 |        483 |   1003.681 |       2.078 |
+      6 |        711 |    999.152 |       1.405 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1568 |         1488 |         62936720 |    169658268.01 |        1488 |         55910162 |     30427216.85 |
+      2 |       1570 |         1488 |         63213447 |    171332424.49 |        1488 |         55986213 |     30250307.35 |
+      4 |       1538 |         1458 |         61728192 |    170109710.52 |        1458 |         54701706 |     30219627.95 |
+      6 |       1494 |         1414 |         65114405 |    181093250.64 |        1414 |         57485710 |     31977276.58 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |        878 |       1752 |          0 |        876 |       1759 |       3513 |       8778 |
+      2 |       1762 |       1762 |       1754 |       4392 |       5266 |       2625 |      17561 |
+      4 |       6997 |       3494 |       6113 |       5251 |       6120 |       6997 |      34972 |
+      6 |       8469 |       8500 |       7902 |       7678 |       8292 |       8437 |      49278 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |            8808 |            8772 |            0 |             0 |       82043 |
+      2 |            8827 |           17551 |            1 |             1 |      100795 |
+      4 |            8790 |           34937 |            0 |             0 |      109235 |
+      6 |            8741 |           49209 |            0 |             0 |      129837 |
+
+
+##################################################
+
+
+results_base/392-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    1936.130 |       66.731 |     2002.861 |    1294.215 |      158.703 |     1452.918 |   3230.345 |     225.434 |    3455.779 |    57.96 |    42.04 | 
+      2 |    3268.398 |       88.342 |     3356.739 |    2747.719 |      183.560 |     2931.278 |   6016.117 |     271.901 |    6288.018 |    53.38 |    46.62 | 
+      4 |    5785.386 |       95.886 |     5881.273 |    5409.356 |      199.953 |     5609.310 |  11194.742 |     295.840 |   11490.582 |    51.18 |    48.82 | 
+      6 |    8409.223 |       97.966 |     8507.189 |    7937.078 |      206.029 |     8143.106 |  16346.300 |     303.995 |   16650.295 |    51.09 |    48.91 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        130 |   1005.355 |       7.734 |
+      2 |        251 |   1000.288 |       3.985 |
+      4 |        482 |    999.213 |       2.073 |
+      6 |        716 |   1002.109 |       1.400 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        903 |          853 |         32275895 |     86931403.89 |         853 |         28260764 |     15227986.35 |
+      2 |        872 |          822 |         37384159 |    100391116.72 |         822 |         32666438 |     17009001.47 |
+      4 |        858 |          808 |         39551731 |    108117459.59 |         808 |         34532945 |     18388563.49 |
+      6 |        861 |          811 |         39521380 |    109644736.86 |         811 |         34502624 |     18899919.66 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |        813 |          0 |          0 |       3258 |       2439 |       1628 |       8138 |
+      2 |       1622 |        814 |          0 |       3243 |       4063 |       6495 |      16237 |
+      4 |       4860 |       4050 |       4856 |       5670 |       6481 |       6481 |      32398 |
+      6 |       7188 |       7529 |       6707 |       7511 |       7563 |       7440 |      43938 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |            8165 |            8132 |            0 |             0 |       69684 |
+      2 |            8153 |           16224 |            0 |             0 |       80165 |
+      4 |            8141 |           32372 |            1 |             1 |       97478 |
+      6 |            8145 |           43892 |            1 |             1 |      109738 |
+
+
+##################################################
+
+
+results_base/1000-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    1035.526 |      179.740 |     1215.267 |    2956.139 |      353.799 |     3309.938 |   3991.666 |     533.539 |    4525.205 |    26.86 |    73.14 | 
+      2 |    1343.059 |      179.871 |     1522.930 |    5399.546 |      384.675 |     5784.221 |   6742.605 |     564.546 |    7307.151 |    20.84 |    79.16 | 
+      4 |    2005.257 |      183.737 |     2188.994 |    9723.552 |      380.976 |    10104.528 |  11728.809 |     564.714 |   12293.522 |    17.81 |    82.19 | 
+      6 |    2458.311 |      140.162 |     2598.473 |   14251.771 |      358.101 |    14609.872 |  16710.081 |     498.263 |   17208.344 |    15.10 |    84.90 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        128 |   1010.607 |       7.895 |
+      2 |        250 |   1006.558 |       4.026 |
+      4 |        475 |   1006.350 |       2.119 |
+      6 |        701 |   1003.169 |       1.431 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       6705 |         6363 |         60194322 |    150927948.47 |        6363 |                0 |     33065202.14 |
+      2 |       6460 |         6131 |         59256695 |    149024013.13 |        6131 |                0 |     33747290.40 |
+      4 |       6249 |         5931 |         57568893 |    148893908.87 |        5931 |                0 |     34148626.91 |
+      6 |       5914 |         5613 |         54569020 |    143561973.31 |        5613 |                0 |     35832389.96 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |       2727 |       4110 |          0 |       4084 |       2722 |          0 |      13643 |
+      2 |       5350 |       4488 |          0 |       1348 |       8053 |       7496 |      26735 |
+      4 |      10510 |       5715 |       6575 |      10070 |      10545 |       9192 |      52607 |
+      6 |      12266 |      12627 |      12632 |      12614 |      12596 |      12526 |      75261 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_base/1000-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |     807.863 |      133.094 |      940.957 |    2917.040 |      302.401 |     3219.441 |   3724.903 |     435.495 |    4160.398 |    22.62 |    77.38 | 
+      2 |    1089.623 |      119.277 |     1208.900 |    5436.998 |      334.345 |     5771.343 |   6526.621 |     453.622 |    6980.243 |    17.32 |    82.68 | 
+      4 |    1928.627 |      173.454 |     2102.081 |    9732.590 |      276.510 |    10009.100 |  11661.216 |     449.964 |   12111.180 |    17.36 |    82.64 | 
+      6 |    2393.898 |      145.981 |     2539.878 |   14212.001 |      267.865 |    14479.866 |  16605.899 |     413.845 |   17019.745 |    14.92 |    85.08 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        128 |   1017.857 |       7.952 |
+      2 |        252 |   1004.564 |       3.986 |
+      4 |        482 |   1003.876 |       2.083 |
+      6 |        704 |   1000.432 |       1.421 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       5108 |         4846 |         47258500 |    119851470.06 |        4846 |                0 |     24861058.88 |
+      2 |       4955 |         4701 |         45757744 |    116290022.88 |        4701 |                0 |     24831266.15 |
+      4 |       4956 |         4702 |         45756717 |    117573464.04 |        4702 |                0 |     24318064.22 |
+      6 |       4703 |         4461 |         43506574 |    113635142.38 |        4461 |                0 |     26526462.74 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |       3621 |          1 |       3650 |       3623 |       1240 |      12135 |
+      2 |       4775 |       3588 |       1206 |       4807 |       7187 |       2379 |      23942 |
+      4 |       9551 |       7117 |       4778 |       8402 |       9560 |       8379 |      47787 |
+      6 |      11289 |      11285 |      11584 |      10847 |      11279 |      10830 |      67114 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_base/1000-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |     657.704 |       82.591 |      740.294 |    2636.894 |       96.486 |     2733.380 |   3294.597 |     179.077 |    3473.674 |    21.31 |    78.69 | 
+      2 |    1125.278 |       89.089 |     1214.367 |    4938.272 |       99.420 |     5037.692 |   6063.550 |     188.509 |    6252.059 |    19.42 |    80.58 | 
+      4 |    2008.374 |       91.343 |     2099.717 |    9229.258 |      107.267 |     9336.525 |  11237.632 |     198.609 |   11436.242 |    18.36 |    81.64 | 
+      6 |    1485.683 |       90.942 |     1576.626 |   14875.460 |      110.483 |    14985.943 |  16361.143 |     201.425 |   16562.568 |     9.52 |    90.48 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        140 |   1054.554 |       7.533 |
+      2 |        260 |   1010.317 |       3.886 |
+      4 |        490 |   1003.695 |       2.048 |
+      6 |        719 |   1002.304 |       1.394 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1822 |         1722 |         16691332 |     41513766.23 |        1722 |                0 |      7864817.72 |
+      2 |       1740 |         1650 |         15003071 |     37719650.91 |        1650 |                0 |      7679148.37 |
+      4 |       1711 |         1621 |         15003241 |     38826225.97 |        1621 |                0 |      7930818.12 |
+      6 |       1639 |         1549 |         15752716 |     41322771.63 |        1549 |                0 |     10124685.75 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |        114 |       2700 |       2587 |        901 |       2700 |          0 |       9002 |
+      2 |       2679 |       2678 |       1783 |       2685 |       4469 |       3574 |      17868 |
+      4 |       6232 |       6236 |       4447 |       6231 |       5348 |       7124 |      35618 |
+      6 |       8057 |       7853 |       7818 |       8171 |       7971 |       8260 |      48130 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_base/1000-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |     807.064 |       61.414 |      868.478 |    2350.557 |       50.939 |     2401.496 |   3157.621 |     112.353 |    3269.974 |    26.56 |    73.44 | 
+      2 |     539.654 |       75.017 |      614.671 |    5429.180 |       67.881 |     5497.061 |   5968.835 |     142.898 |    6111.732 |    10.06 |    89.94 | 
+      4 |     937.425 |       79.966 |     1017.391 |   10251.529 |       70.275 |    10321.805 |  11188.954 |     150.242 |   11339.196 |     8.97 |    91.03 | 
+      6 |    1296.381 |       82.207 |     1378.588 |   14947.030 |       69.300 |    15016.331 |  16243.411 |     151.508 |   16394.918 |     8.41 |    91.59 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        140 |   1049.263 |       7.495 |
+      2 |        259 |   1004.802 |       3.880 |
+      4 |        495 |   1005.127 |       2.031 |
+      6 |        719 |   1002.943 |       1.395 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        994 |          944 |          7502078 |     18756534.57 |         944 |                0 |      3892803.02 |
+      2 |        925 |          875 |          9377210 |     23642797.45 |         875 |                0 |      4664122.01 |
+      4 |        924 |          874 |          9376992 |     24167323.44 |         874 |                0 |      4813755.75 |
+      6 |        906 |          856 |          9376816 |     24495804.53 |         856 |                0 |      5467162.06 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |       2467 |          0 |       1649 |       2469 |       1645 |          0 |       8230 |
+      2 |        813 |        817 |       1633 |       4082 |       6533 |       2450 |      16328 |
+      4 |       4083 |       5720 |       4901 |       4903 |       7351 |       5713 |      32671 |
+      6 |       7898 |       7900 |       7854 |       8101 |       7844 |       7371 |      46968 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_heavy/baseline-local:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |      27.433 |       20.601 |       48.035 |    3071.482 |       33.809 |     3105.291 |   3098.916 |      54.410 |    3153.326 |     1.52 |    98.48 | 
+      2 |      32.792 |       21.406 |       54.199 |    5950.979 |       46.020 |     5996.999 |   5983.771 |      67.427 |    6051.198 |     0.90 |    99.10 | 
+      4 |      39.052 |       21.258 |       60.310 |   11421.060 |       52.740 |    11473.800 |  11460.112 |      73.998 |   11534.110 |     0.52 |    99.48 | 
+      6 |      46.232 |       21.951 |       68.183 |   16910.515 |       59.797 |    16970.312 |  16956.748 |      81.748 |   17038.495 |     0.40 |    99.60 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        140 |   1019.649 |       7.283 |
+      2 |        269 |   1012.143 |       3.763 |
+      4 |        510 |    999.167 |       1.959 |
+      6 |        757 |   1003.480 |       1.326 |
+
+
+No dmesg information for baseline and madvise runs.
+
+
+##################################################
+results_heavy/baseline-remote:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2891.235 |       47.553 |     2938.788 |       8.300 |        7.209 |       15.509 |   2899.535 |      54.762 |    2954.297 |    99.48 |     0.52 | 
+      2 |    5636.653 |       59.523 |     5696.176 |      10.572 |        8.322 |       18.895 |   5647.225 |      67.845 |    5715.071 |    99.67 |     0.33 | 
+      4 |   10661.836 |       64.159 |    10725.995 |      18.133 |        9.861 |       27.994 |  10679.969 |      74.020 |   10753.989 |    99.74 |     0.26 | 
+      6 |   14933.839 |       67.040 |    15000.879 |      34.353 |       13.953 |       48.306 |  14968.192 |      80.993 |   15049.185 |    99.68 |     0.32 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        130 |   1017.543 |       7.827 |
+      2 |        250 |   1000.508 |       4.002 |
+      4 |        477 |   1005.632 |       2.108 |
+      6 |        667 |   1003.321 |       1.504 |
+
+
+No dmesg information for baseline and madvise runs.
+
+
+##################################################
+results_heavy/98-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2575.839 |      791.648 |     3367.488 |    1022.820 |      475.694 |     1498.514 |   3598.659 |    1267.343 |    4866.002 |    69.20 |    30.80 | 
+      2 |    4529.042 |      812.734 |     5341.775 |    1208.407 |      469.669 |     1678.076 |   5737.449 |    1282.402 |    7019.851 |    76.10 |    23.90 | 
+      4 |    8369.047 |      700.015 |     9069.063 |    1701.135 |      556.185 |     2257.320 |  10070.182 |    1256.200 |   11326.382 |    80.07 |    19.93 | 
+      6 |   12459.343 |      798.961 |    13258.303 |    1981.221 |      502.521 |     2483.742 |  14440.564 |    1301.482 |   15742.046 |    84.22 |    15.78 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        100 |   1066.281 |      10.663 |
+      2 |        191 |   1008.686 |       5.281 |
+      4 |        387 |   1008.915 |       2.607 |
+      6 |        579 |   1005.926 |       1.737 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       4239 |         4022 |         77576905 |    434152905.67 |        4022 |         72684745 |    383118661.20 |
+      2 |       3842 |         3643 |         73714407 |    416141768.39 |        3643 |         69073127 |    358266315.08 |
+      4 |       3427 |         3251 |         65240165 |    427079890.81 |        3251 |         61075557 |    370589509.89 |
+      6 |       3149 |         2989 |         59687773 |    430776847.34 |        2989 |         55924573 |    380098293.32 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   30782837 |   15812113 |   15507729 |   46641661 |   46121580 |          0 |  154865920 |
+      2 |   15034988 |          0 |   29110107 |  106883804 |  114455661 |   22846960 |  288331520 |
+      4 |   98492791 |   89512278 |   83875068 |   50921804 |   87284677 |   98537798 |  508624416 |
+      6 |  115515013 |  115153676 |  115108404 |  115866006 |  116605268 |  116223997 |  694472364 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3085858 |               0 |       512469 |        512469 |     3627191 |
+      2 |         3318201 |               2 |      1073935 |       1073935 |     4403779 |
+      4 |         3233215 |               5 |      2333612 |       2333612 |     5578478 |
+      6 |         3072684 |               0 |      3070855 |       3070855 |     6150672 |
+
+
+##################################################
+
+
+results_heavy/98-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2603.761 |      698.186 |     3301.947 |     966.715 |      434.142 |     1400.857 |   3570.476 |    1132.329 |    4702.804 |    70.21 |    29.79 | 
+      2 |    4636.230 |      697.046 |     5333.276 |    1176.080 |      426.708 |     1602.788 |   5812.310 |    1123.754 |    6936.064 |    76.89 |    23.11 | 
+      4 |    8650.326 |      686.244 |     9336.570 |    1597.454 |      445.263 |     2042.717 |  10247.780 |    1131.507 |   11379.287 |    82.05 |    17.95 | 
+      6 |   12766.700 |      687.268 |    13453.968 |    2020.629 |      451.334 |     2471.964 |  14787.330 |    1138.603 |   15925.932 |    84.48 |    15.52 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        108 |   1072.347 |       9.929 |
+      2 |        206 |   1025.127 |       4.976 |
+      4 |        401 |   1008.132 |       2.514 |
+      6 |        600 |   1002.640 |       1.671 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       3626 |         3439 |         69350535 |    359720908.81 |        3439 |         64935047 |    319139302.75 |
+      2 |       3452 |         3276 |         65821804 |    350015511.80 |        3276 |         61657196 |    296262764.40 |
+      4 |       3066 |         2906 |         57909913 |    359066470.88 |        2906 |         54146713 |    309597390.24 |
+      6 |       2831 |         2682 |         53245034 |    364607668.24 |        2682 |         49782890 |    322225253.49 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   42067218 |   14251068 |          0 |   39838049 |   28121698 |   14020200 |  138298233 |
+      2 |          1 |   12706098 |   25418561 |   51806580 |   91588089 |   75795120 |  257314449 |
+      4 |   69241659 |   52794873 |   66379990 |   90799019 |   81938146 |   88509820 |  449663507 |
+      6 |  103115672 |  103120239 |  103112492 |  103952511 |  104510188 |  103684366 |  621495468 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_heavy/98-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2589.110 |      366.030 |     2955.140 |     495.537 |      138.083 |      633.620 |   3084.647 |     504.113 |    3588.760 |    82.34 |    17.66 | 
+      2 |    4810.665 |      315.885 |     5126.550 |     823.034 |      178.769 |     1001.803 |   5633.698 |     494.654 |    6128.352 |    83.65 |    16.35 | 
+      4 |    9132.450 |      324.483 |     9456.933 |    1338.836 |      204.750 |     1543.587 |  10471.286 |     529.233 |   11000.519 |    85.97 |    14.03 | 
+      6 |   13026.143 |      343.427 |    13369.570 |    1933.874 |      244.689 |     2178.563 |  14960.017 |     588.117 |   15548.134 |    85.99 |    14.01 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        108 |    935.851 |       8.665 |
+      2 |        230 |   1010.076 |       4.392 |
+      4 |        443 |   1004.994 |       2.269 |
+      6 |        640 |   1003.646 |       1.568 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1505 |         1426 |         26306262 |    144477440.13 |        1426 |         24600278 |    126178720.00 |
+      2 |       1489 |         1409 |         26024618 |    146113035.81 |        1409 |         24268458 |    123517687.91 |
+      4 |       1413 |         1338 |         24527298 |    159907353.79 |        1338 |         22946754 |    138022228.66 |
+      6 |       1317 |         1247 |         25024006 |    181510675.57 |        1247 |         23368198 |    159234064.21 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |    5363861 |   10776778 |      34305 |   16170480 |   13361161 |    5371097 |   51077682 |
+      2 |   19073093 |    5116773 |   15360316 |   20080838 |   20481364 |   21430035 |  101542419 |
+      4 |   38451141 |   27665408 |   23732826 |   38666045 |   29480741 |   33641861 |  191638022 |
+      6 |   48878262 |   48761032 |   48509442 |   48850785 |   48607180 |   48633805 |  292240506 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3180019 |               0 |       523051 |        523051 |     3868925 |
+      2 |         3209610 |               0 |      1074813 |       1074813 |     4298159 |
+      4 |         3113032 |               0 |      2099244 |       2099244 |     5222800 |
+      6 |         3071473 |               0 |      3070982 |       3070982 |     6150537 |
+
+
+##################################################
+
+
+results_heavy/98-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2599.118 |      181.231 |     2780.349 |     431.751 |      103.789 |      535.540 |   3030.869 |     285.020 |    3315.890 |    83.85 |    16.15 | 
+      2 |    4855.825 |      211.946 |     5067.771 |     756.173 |      110.944 |      867.117 |   5611.999 |     322.889 |    5934.888 |    85.39 |    14.61 | 
+      4 |    9099.183 |      240.239 |     9339.422 |    1419.259 |      135.977 |     1555.236 |  10518.443 |     376.216 |   10894.658 |    85.72 |    14.28 | 
+      6 |   13073.828 |      216.398 |    13290.225 |    2011.294 |      178.855 |     2190.149 |  15085.121 |     395.252 |   15480.374 |    85.85 |    14.15 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        130 |   1067.986 |       8.215 |
+      2 |        240 |   1013.491 |       4.223 |
+      4 |        457 |   1009.622 |       2.209 |
+      6 |        660 |   1003.444 |       1.520 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        932 |          882 |         14781975 |     82331881.34 |         882 |         13778455 |     71382002.09 |
+      2 |        862 |          812 |         15692713 |     88443271.62 |         812 |         14538665 |     74070623.80 |
+      4 |        815 |          767 |         16369331 |    107014574.26 |         767 |         15190195 |     91706745.95 |
+      6 |        790 |          750 |         15996834 |    115909373.00 |         750 |         14993314 |    102220534.85 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |    5885740 |    3002788 |          0 |   14597496 |    2922288 |    2908775 |   29317087 |
+      2 |    9387613 |    5249880 |   14680547 |   12627337 |   12529042 |    6612956 |   61087375 |
+      4 |   22447025 |   22639175 |   22497904 |   22359809 |   22329104 |   15986667 |  128259684 |
+      6 |   31098883 |   31014023 |   31054800 |   30991015 |   31189922 |   31010065 |  186358708 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3163092 |               0 |       512409 |        512409 |     3689190 |
+      2 |         3119471 |               0 |      1024148 |       1024148 |     4156269 |
+      4 |         3119778 |               0 |      2047598 |       2047598 |     5180768 |
+      6 |         3071258 |               0 |      3071362 |       3071362 |     6151490 |
+
+
+##################################################
+
+
+results_heavy/196-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2431.364 |      908.635 |     3340.000 |    1260.388 |      493.745 |     1754.133 |   3691.752 |    1402.380 |    5094.132 |    65.57 |    34.43 | 
+      2 |    4045.057 |      835.798 |     4880.855 |    1703.135 |      523.767 |     2226.902 |   5748.192 |    1359.565 |    7107.757 |    68.67 |    31.33 | 
+      4 |    7602.919 |      796.070 |     8398.989 |    2506.148 |      557.455 |     3063.603 |  10109.068 |    1353.524 |   11462.592 |    73.27 |    26.73 | 
+      6 |   11111.795 |      734.690 |    11846.485 |    3348.494 |      605.416 |     3953.910 |  14460.289 |    1340.106 |   15800.396 |    74.98 |    25.02 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |         99 |   1086.702 |      10.977 |
+      2 |        190 |   1023.170 |       5.385 |
+      4 |        382 |   1004.107 |       2.629 |
+      6 |        576 |   1001.776 |       1.739 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       2946 |         2794 |         87674549 |    483428258.21 |        2794 |         81051317 |    420120595.65 |
+      2 |       2539 |         2409 |         80772380 |    461593952.55 |        2409 |         74751260 |    395212973.13 |
+      4 |       2225 |         2108 |         69825656 |    457829457.25 |        2108 |         64507000 |    397195043.59 |
+      6 |       2034 |         1924 |         63027772 |    460106962.17 |        1924 |         58060348 |    402534923.09 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |   18103409 |   16982145 |   50350432 |   35753686 |   53315712 |  174505384 |
+      2 |   15540392 |          0 |   32258183 |  113989286 |  106581365 |   46438439 |  314807665 |
+      4 |  108350594 |  107976056 |   46893762 |   57637980 |  120119180 |  101551487 |  542529059 |
+      6 |  122084644 |  122071561 |  122050245 |  121252737 |  122045546 |  122026233 |  731530966 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3112429 |               0 |       512500 |        512500 |     3636298 |
+      2 |         3191488 |               0 |      1075550 |       1075550 |     4277936 |
+      4 |         3201971 |               0 |      2200793 |       2200793 |     5413597 |
+      6 |         3074508 |               0 |      3071508 |       3071508 |     6152044 |
+
+
+##################################################
+
+
+results_heavy/196-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2319.932 |      753.707 |     3073.639 |    1268.990 |      485.578 |     1754.568 |   3588.922 |    1239.285 |    4828.207 |    63.66 |    36.34 | 
+      2 |    4058.074 |      734.997 |     4793.070 |    1668.013 |      481.902 |     2149.915 |   5726.087 |    1216.899 |    6942.985 |    69.03 |    30.97 | 
+      4 |    7654.486 |      700.721 |     8355.208 |    2528.057 |      521.720 |     3049.778 |  10182.544 |    1222.442 |   11404.985 |    73.26 |    26.74 | 
+      6 |   11315.248 |      704.680 |    12019.928 |    3351.693 |      535.167 |     3886.860 |  14666.941 |    1239.847 |   15906.788 |    75.56 |    24.44 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        100 |   1052.106 |      10.521 |
+      2 |        200 |   1040.062 |       5.200 |
+      4 |        391 |   1002.310 |       2.563 |
+      6 |        590 |   1002.045 |       1.698 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       2382 |         2260 |         75397538 |    421665641.11 |        2260 |         69777826 |    365444998.19 |
+      2 |       2324 |         2204 |         73350845 |    418579087.50 |        2204 |         67831485 |    356374667.59 |
+      4 |       2025 |         1917 |         62856409 |    411749795.73 |        1917 |         57989337 |    355827709.92 |
+      6 |       1875 |         1775 |         57623615 |    418052754.03 |        1775 |         53107775 |    365203193.06 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   14958564 |   29722302 |   45399758 |   44943230 |   15063876 |          0 |  150087730 |
+      2 |   14712666 |   43156905 |   13805062 |   72408410 |   97482614 |   44113244 |  285678901 |
+      4 |  109421877 |   97432678 |   85333602 |   46702092 |   85483421 |   64961482 |  489335152 |
+      6 |  111552484 |  111209304 |  111896662 |  111876387 |  111157400 |  110824413 |  668516650 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3136618 |               0 |       512367 |        512367 |     3662955 |
+      2 |         3400111 |               0 |      1075140 |       1075140 |     4486312 |
+      4 |         3083561 |               0 |      2201007 |       2201007 |     5293967 |
+      6 |         3073619 |               0 |      3071384 |       3071384 |     6150945 |
+
+
+##################################################
+
+
+results_heavy/196-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2324.966 |      420.063 |     2745.029 |     924.829 |      242.826 |     1167.656 |   3249.796 |     662.889 |    3912.685 |    70.16 |    29.84 | 
+      2 |    4293.805 |      421.258 |     4715.063 |    1406.664 |      238.139 |     1644.803 |   5700.469 |     659.397 |    6359.866 |    74.14 |    25.86 | 
+      4 |    8036.759 |      407.080 |     8443.839 |    2351.090 |      279.593 |     2630.683 |  10387.849 |     686.673 |   11074.522 |    76.25 |    23.75 | 
+      6 |   11408.260 |      434.811 |    11843.071 |    3606.309 |      344.399 |     3950.707 |  15014.569 |     779.210 |   15793.779 |    74.99 |    25.01 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        119 |   1070.101 |       8.992 |
+      2 |        227 |   1024.496 |       4.513 |
+      4 |        430 |    998.888 |       2.323 |
+      6 |        634 |   1004.091 |       1.584 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1328 |         1258 |         39036881 |    220145167.74 |        1258 |         36026321 |    188563417.16 |
+      2 |       1272 |         1202 |         36756987 |    209030491.52 |        1202 |         33746427 |    176028728.81 |
+      4 |       1169 |         1109 |         33435149 |    219839443.57 |        1109 |         30926349 |    190012181.30 |
+      6 |       1030 |          971 |         34923601 |    254945045.49 |         971 |         32113745 |    222534120.26 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |   15618264 |   30659936 |   23454420 |    7759473 |          0 |   77492093 |
+      2 |   50741697 |   19106938 |   28079122 |   13738992 |    6702071 |   24703439 |  143072259 |
+      4 |   45549454 |   38886828 |   35527268 |   22724189 |   55141639 |   61434343 |  259263721 |
+      6 |   68000149 |   67827873 |   68037481 |   68042909 |   68086521 |   67673673 |  407668606 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3133656 |               0 |       512247 |        512247 |     3659118 |
+      2 |         3137801 |               0 |      1075042 |       1075042 |     4223009 |
+      4 |         3090967 |               0 |      2149808 |       2149808 |     5251008 |
+      6 |         3072727 |               0 |      3070773 |       3070773 |     6150484 |
+
+
+##################################################
+
+
+results_heavy/196-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2362.751 |      256.330 |     2619.081 |     736.433 |      141.043 |      877.476 |   3099.184 |     397.373 |    3496.558 |    74.90 |    25.10 | 
+      2 |    4234.217 |      266.721 |     4500.938 |    1367.894 |      170.375 |     1538.269 |   5602.111 |     437.096 |    6039.207 |    74.53 |    25.47 | 
+      4 |    7854.107 |      303.552 |     8157.659 |    2627.811 |      209.667 |     2837.478 |  10481.918 |     513.220 |   10995.138 |    74.19 |    25.81 | 
+      6 |   11540.820 |      336.578 |    11877.398 |    3688.973 |      216.149 |     3905.121 |  15229.793 |     552.726 |   15782.519 |    75.26 |    24.74 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        120 |   1007.150 |       8.393 |
+      2 |        233 |   1017.388 |       4.366 |
+      4 |        447 |   1008.539 |       2.256 |
+      6 |        658 |   1004.767 |       1.527 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        805 |          760 |         20684291 |    116581629.45 |         760 |         19179011 |    100367769.79 |
+      2 |        777 |          733 |         23198191 |    132903279.31 |         733 |         21391855 |    112276436.63 |
+      4 |        710 |          670 |         24435759 |    160338444.84 |         670 |         22428719 |    137473145.81 |
+      6 |        685 |          645 |         23468694 |    170911092.93 |         645 |         21461654 |    147771983.94 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   12307458 |          0 |          0 |    8211549 |   16451343 |    4139489 |   41109839 |
+      2 |   12309994 |    4012914 |    4187866 |   19261932 |   23945849 |   26690913 |   90409468 |
+      4 |   42707540 |   33208950 |   23731655 |   23845319 |   33362144 |   33165740 |  190021348 |
+      6 |   45401776 |   45274916 |   45180686 |   45567448 |   45486853 |   45308594 |  272220273 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3129946 |               0 |       512466 |        512466 |     3655603 |
+      2 |         3179395 |               0 |      1024458 |       1024458 |     4213672 |
+      4 |         3089856 |               0 |      2047863 |       2047863 |     5148339 |
+      6 |         3071998 |               0 |      3070984 |       3070984 |     6149997 |
+
+
+##################################################
+
+
+results_heavy/392-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2173.171 |     1064.691 |     3237.862 |    1632.022 |      421.095 |     2053.118 |   3805.194 |    1485.786 |    5290.980 |    61.20 |    38.80 | 
+      2 |    3143.822 |      831.831 |     3975.653 |    2685.658 |      522.479 |     3208.137 |   5829.481 |    1354.310 |    7183.790 |    55.34 |    44.66 | 
+      4 |    5697.214 |      744.543 |     6441.758 |    4555.125 |      584.591 |     5139.717 |  10252.339 |    1329.135 |   11581.474 |    55.62 |    44.38 | 
+      6 |    8429.786 |      743.347 |     9173.132 |    6410.251 |      602.870 |     7013.121 |  14840.036 |    1346.217 |   16186.253 |    56.67 |    43.33 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        100 |   1088.603 |      10.886 |
+      2 |        192 |   1014.217 |       5.282 |
+      4 |        390 |   1006.113 |       2.580 |
+      6 |        591 |   1000.707 |       1.693 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       2394 |         2270 |         91526756 |    482480228.04 |        2270 |         81190500 |    413412061.72 |
+      2 |       1942 |         1842 |         80024048 |    456174511.08 |        1842 |         70992368 |    389121194.50 |
+      4 |       1707 |         1617 |         69348658 |    456289722.75 |        1617 |         61320498 |    391177922.19 |
+      6 |       1574 |         1494 |         63248527 |    461021135.55 |        1494 |         56223887 |    397331191.24 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |   17630893 |   36552523 |          0 |   54824223 |   72699216 |  181706855 |
+      2 |   44732815 |   31494162 |   31647392 |   70389746 |   99954537 |   32717723 |  310936375 |
+      4 |   93932449 |   36874815 |   44894091 |  135156461 |  114766213 |  111252034 |  536876063 |
+      6 |  121270943 |  121708204 |  121653255 |  121662777 |  121268025 |  121659254 |  729222458 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3099372 |               0 |       512389 |        512389 |     3626156 |
+      2 |         3384050 |               1 |      1092778 |       1092778 |     4490840 |
+      4 |         3294134 |               2 |      2152670 |       2152670 |     5457898 |
+      6 |         3072900 |               0 |      3070494 |       3070494 |     6150356 |
+
+
+##################################################
+
+
+results_heavy/392-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2056.046 |      937.388 |     2993.434 |    1611.848 |      393.479 |     2005.327 |   3667.894 |    1330.867 |    4998.761 |    59.88 |    40.12 | 
+      2 |    3106.808 |      737.343 |     3844.151 |    2708.603 |      498.147 |     3206.750 |   5815.411 |    1235.491 |    7050.901 |    54.52 |    45.48 | 
+      4 |    5728.031 |      700.101 |     6428.132 |    4560.312 |      534.414 |     5094.726 |  10288.343 |    1234.516 |   11522.858 |    55.79 |    44.21 | 
+      6 |    8562.015 |      776.597 |     9338.612 |    6310.180 |      499.426 |     6809.605 |  14872.194 |    1276.023 |   16148.218 |    57.83 |    42.17 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |         99 |   1048.496 |      10.591 |
+      2 |        200 |   1026.864 |       5.134 |
+      4 |        400 |   1013.781 |       2.534 |
+      6 |        599 |   1002.497 |       1.674 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1907 |         1807 |         78612666 |    427749153.65 |        1807 |         69580986 |    365397847.48 |
+      2 |       1798 |         1704 |         73442470 |    420429910.22 |        1704 |         65113254 |    359410916.56 |
+      4 |       1604 |         1520 |         64576057 |    425091596.40 |        1520 |         57150009 |    364290016.68 |
+      6 |       1474 |         1394 |         58784604 |    428037034.95 |        1394 |         51759964 |    365892097.92 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |   31454550 |          0 |   76523184 |   47882354 |          0 |  155860088 |
+      2 |   28402359 |   30208130 |   28792949 |   57489894 |   71163602 |   69378633 |  285435567 |
+      4 |   87097920 |   87657864 |   74311054 |   71459274 |   88025716 |   91592141 |  500143969 |
+      6 |  113452182 |  113085834 |  113435907 |  112738872 |  112711881 |  112355344 |  677780020 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3118030 |               0 |       512352 |        512352 |     3645037 |
+      2 |         3401761 |               0 |      1075544 |       1075544 |     4490898 |
+      4 |         3100742 |               0 |      2099001 |       2099001 |     5209044 |
+      6 |         3073271 |               0 |      3070763 |       3070763 |     6150483 |
+
+
+##################################################
+
+
+results_heavy/392-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    1852.070 |      485.798 |     2337.868 |    1482.655 |      261.021 |     1743.676 |   3334.725 |     746.819 |    4081.544 |    57.28 |    42.72 | 
+      2 |    3288.132 |      479.072 |     3767.204 |    2466.115 |      265.648 |     2731.763 |   5754.247 |     744.720 |    6498.967 |    57.97 |    42.03 | 
+      4 |    6071.402 |      461.515 |     6532.917 |    4403.149 |      307.290 |     4710.438 |  10474.551 |     768.804 |   11243.355 |    58.10 |    41.90 | 
+      6 |    8375.058 |      486.735 |     8861.792 |    6768.153 |      361.447 |     7129.600 |  15143.210 |     848.182 |   15991.392 |    55.42 |    44.58 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        116 |   1048.779 |       9.041 |
+      2 |        220 |   1002.283 |       4.556 |
+      4 |        431 |   1002.620 |       2.326 |
+      6 |        635 |   1001.359 |       1.577 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1143 |         1083 |         43405776 |    246344364.51 |        1083 |         38388176 |    210041470.31 |
+      2 |       1091 |         1031 |         41131427 |    234635772.60 |        1031 |         36113827 |    197945573.46 |
+      4 |       1027 |          967 |         38096032 |    250235384.51 |         967 |         33078432 |    211126853.77 |
+      6 |        897 |          847 |         38372723 |    280992829.16 |         847 |         33656179 |    239159487.62 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   25860048 |    7973042 |          0 |   34035004 |   17589651 |          0 |   85457745 |
+      2 |   16036794 |    7886003 |          0 |   40422249 |   63138172 |   31287958 |  158771176 |
+      4 |   65793714 |   36438120 |   22301617 |   51592576 |   65532519 |   51217247 |  292875793 |
+      6 |   73453400 |   73725485 |   73620492 |   73417549 |   73435092 |   74059353 |  441711371 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3129623 |               0 |       512299 |        512299 |     3653463 |
+      2 |         3141807 |               0 |      1024130 |       1024130 |     4179475 |
+      4 |         3086709 |               0 |      2048028 |       2048028 |     5145629 |
+      6 |         3072901 |               0 |      3071337 |       3071337 |     6151039 |
+
+
+##################################################
+
+
+results_heavy/392-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    1918.010 |      330.176 |     2248.186 |    1238.653 |      144.692 |     1383.344 |   3156.662 |     474.868 |    3631.530 |    61.91 |    38.09 | 
+      2 |    2975.303 |      355.904 |     3331.208 |    2761.234 |      210.168 |     2971.403 |   5736.538 |     566.072 |    6302.610 |    52.85 |    47.15 | 
+      4 |    5636.594 |      396.181 |     6032.775 |    4975.778 |      218.652 |     5194.430 |  10612.372 |     614.833 |   11227.204 |    53.73 |    46.27 | 
+      6 |    8141.061 |      363.715 |     8504.775 |    7361.335 |      269.823 |     7631.157 |  15502.395 |     633.537 |   16135.933 |    52.71 |    47.29 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        120 |   1020.241 |       8.502 |
+      2 |        230 |   1009.328 |       4.388 |
+      4 |        446 |   1005.813 |       2.255 |
+      6 |        664 |   1002.556 |       1.510 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        755 |          715 |         25588198 |    144890019.16 |         715 |         22577638 |    122507246.75 |
+      2 |        672 |          632 |         30985292 |    177004678.08 |         632 |         26971212 |    147439075.54 |
+      4 |        635 |          595 |         29327404 |    191890160.57 |         595 |         25313324 |    159526027.44 |
+      6 |        607 |          571 |         27650919 |    202770591.26 |         571 |         24540007 |    174485349.69 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   10126535 |    5027106 |   10135586 |   19912195 |    4934445 |          0 |   50135867 |
+      2 |   23912158 |    5913727 |          0 |   24144640 |   47504494 |   17797312 |  119272331 |
+      4 |   51132351 |   28049173 |   16971505 |   37466772 |   53119713 |   39384859 |  226124373 |
+      6 |   53832569 |   53550904 |   53479390 |   53380548 |   53896002 |   53477727 |  321617140 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3151550 |               0 |       512409 |        512409 |     3676116 |
+      2 |         3102145 |               0 |      1024281 |       1024281 |     4135383 |
+      4 |         3088804 |               0 |      2098812 |       2098812 |     5198027 |
+      6 |         3072837 |               0 |      3071070 |       3071070 |     6150807 |
+
+
+##################################################
+
+
+results_heavy/1000-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    1095.247 |      585.302 |     1680.549 |    2662.916 |      300.170 |     2963.086 |   3758.164 |     885.471 |    4643.635 |    36.19 |    63.81 | 
+      2 |    1660.228 |      566.448 |     2226.675 |    4521.292 |      312.391 |     4833.683 |   6181.520 |     878.839 |    7060.359 |    31.54 |    68.46 | 
+      4 |    2599.539 |      437.435 |     3036.974 |    8266.209 |      430.693 |     8696.902 |  10865.748 |     868.128 |   11733.876 |    25.88 |    74.12 | 
+      6 |    4111.416 |      488.883 |     4600.299 |   11532.079 |      382.799 |    11914.878 |  15643.495 |     871.682 |   16515.178 |    27.85 |    72.15 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        119 |   1072.515 |       9.013 |
+      2 |        220 |   1004.812 |       4.567 |
+      4 |        430 |   1002.269 |       2.331 |
+      6 |        644 |   1003.913 |       1.559 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       5181 |         4917 |         44997562 |    232654899.61 |        4917 |                0 |     25245727.71 |
+      2 |       4672 |         4432 |         43121553 |    227309046.82 |        4432 |                0 |     24220743.99 |
+      4 |       4250 |         4029 |         38996995 |    241518074.87 |        4029 |                0 |     22951706.55 |
+      6 |       4139 |         3927 |         37872329 |    256500424.10 |        3927 |                0 |     21259942.07 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |          0 |   17624725 |   34946511 |   26516553 |    9184088 |   88271877 |
+      2 |   16356926 |          0 |   25243859 |   57918593 |   40342355 |   24516263 |  164377996 |
+      4 |   58850646 |   43202300 |   31235848 |   59573960 |   52020150 |   51679829 |  296562733 |
+      6 |   72036003 |   71673137 |   72161131 |   72140786 |   71897833 |   72087513 |  431996403 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_heavy/1000-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |     894.760 |      425.330 |     1320.090 |    2730.716 |      308.617 |     3039.333 |   3625.476 |     733.947 |    4359.423 |    30.28 |    69.72 | 
+      2 |    1447.581 |      447.201 |     1894.782 |    4680.053 |      275.154 |     4955.207 |   6127.634 |     722.355 |    6849.989 |    27.66 |    72.34 | 
+      4 |    2621.066 |      461.653 |     3082.719 |    8299.032 |      285.501 |     8584.533 |  10920.098 |     747.154 |   11667.252 |    26.42 |    73.58 | 
+      6 |    3693.345 |      406.159 |     4099.504 |   12040.514 |      327.467 |    12367.982 |  15733.859 |     733.627 |   16467.486 |    24.89 |    75.11 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        120 |   1047.825 |       8.732 |
+      2 |        230 |   1015.306 |       4.414 |
+      4 |        441 |   1004.204 |       2.277 |
+      6 |        655 |   1000.690 |       1.528 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       4061 |         3851 |         37498736 |    195648166.04 |        3851 |                0 |     19160659.61 |
+      2 |       3924 |         3723 |         35622710 |    188562153.60 |        3723 |                0 |     18714195.65 |
+      4 |       3644 |         3457 |         32997171 |    203400766.83 |        3457 |                0 |     17581345.74 |
+      6 |       3450 |         3272 |         31310836 |    212236759.40 |        3272 |                0 |     17740334.82 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |    7260991 |    7312827 |    7185187 |   36414301 |   14568823 |          0 |   72742129 |
+      2 |   41087019 |   47489049 |    6809297 |          0 |   13727628 |   26926314 |  136039307 |
+      4 |   51135470 |   56671627 |   37255720 |   46013383 |   29913641 |   32217261 |  253207102 |
+      6 |   59433228 |   59211138 |   58907339 |   59123987 |   59233592 |   59192590 |  355101874 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_heavy/1000-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |     714.840 |      199.235 |      914.075 |    2555.347 |      117.378 |     2672.725 |   3270.188 |     316.613 |    3586.801 |    25.48 |    74.52 | 
+      2 |    1225.264 |      190.438 |     1415.701 |    4717.521 |      112.498 |     4830.019 |   5942.785 |     302.935 |    6245.720 |    22.67 |    77.33 | 
+      4 |    2333.244 |      203.039 |     2536.283 |    8669.267 |      127.006 |     8796.273 |  11002.511 |     330.045 |   11332.556 |    22.38 |    77.62 | 
+      6 |    2518.070 |      238.031 |     2756.101 |   13539.773 |      133.098 |    13672.871 |  16057.843 |     371.129 |   16428.972 |    16.78 |    83.22 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        130 |   1021.120 |       7.855 |
+      2 |        250 |   1009.639 |       4.039 |
+      4 |        474 |   1003.140 |       2.116 |
+      6 |        697 |   1002.740 |       1.439 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1621 |         1531 |         14812279 |     74626570.50 |        1531 |                0 |      6992526.95 |
+      2 |       1601 |         1516 |         13124311 |     69602563.67 |        1516 |                0 |      6903183.01 |
+      4 |       1541 |         1461 |         13124208 |     81032890.78 |        1461 |                0 |      6977397.01 |
+      6 |       1466 |         1386 |         14249049 |     95637042.23 |        1386 |                0 |      7466079.32 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |    2716131 |          0 |    2813023 |   13879470 |    5587498 |    2624718 |   27620840 |
+      2 |    9746782 |    7401228 |    2393378 |    7398812 |   12318135 |    9683387 |   48941722 |
+      4 |   19487415 |   17008034 |   12129140 |   12157679 |   19409189 |   17040083 |   97231540 |
+      6 |   26223592 |   26219347 |   26220705 |   26551600 |   26400602 |   26208168 |  157824014 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_heavy/1000-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |     865.632 |      112.209 |      977.841 |    2276.842 |       67.634 |     2344.476 |   3142.474 |     179.843 |    3322.317 |    29.43 |    70.57 | 
+      2 |     749.535 |      144.781 |      894.316 |    5179.552 |       72.758 |     5252.310 |   5929.087 |     217.539 |    6146.626 |    14.55 |    85.45 | 
+      4 |    1224.344 |      153.308 |     1377.652 |    9784.643 |       90.758 |     9875.401 |  11008.986 |     244.067 |   11253.053 |    12.24 |    87.76 | 
+      6 |    1812.604 |      163.353 |     1975.957 |   14290.903 |       95.336 |    14386.239 |  16103.507 |     258.689 |   16362.196 |    12.08 |    87.92 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        132 |   1010.783 |       7.657 |
+      2 |        259 |   1025.896 |       3.961 |
+      4 |        483 |   1004.686 |       2.080 |
+      6 |        710 |   1001.751 |       1.411 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        919 |          869 |          7499948 |     38603772.96 |         869 |                0 |      3557283.58 |
+      2 |        896 |          846 |          9187134 |     48473551.01 |         846 |                0 |      4338771.48 |
+      4 |        856 |          806 |          9374489 |     57904855.88 |         806 |                0 |      4346017.35 |
+      6 |        841 |          791 |          9374279 |     63139003.29 |         791 |                0 |      4432153.97 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |    1313161 |    2626312 |          0 |    3939440 |    2626171 |    2625427 |   13130511 |
+      2 |    6374231 |    3800376 |    3374366 |    5037990 |    7392268 |    6751113 |   32730344 |
+      4 |   13492970 |   10100163 |    8386921 |   13444419 |   11768393 |   10114704 |   67307570 |
+      6 |   16543604 |   16383833 |   16383699 |   16555103 |   16525513 |   16376498 |   98768250 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_massive/baseline-local:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |      28.091 |       20.882 |       48.973 |    3057.423 |       33.816 |     3091.240 |   3085.514 |      54.698 |    3140.212 |     1.56 |    98.44 | 
+      2 |      32.723 |       21.393 |       54.116 |    5984.468 |       46.194 |     6030.662 |   6017.191 |      67.587 |    6084.778 |     0.89 |    99.11 | 
+      4 |      38.591 |       21.156 |       59.748 |   11443.759 |       52.821 |    11496.580 |  11482.350 |      73.978 |   11556.328 |     0.52 |    99.48 | 
+      6 |      46.544 |       22.118 |       68.662 |   16927.012 |       59.925 |    16986.937 |  16973.556 |      82.043 |   17055.599 |     0.40 |    99.60 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        140 |   1026.330 |       7.331 |
+      2 |        270 |   1010.155 |       3.741 |
+      4 |        511 |   1000.660 |       1.958 |
+      6 |        757 |   1004.791 |       1.327 |
+
+
+No dmesg information for baseline and madvise runs.
+
+
+##################################################
+results_massive/baseline-remote:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2906.886 |       47.483 |     2954.369 |       8.250 |        7.192 |       15.442 |   2915.136 |      54.675 |    2969.811 |    99.48 |     0.52 | 
+      2 |    5642.450 |       59.318 |     5701.768 |      10.464 |        8.283 |       18.748 |   5652.914 |      67.601 |    5720.516 |    99.67 |     0.33 | 
+      4 |   10707.539 |       63.907 |    10771.446 |      17.864 |        9.774 |       27.638 |  10725.404 |      73.680 |   10799.084 |    99.74 |     0.26 | 
+      6 |   14970.784 |       66.579 |    15037.362 |      34.828 |       14.100 |       48.927 |  15005.611 |      80.678 |   15086.290 |    99.68 |     0.32 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        130 |   1009.836 |       7.768 |
+      2 |        251 |   1004.086 |       4.000 |
+      4 |        480 |   1006.893 |       2.098 |
+      6 |        670 |   1005.467 |       1.501 |
+
+
+No dmesg information for baseline and madvise runs.
+
+
+##################################################
+results_massive/98-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2698.082 |      837.278 |     3535.360 |     906.244 |      395.292 |     1301.535 |   3604.325 |    1232.570 |    4836.895 |    73.09 |    26.91 | 
+      2 |    4498.589 |      739.033 |     5237.622 |    1225.721 |      486.163 |     1711.884 |   5724.310 |    1225.197 |    6949.507 |    75.37 |    24.63 | 
+      4 |    8449.172 |      672.596 |     9121.769 |    1677.827 |      546.994 |     2224.820 |  10126.999 |    1219.590 |   11346.589 |    80.39 |    19.61 | 
+      6 |   12351.369 |      641.650 |    12993.019 |    2070.427 |      565.089 |     2635.516 |  14421.796 |    1206.738 |   15628.535 |    83.14 |    16.86 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |         99 |   1041.719 |      10.522 |
+      2 |        197 |   1028.018 |       5.218 |
+      4 |        390 |   1005.678 |       2.579 |
+      6 |        580 |   1001.016 |       1.726 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       4013 |         3809 |         73033539 |    424012521.32 |        3809 |         68442435 |    380604117.67 |
+      2 |       3709 |         3521 |         71002472 |    421118753.60 |        3521 |         66536808 |    380472904.35 |
+      4 |       3268 |         3098 |         62001994 |    421200898.94 |        3098 |         57987914 |    381366285.10 |
+      6 |       3000 |         2848 |         56621511 |    425717468.24 |        2848 |         53059015 |    388291186.98 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |   29091496 |   14529608 |   20863354 |   22628646 |   58595445 |  145708549 |
+      2 |   47665665 |   47086519 |   43450036 |   14336998 |   56166755 |   68923131 |  277629104 |
+      4 |  106329446 |   78757731 |   87870887 |   98655734 |   56110250 |   55810708 |  483534756 |
+      6 |  109238177 |  109592657 |  109559382 |  110243646 |  109918974 |  110232991 |  658785827 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3103408 |               0 |       615020 |        615020 |     3738950 |
+      2 |         3544060 |               3 |      1094301 |       1094301 |     4649201 |
+      4 |         3189499 |               5 |      2303351 |       2303351 |     5504810 |
+      6 |         3071614 |               0 |      3070838 |       3070838 |     6150448 |
+
+
+##################################################
+
+
+results_massive/98-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2636.164 |      678.478 |     3314.643 |     956.786 |      412.787 |     1369.573 |   3592.951 |    1091.265 |    4684.216 |    70.76 |    29.24 | 
+      2 |    4619.703 |      632.493 |     5252.196 |    1198.086 |      446.815 |     1644.901 |   5817.789 |    1079.308 |    6897.097 |    76.15 |    23.85 | 
+      4 |    8739.197 |      651.904 |     9391.100 |    1591.766 |      443.803 |     2035.569 |  10330.963 |    1095.707 |   11426.670 |    82.19 |    17.81 | 
+      6 |   12728.088 |      598.007 |    13326.095 |    2046.311 |      470.830 |     2517.141 |  14774.400 |    1068.837 |   15843.236 |    84.11 |    15.89 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        110 |   1075.683 |       9.779 |
+      2 |        210 |   1029.605 |       4.903 |
+      4 |        408 |   1009.082 |       2.473 |
+      6 |        601 |    997.464 |       1.660 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       3525 |         3345 |         67165071 |    371234260.13 |        3345 |         62900111 |    321872227.88 |
+      2 |       3306 |         3136 |         62934203 |    350922839.35 |        3136 |         58920123 |    315122198.17 |
+      4 |       2943 |         2793 |         55615919 |    357810941.62 |        2793 |         52103599 |    324312671.05 |
+      6 |       2736 |         2596 |         51325149 |    362400580.12 |        2596 |         48063709 |    330910771.57 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   13350547 |   26607741 |          0 |   26907616 |   40171995 |   26893415 |  133931314 |
+      2 |   74683288 |   59524970 |   24405865 |   25113746 |   36466566 |   26167707 |  246362142 |
+      4 |   86577044 |   64465269 |   65229162 |   76543208 |   64968704 |   75782394 |  433565781 |
+      6 |   99484818 |   99481615 |   99764222 |  100044937 |   99453055 |   99751494 |  597980141 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_massive/98-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2527.519 |      295.597 |     2823.116 |     585.729 |      184.063 |      769.792 |   3113.248 |     479.660 |    3592.908 |    78.57 |    21.43 | 
+      2 |    4795.953 |      301.786 |     5097.738 |     832.285 |      188.612 |     1020.897 |   5628.238 |     490.397 |    6118.635 |    83.31 |    16.69 | 
+      4 |    9093.493 |      307.121 |     9400.613 |    1340.327 |      215.096 |     1555.422 |  10433.819 |     522.216 |   10956.036 |    85.80 |    14.20 | 
+      6 |   13077.305 |      360.754 |    13438.059 |    1887.713 |      219.570 |     2107.283 |  14965.018 |     580.324 |   15545.342 |    86.44 |    13.56 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        120 |   1049.777 |       8.748 |
+      2 |        230 |   1011.337 |       4.397 |
+      4 |        440 |    999.765 |       2.272 |
+      6 |        639 |   1000.924 |       1.566 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1529 |         1449 |         26892312 |    156056349.65 |        1449 |         25136152 |    138034662.51 |
+      2 |       1461 |         1381 |         25425206 |    150081137.51 |        1381 |         23669046 |    133819584.65 |
+      4 |       1380 |         1310 |         23867009 |    162120182.78 |        1310 |         22361729 |    146511351.76 |
+      6 |       1292 |         1222 |         24461663 |    183352020.65 |        1222 |         22805855 |    166172904.10 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |   10530466 |   16055142 |   10670448 |    5463324 |   10749932 |   53469312 |
+      2 |    4946662 |   15144994 |   24557608 |   14942367 |   19855754 |   19780711 |   99228096 |
+      4 |   37226117 |   23243794 |   28436884 |   35479104 |   24310541 |   37233857 |  185930297 |
+      6 |   47534143 |   47509112 |   47652522 |   47744964 |   47641695 |   47519368 |  285601804 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3139651 |               0 |       512195 |        512195 |     3665064 |
+      2 |         3219044 |               0 |      1024118 |       1024118 |     4257448 |
+      4 |         3089400 |               0 |      2149316 |       2149316 |     5252481 |
+      6 |         3070034 |               0 |      3071414 |       3071414 |     6150506 |
+
+
+##################################################
+
+
+results_massive/98-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2590.312 |      184.770 |     2775.082 |     423.657 |       96.171 |      519.828 |   3013.969 |     280.941 |    3294.910 |    84.22 |    15.78 | 
+      2 |    4846.442 |      218.311 |     5064.753 |     769.832 |      113.652 |      883.483 |   5616.273 |     331.963 |    5948.236 |    85.15 |    14.85 | 
+      4 |    9078.097 |      240.524 |     9318.621 |    1413.136 |      138.630 |     1551.765 |  10491.233 |     379.154 |   10870.387 |    85.72 |    14.28 | 
+      6 |   13130.385 |      232.074 |    13362.459 |    1981.273 |      162.316 |     2143.588 |  15111.658 |     394.389 |   15506.047 |    86.18 |    13.82 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        128 |   1055.910 |       8.249 |
+      2 |        240 |   1016.165 |       4.234 |
+      4 |        454 |   1004.513 |       2.213 |
+      6 |        659 |   1001.307 |       1.519 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        919 |          869 |         14508697 |     83328471.83 |         869 |         13505177 |     73327717.49 |
+      2 |        850 |          800 |         15912127 |     93965302.64 |         800 |         14732991 |     83141582.11 |
+      4 |        801 |          757 |         16150096 |    109502148.17 |         757 |         15146576 |     99095238.39 |
+      6 |        779 |          739 |         15770812 |    118055650.49 |         739 |         14767292 |    107558307.94 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |    2895121 |          0 |    8582084 |   11422717 |    5812519 |   28712441 |
+      2 |    6645922 |    3227159 |          0 |   12728570 |   24322775 |   14952620 |   61877046 |
+      4 |   26252632 |   15796610 |    6361831 |   25264295 |   24276198 |   28361108 |  126312674 |
+      6 |   30603414 |   30768475 |   30514463 |   30649203 |   30725764 |   30581583 |  183842902 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3128503 |               0 |       512301 |        512301 |     3653104 |
+      2 |         3182165 |               0 |      1024181 |       1024181 |     4218318 |
+      4 |         3112239 |               0 |      2098905 |       2098905 |     5222000 |
+      6 |         3071043 |               0 |      3070783 |       3070783 |     6150011 |
+
+
+##################################################
+
+
+results_massive/196-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2446.138 |      877.300 |     3323.438 |    1257.634 |      474.399 |     1732.033 |   3703.772 |    1351.700 |    5055.471 |    65.74 |    34.26 | 
+      2 |    4095.728 |      796.609 |     4892.336 |    1681.625 |      514.575 |     2196.200 |   5777.353 |    1311.184 |    7088.537 |    69.02 |    30.98 | 
+      4 |    7635.306 |      727.079 |     8362.385 |    2532.427 |      573.544 |     3105.971 |  10167.733 |    1300.623 |   11468.356 |    72.92 |    27.08 | 
+      6 |   11288.012 |      748.809 |    12036.821 |    3262.923 |      542.306 |     3805.230 |  14550.936 |    1291.115 |   15842.051 |    75.98 |    24.02 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |         99 |   1068.670 |      10.795 |
+      2 |        191 |   1006.629 |       5.270 |
+      4 |        388 |   1007.674 |       2.597 |
+      6 |        581 |    999.272 |       1.720 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       2829 |         2683 |         83756215 |    471375371.83 |        2683 |         77484215 |    420942146.64 |
+      2 |       2375 |         2254 |         75116991 |    446090192.06 |        2254 |         69547455 |    404777500.56 |
+      4 |       2133 |         2022 |         66739833 |    451132456.97 |        2022 |         61672057 |    411338834.04 |
+      6 |       1950 |         1850 |         60314201 |    453157722.43 |        1850 |         55798361 |    413143743.66 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   17894223 |   16412466 |   15969063 |   66870245 |   32201797 |   17406936 |  166754730 |
+      2 |   39481238 |   29636257 |   43481090 |   59677058 |   87932907 |   32970144 |  293178694 |
+      4 |   85130836 |   75429975 |   78333129 |  107500475 |   96052030 |   76605013 |  519051458 |
+      6 |  116365248 |  116744990 |  116711190 |  116332303 |  116345893 |  117101300 |  699600924 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3107375 |               0 |       512246 |        512246 |     3631720 |
+      2 |         3294840 |               0 |      1126237 |       1126237 |     4431788 |
+      4 |         3112207 |               0 |      2150259 |       2150259 |     5272382 |
+      6 |         3073791 |               0 |      3070559 |       3070559 |     6150209 |
+
+
+##################################################
+
+
+results_massive/196-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2390.190 |      761.789 |     3151.979 |    1198.629 |      428.572 |     1627.201 |   3588.819 |    1190.361 |    4779.180 |    65.95 |    34.05 | 
+      2 |    4093.484 |      709.935 |     4803.419 |    1654.219 |      474.180 |     2128.399 |   5747.703 |    1184.116 |    6931.819 |    69.30 |    30.70 | 
+      4 |    7712.260 |      682.373 |     8394.633 |    2492.369 |      506.628 |     2998.998 |  10204.629 |    1189.001 |   11393.631 |    73.68 |    26.32 | 
+      6 |   11267.618 |      599.625 |    11867.242 |    3386.236 |      563.395 |     3949.632 |  14653.854 |    1163.020 |   15816.874 |    75.03 |    24.97 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        100 |   1033.705 |      10.337 |
+      2 |        200 |   1024.180 |       5.121 |
+      4 |        399 |   1013.819 |       2.541 |
+      6 |        595 |   1003.563 |       1.687 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       2274 |         2153 |         71225446 |    412016376.59 |        2153 |         65706086 |    366395984.19 |
+      2 |       2178 |         2067 |         68219183 |    406620881.07 |        2067 |         63201583 |    367366484.84 |
+      4 |       1965 |         1865 |         61018948 |    410961502.14 |        1865 |         56503108 |    375605344.67 |
+      6 |       1810 |         1713 |         55382346 |    413958603.72 |        1713 |         51117386 |    377619402.51 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   13991746 |   43298449 |          0 |   28020214 |   28227553 |   28121533 |  141659495 |
+      2 |   64207203 |   57130374 |   12850001 |   53762380 |   65902943 |   12373749 |  266226650 |
+      4 |  118429926 |   23393912 |   35117237 |  107853452 |  106710742 |   82578733 |  474084002 |
+      6 |  106637623 |  106955290 |  107282475 |  107981042 |  107609857 |  106601052 |  643067339 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3114986 |               0 |       512432 |        512432 |     3638353 |
+      2 |         3167344 |               0 |      1126091 |       1126091 |     4305923 |
+      4 |         3107543 |               0 |      2047962 |       2047962 |     5165052 |
+      6 |         3073406 |               0 |      3070988 |       3070988 |     6150440 |
+
+
+##################################################
+
+
+results_massive/196-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2339.999 |      421.767 |     2761.765 |     908.285 |      224.393 |     1132.679 |   3248.284 |     646.160 |    3894.444 |    70.92 |    29.08 | 
+      2 |    4285.043 |      421.726 |     4706.769 |    1379.041 |      234.190 |     1613.231 |   5664.084 |     655.916 |    6320.000 |    74.47 |    25.53 | 
+      4 |    8077.434 |      414.348 |     8491.782 |    2320.262 |      270.147 |     2590.409 |  10397.697 |     684.495 |   11082.191 |    76.63 |    23.37 | 
+      6 |   10835.881 |      456.056 |    11291.937 |    3260.765 |      293.822 |     3554.587 |  14096.646 |     749.878 |   14846.524 |    76.06 |    23.94 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        119 |   1066.140 |       8.959 |
+      2 |        222 |   1005.362 |       4.529 |
+      4 |        433 |   1005.876 |       2.323 |
+      6 |        593 |   1003.292 |       1.692 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1309 |         1239 |         38082358 |    220710384.26 |        1239 |         35071798 |    194447489.50 |
+      2 |       1212 |         1149 |         34939660 |    208883897.49 |        1149 |         32330508 |    187730297.81 |
+      4 |       1149 |         1089 |         32914144 |    223414974.93 |        1089 |         30405344 |    203074728.87 |
+      6 |       1038 |          984 |         33738292 |    248703346.75 |         984 |         31179316 |    226640064.59 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   15255822 |    7635126 |    7537204 |   29873845 |    7599991 |    7573446 |   75475434 |
+      2 |   15240684 |   20338303 |   20015219 |   27044930 |   27646131 |   25797370 |  136082637 |
+      4 |   63901789 |   41800828 |   16008759 |   29090483 |   46882147 |   56984214 |  254668220 |
+      6 |   59977173 |   61903830 |   59892904 |   62625751 |   60111524 |   61074222 |  365585404 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3124449 |               0 |       512335 |        512335 |     3650972 |
+      2 |         3172908 |               0 |      1075234 |       1075234 |     4263819 |
+      4 |         3079852 |               0 |      2149677 |       2149677 |     5240090 |
+      6 |         3073453 |               0 |      3070587 |       3070587 |     6150893 |
+
+
+##################################################
+
+
+results_massive/196-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2389.267 |      266.610 |     2655.877 |     716.475 |      127.004 |      843.479 |   3105.742 |     393.613 |    3499.356 |    75.90 |    24.10 | 
+      2 |    4235.265 |      318.441 |     4553.706 |    1407.199 |      155.402 |     1562.601 |   5642.464 |     473.843 |    6116.307 |    74.45 |    25.55 | 
+      4 |    7894.873 |      304.825 |     8199.698 |    2616.695 |      207.749 |     2824.444 |  10511.568 |     512.574 |   11024.142 |    74.38 |    25.62 | 
+      6 |   11575.580 |      334.460 |    11910.039 |    3659.067 |      208.526 |     3867.592 |  15234.646 |     542.985 |   15777.632 |    75.49 |    24.51 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        120 |   1005.711 |       8.381 |
+      2 |        232 |   1010.703 |       4.356 |
+      4 |        449 |   1009.643 |       2.249 |
+      6 |        657 |   1003.858 |       1.528 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        797 |          756 |         20590729 |    119355547.55 |         756 |         19085449 |    105423633.94 |
+      2 |        740 |          700 |         24083377 |    144523318.75 |         700 |         22176689 |    129354753.12 |
+      4 |        700 |          660 |         23999458 |    162257823.88 |         660 |         21992418 |    146138695.47 |
+      6 |        671 |          631 |         22987457 |    172970257.43 |         631 |         20980417 |    155630697.75 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   12292694 |   16134477 |          0 |          0 |    8078708 |    4091092 |   40596971 |
+      2 |    9801284 |   14609230 |   17644053 |   22761792 |   19174802 |    9562601 |   93553762 |
+      4 |   30636339 |   23253769 |   20944066 |   23208584 |   41976000 |   46329006 |  186347764 |
+      6 |   44410592 |   44591076 |   44618338 |   44782874 |   44466474 |   44401118 |  267270472 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3162039 |               0 |       512346 |        512346 |     3686708 |
+      2 |         3147525 |               0 |      1024402 |       1024402 |     4183491 |
+      4 |         3108942 |               0 |      2098275 |       2098275 |     5216167 |
+      6 |         3072343 |               0 |      3071222 |       3071222 |     6151234 |
+
+
+##################################################
+
+
+results_massive/392-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    2114.679 |      972.992 |     3087.671 |    1675.886 |      435.201 |     2111.087 |   3790.565 |    1408.193 |    5198.758 |    59.39 |    40.61 | 
+      2 |    3181.982 |      816.301 |     3998.283 |    2645.737 |      488.098 |     3133.835 |   5827.720 |    1304.399 |    7132.118 |    56.06 |    43.94 | 
+      4 |    5773.920 |      741.262 |     6515.181 |    4537.871 |      552.331 |     5090.202 |  10311.791 |    1293.593 |   11605.383 |    56.14 |    43.86 | 
+      6 |    8565.138 |      775.280 |     9340.418 |    6298.902 |      526.611 |     6825.513 |  14864.039 |    1301.891 |   16165.930 |    57.78 |    42.22 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |         99 |   1056.743 |      10.674 |
+      2 |        198 |   1030.322 |       5.204 |
+      4 |        393 |   1003.455 |       2.553 |
+      6 |        597 |   1004.724 |       1.683 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       2254 |         2138 |         85185996 |    461143221.75 |        2138 |         75552204 |    410829821.20 |
+      2 |       1857 |         1757 |         76080989 |    453178216.93 |        1757 |         67049309 |    407186968.95 |
+      4 |       1634 |         1544 |         65836536 |    445665732.75 |        1544 |         58109432 |    402833873.51 |
+      6 |       1517 |         1437 |         60759079 |    454900705.88 |        1437 |         53734439 |    407837490.56 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   16378082 |          0 |   35149264 |   50090571 |   17526128 |   49663334 |  168807379 |
+      2 |   22281887 |   16190621 |   45438215 |   88739789 |   79367790 |   43771318 |  295789620 |
+      4 |   89261108 |   98398732 |   55672718 |  103184378 |   91886169 |   72106840 |  510509945 |
+      6 |  116686300 |  116319578 |  116664560 |  116664512 |  118141656 |  117020606 |  701497212 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3128940 |               0 |       512291 |        512291 |     3658828 |
+      2 |         3400380 |               1 |      1133856 |       1133856 |     4553086 |
+      4 |         3372638 |               2 |      2165362 |       2165362 |     5552226 |
+      6 |         3073238 |               0 |      3070947 |       3070947 |     6150269 |
+
+
+##################################################
+
+
+results_massive/392-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    1939.850 |      797.761 |     2737.611 |    1744.537 |      450.368 |     2194.905 |   3684.387 |    1248.129 |    4932.516 |    55.50 |    44.50 | 
+      2 |    3252.413 |      808.179 |     4060.592 |    2569.740 |      414.306 |     2984.047 |   5822.153 |    1222.485 |    7044.638 |    57.64 |    42.36 | 
+      4 |    5853.500 |      724.652 |     6578.152 |    4495.860 |      489.703 |     4985.562 |  10349.360 |    1214.354 |   11563.714 |    56.89 |    43.11 | 
+      6 |    8521.161 |      662.844 |     9184.004 |    6458.727 |      535.489 |     6994.216 |  14979.887 |    1198.333 |   16178.220 |    56.77 |    43.23 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        100 |   1030.034 |      10.300 |
+      2 |        200 |   1014.981 |       5.075 |
+      4 |        400 |   1005.031 |       2.513 |
+      6 |        606 |   1001.847 |       1.653 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1812 |         1716 |         74153816 |    416969310.69 |        1716 |         65623896 |    368574683.35 |
+      2 |       1698 |         1608 |         68940162 |    410746886.05 |        1608 |         60912002 |    368325006.91 |
+      4 |       1536 |         1456 |         61381650 |    414951953.80 |        1456 |         54357010 |    374341550.76 |
+      6 |       1426 |         1346 |         56167390 |    420131965.34 |        1346 |         49243102 |    376171538.45 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   14589127 |          0 |          0 |   73605707 |   29566477 |   29221334 |  146982645 |
+      2 |   13892390 |   13122188 |   26706508 |   80908713 |  106673252 |   26829908 |  268132959 |
+      4 |  119095043 |   84860254 |   47377033 |   59556963 |   71276359 |   93221067 |  475386719 |
+      6 |  108722463 |  107683187 |  107876695 |  107875056 |  107884269 |  108581314 |  648622984 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3100579 |               0 |       512417 |        512417 |     3626433 |
+      2 |         3236212 |               0 |      1024441 |       1024441 |     4275301 |
+      4 |         3115350 |               0 |      2098600 |       2098600 |     5223788 |
+      6 |         3073126 |               0 |      3071069 |       3071069 |     6150065 |
+
+
+##################################################
+
+
+results_massive/392-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    1834.749 |      453.875 |     2288.624 |    1499.623 |      268.586 |     1768.209 |   3334.372 |     722.461 |    4056.833 |    56.41 |    43.59 | 
+      2 |    3315.091 |      480.974 |     3796.065 |    2437.614 |      255.639 |     2693.252 |   5752.705 |     736.612 |    6489.317 |    58.50 |    41.50 | 
+      4 |    6098.417 |      447.850 |     6546.268 |    4417.143 |      306.532 |     4723.675 |  10515.560 |     754.383 |   11269.943 |    58.09 |    41.91 | 
+      6 |    8659.340 |      454.519 |     9113.859 |    6474.062 |      339.877 |     6813.939 |  15133.403 |     794.396 |   15927.799 |    57.22 |    42.78 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        114 |   1030.302 |       9.038 |
+      2 |        221 |   1003.863 |       4.542 |
+      4 |        434 |   1005.951 |       2.318 |
+      6 |        639 |   1002.586 |       1.569 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1112 |         1052 |         41928230 |    244746233.41 |        1052 |         36910630 |    212669312.44 |
+      2 |       1061 |         1001 |         39858716 |    237250472.01 |        1001 |         34841116 |    210391037.45 |
+      4 |       1001 |          947 |         36605376 |    249467735.92 |         947 |         32591296 |    226935793.76 |
+      6 |        921 |          871 |         36064875 |    271112620.47 |         871 |         31749739 |    242380320.59 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |    8626936 |    8003321 |   16681326 |   32514472 |   16735815 |   82561870 |
+      2 |   15272633 |    7483508 |          0 |   23704202 |-4240767305 |   53321660 |-4140985302 |
+      4 |   64153723 |   30929334 |   34590734 |   39719949 |   60860692 |   53497595 |  283752027 |
+      6 |   68864100 |   68679032 |   68610901 |-4225830008 |   68794839 |   68570969 |-3882310167 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3225913 |               0 |       512524 |        512524 |     3755209 |
+      2 |         3138111 |               0 |      1024497 |       1024497 |     4172885 |
+      4 |         3082811 |               0 |      2150215 |       2150215 |     5243605 |
+      6 |         3071172 |               0 |      3070669 |       3070669 |     6150349 |
+
+
+##################################################
+
+
+results_massive/392-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    1944.729 |      326.876 |     2271.605 |    1232.122 |      138.138 |     1370.260 |   3176.851 |     465.014 |    3641.865 |    62.37 |    37.63 | 
+      2 |    3001.427 |      325.588 |     3327.015 |    2709.622 |      221.820 |     2931.442 |   5711.048 |     547.408 |    6258.456 |    53.16 |    46.84 | 
+      4 |    5573.691 |      383.412 |     5957.104 |    4979.061 |      222.446 |     5201.508 |  10552.753 |     605.859 |   11158.612 |    53.39 |    46.61 | 
+      6 |    8159.080 |      345.585 |     8504.664 |    7336.837 |      272.555 |     7609.392 |  15495.916 |     618.140 |   16114.056 |    52.78 |    47.22 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        120 |   1011.407 |       8.428 |
+      2 |        231 |   1009.802 |       4.371 |
+      4 |        447 |   1011.820 |       2.264 |
+      6 |        662 |   1000.733 |       1.512 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        741 |          701 |         24927957 |    144997514.75 |         701 |         21917397 |    127479359.68 |
+      2 |        662 |          622 |         29676951 |    177438212.34 |         622 |         25763223 |    156428057.09 |
+      4 |        621 |          581 |         28729131 |    195231298.58 |         581 |         24715051 |    172202253.25 |
+      6 |        594 |          564 |         27308078 |    205500178.56 |         564 |         24297518 |    185271193.96 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |    9707205 |    4977857 |    9784108 |   19548006 |    4789917 |   48807093 |
+      2 |   11643161 |   11520329 |    5947989 |   34419955 |   34614078 |   16300431 |  114445943 |
+      4 |   45358507 |   32947812 |   25874210 |   38941203 |   38711690 |   39586161 |  221419583 |
+      6 |   52468215 |   52261106 |   52157181 |   52523164 |   52404876 |   52380441 |  314194983 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |         3136326 |               0 |       512342 |        512342 |     3660773 |
+      2 |         3127628 |               0 |      1024262 |       1024262 |     4162918 |
+      4 |         3088674 |               0 |      2199887 |       2199887 |     5298653 |
+      6 |         3072088 |               0 |      3070871 |       3070871 |     6150491 |
+
+
+##################################################
+
+
+results_massive/1000-50-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    1235.855 |      563.757 |     1799.612 |    2508.671 |      287.307 |     2795.978 |   3744.526 |     851.063 |    4595.590 |    39.16 |    60.84 | 
+      2 |    1593.132 |      498.595 |     2091.727 |    4547.844 |      349.418 |     4897.262 |   6140.977 |     848.012 |    6988.989 |    29.93 |    70.07 | 
+      4 |    2818.690 |      496.187 |     3314.877 |    8066.986 |      373.280 |     8440.266 |  10885.676 |     869.467 |   11755.143 |    28.20 |    71.80 | 
+      6 |    4143.301 |      485.945 |     4629.246 |   11578.396 |      355.130 |    11933.525 |  15721.696 |     841.075 |   16562.771 |    27.95 |    72.05 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        118 |   1062.702 |       9.006 |
+      2 |        220 |   1003.259 |       4.560 |
+      4 |        432 |   1002.665 |       2.321 |
+      6 |        648 |   1002.892 |       1.548 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       5090 |         4828 |         44809817 |    242681743.62 |        4828 |                0 |     23910150.32 |
+      2 |       4494 |         4264 |         41246599 |    228388696.91 |        4264 |                0 |     23247752.66 |
+      4 |       4184 |         3968 |         38247007 |    241349580.26 |        3968 |                0 |     22298988.14 |
+      6 |       3970 |         3766 |         35997427 |    252049957.96 |        3766 |                0 |     21985117.73 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |   15064466 |    8999782 |          0 |   16599969 |   36727954 |   10152380 |   87544551 |
+      2 |   16115977 |   23529459 |   24037925 |   23247358 |   40043992 |   30737696 |  157712407 |
+      4 |   58126941 |   53462909 |   24719363 |   36633671 |   53242196 |   65672313 |  291857393 |
+      6 |   68538058 |   68537233 |   68535028 |   68969553 |   68905468 |   69067132 |  412552472 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_massive/1000-100-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |    1020.548 |      472.170 |     1492.718 |    2620.340 |      250.383 |     2870.723 |   3640.888 |     722.552 |    4363.441 |    34.21 |    65.79 | 
+      2 |    1443.110 |      428.344 |     1871.453 |    4688.560 |      288.822 |     4977.382 |   6131.669 |     717.166 |    6848.835 |    27.33 |    72.67 | 
+      4 |    2619.577 |      436.854 |     3056.431 |    8344.972 |      303.159 |     8648.132 |  10964.549 |     740.014 |   11704.562 |    26.11 |    73.89 | 
+      6 |    3723.855 |      425.967 |     4149.822 |   12056.538 |      286.452 |    12342.991 |  15780.393 |     712.420 |   16492.813 |    25.16 |    74.84 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        120 |   1039.243 |       8.660 |
+      2 |        230 |   1014.052 |       4.409 |
+      4 |        445 |   1005.886 |       2.260 |
+      6 |        660 |   1002.042 |       1.518 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       4002 |         3797 |         36560937 |    195508290.53 |        3797 |                0 |     18627734.04 |
+      2 |       3808 |         3615 |         34310440 |    189074681.30 |        3615 |                0 |     18469248.46 |
+      4 |       3551 |         3367 |         32247165 |    204085377.62 |        3367 |                0 |     17573970.27 |
+      6 |       3306 |         3133 |         29247437 |    205633897.27 |        3133 |                0 |     19148011.12 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |          0 |   14557905 |          0 |   42065921 |    7220408 |    6935575 |   70779809 |
+      2 |   26090118 |   12938339 |          0 |   13118388 |   46316751 |   33155693 |  131619289 |
+      4 |   55348174 |   49001184 |   43101037 |   37080239 |   31358403 |   30474759 |  246363796 |
+      6 |   56662989 |   56535712 |   56631812 |   56799657 |   56791879 |   56508870 |  339930919 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_massive/1000-500-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |     726.500 |      189.338 |      915.837 |    2531.325 |      114.309 |     2645.634 |   3257.825 |     303.647 |    3561.472 |    25.72 |    74.28 | 
+      2 |    1228.054 |      189.423 |     1417.477 |    4636.125 |      114.379 |     4750.504 |   5864.179 |     303.802 |    6167.981 |    22.98 |    77.02 | 
+      4 |    2431.282 |      212.727 |     2644.009 |    8577.960 |      109.566 |     8687.526 |  11009.242 |     322.293 |   11331.536 |    23.33 |    76.67 | 
+      6 |    2757.404 |      219.295 |     2976.698 |   13239.490 |      136.676 |    13376.166 |  15996.894 |     355.971 |   16352.865 |    18.20 |    81.80 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        130 |   1022.038 |       7.862 |
+      2 |        246 |   1010.279 |       4.107 |
+      4 |        475 |   1005.087 |       2.116 |
+      6 |        699 |   1005.370 |       1.438 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |       1617 |         1527 |         14436966 |     75744003.63 |        1527 |                0 |      6784005.67 |
+      2 |       1582 |         1502 |         13124323 |     72458666.53 |        1502 |                0 |      7074370.96 |
+      4 |       1546 |         1466 |         13124112 |     83053846.22 |        1466 |                0 |      6262755.53 |
+      6 |       1456 |         1376 |         13499124 |     94562061.91 |        1376 |                0 |      8127701.44 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |    8032239 |          0 |    2703509 |    8251463 |    5535035 |    2624809 |   27147055 |
+      2 |    4873372 |    7310377 |    9670510 |   12965436 |    8399412 |    4798762 |   48017869 |
+      4 |   24360828 |    9511531 |    8824554 |   13276721 |   19418953 |   21906716 |   97299303 |
+      6 |   25071982 |   25099057 |   25038469 |   25103198 |   25136483 |   25031395 |  150480584 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+
+results_massive/1000-1000-1-20:
+Bandwidth Table:
+Threads | Node 0 Read | Node 0 Write | Node 0 Total | Node 1 Read | Node 1 Write | Node 1 Total | Total Read | Total Write | Grand Total | Node 0 % | Node 1 % |
+      1 |     879.756 |      112.219 |      991.975 |    2258.119 |       62.893 |     2321.012 |   3137.875 |     175.112 |    3312.988 |    29.94 |    70.06 | 
+      2 |     672.914 |      153.435 |      826.349 |    5254.212 |       70.796 |     5325.008 |   5927.126 |     224.231 |    6151.357 |    13.43 |    86.57 | 
+      4 |    1264.213 |      150.134 |     1414.347 |    9792.769 |       95.978 |     9888.747 |  11056.982 |     246.112 |   11303.094 |    12.51 |    87.49 | 
+      6 |    1848.379 |      160.280 |     2008.658 |   14344.826 |       97.198 |    14442.024 |  16193.205 |     257.478 |   16450.682 |    12.21 |    87.79 | 
+
+
+STREAM Table (times in seconds):
+Threads | Iterations | Total Time | Time / Iter |
+      1 |        132 |   1013.827 |       7.681 |
+      2 |        260 |   1029.697 |       3.960 |
+      4 |        481 |   1001.520 |       2.082 |
+      6 |        711 |   1004.166 |       1.412 |
+
+
+Kernel Output Table (time in microseconds):
+Threads | Iterations | Heavy Copies | Heavy Copy Pages | Heavy Copy Time | Light Swaps | Light Swap Pages | Light Swap Time |
+      1 |        921 |          871 |          7499941 |     40321757.67 |         871 |                0 |      3482061.12 |
+      2 |        892 |          842 |          9374722 |     51272786.17 |         842 |                0 |      4421907.43 |
+      4 |        847 |          797 |          9374443 |     59585751.34 |         797 |                0 |      4228446.83 |
+      6 |        836 |          786 |          9374328 |     64687457.22 |         786 |                0 |      4359945.51 |
+
+TLB Interrupt Information (total over 10 runs):
+Threads |   Core 1   |   Core 2   |   Core 3   |   Core 4   |   Core 5   |   Core 6   |   Totals   |
+      1 |    2626301 |    1313170 |          0 |    2626221 |    5252622 |    1312784 |   13131098 |
+      2 |    5061818 |    3327782 |          0 |    1687338 |   11782657 |   11623019 |   33482614 |
+      4 |   15180603 |   10107055 |    6737135 |   10091618 |   13450083 |   11789696 |   67356190 |
+      6 |   16456184 |   16646214 |   16452793 |   16452264 |   16632874 |   16458266 |   99098595 |
+
+TLB Tracepoint Information (total over 10 runs):
+Threads | Total IPI Sends | Total MM Flushes | Range Flushes | Pages Flushed | All Sources |
+      1 |               0 |               0 |            0 |             0 |           0 |
+      2 |               0 |               0 |            0 |             0 |           0 |
+      4 |               0 |               0 |            0 |             0 |           0 |
+      6 |               0 |               0 |            0 |             0 |           0 |
+
+
+##################################################
+
+

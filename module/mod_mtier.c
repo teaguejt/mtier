@@ -46,7 +46,8 @@ MODULE_DESCRIPTION("The module for the mtier kthread worker");
 //#define SIZE_MB 1024  /* Standard size > 100% STREAM RO RSS */
 //#define SIZE_MB 98      /* 12.5% STREAM RO RSS */
 //#define SIZE_MB 196     /* 25% STREAM RO RSS */
-#define SIZE_MB 392     /* 50% STREAM RO RSS */
+//#define SIZE_MB 392     /* 50% STREAM RO RSS */
+#define SIZE_MB 1000
 //#define SIZE_MB 2         /* Fun size, for testing */
 #define ENTRY_NAME  "mod_mtier"
 #define PROCFS_NAME "mod_mtier"

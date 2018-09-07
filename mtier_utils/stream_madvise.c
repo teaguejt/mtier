@@ -210,7 +210,7 @@ pthread_mutex_t stop_mutex;
 int thread_should_stop = 0;
 int thread_has_stopped = 0;
 
-struct thr_params thr_params = {.size_mb = 92, .delay = 100, .bk_iters = 20};
+struct thr_params thr_params = {.size_mb = 784, .delay = 50, .bk_iters = 20};
 
 static double	avgtime[4] = {0}, maxtime[4] = {0},
 		mintime[4] = {FLT_MAX,FLT_MAX,FLT_MAX,FLT_MAX};
@@ -272,9 +272,10 @@ void *thr_func(void *args) {
 
     for(i = 0; i < arr_pages; i++) {
         pages[i] = arr_addr + (i * 4096);
-        /*if(i < 10) {
+        //mbind((void *)pages[i], 4096, MPOL_BIND, &fnode, mnode, MPOL_MF_MOVE);
+        if(i < 10) {
             printf("page: 0x%lx\n", pages[i]);
-        }*/
+        }
     }
     
     printf("page array = 0x%lx, arr_addr = 0x%lx\n", (unsigned long)pages,
@@ -284,12 +285,12 @@ void *thr_func(void *args) {
         /* Evacuate the fast tier */
         if(has_run) {
             for(i = 0; i < num_pages; i++) {
-                madvise((void *)pages[i], 4096, MADV_DONTNEED);
                 err = mbind((void *)pages[i], 4096, MPOL_BIND, &snode, mnode,
                     MPOL_MF_MOVE);
                 if(err) {
                     printf("error moving to slow node: %d\n", errno);
                 }
+                //madvise((void *)pages[i], 4096, MADV_DONTNEED);
             }
         }
         else {
@@ -311,19 +312,26 @@ void *thr_func(void *args) {
             }
             /*for(i = 0; i < 50; i++) {
                 printf("0x%lx\n", pages[i]);
-            }
-            break;*/
+            }*/
 
             /* Perform the bind */
             for(i = 0; i < num_pages; i++) {
-                madvise((void *)pages[i], 4096, MADV_DONTNEED);
+                if(!has_run) {
+                    printf("page: %lu\n", pages[i]);
+                }
                 err = mbind((void *)pages[i], 4096, MPOL_BIND, &fnode, mnode,
                     MPOL_MF_MOVE);
                 if(err) {
                     printf("mbind error: %d\n", errno);
                     break;
                 }
+                /*err = madvise((void *)pages[i], 4096, MADV_DONTNEED);
+                if(err) {
+                    printf("madvise error: %d\n", errno);
+                    stop = 1;
+                }*/
             }
+            stop = 1;
         }
         usleep(thr_params.delay * 1000);
         pthread_mutex_lock(&stop_mutex);

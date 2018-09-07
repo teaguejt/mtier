@@ -1,0 +1,61 @@
+malloc: whole_arr = 0x7f22e1d74000
+a = 0x7f22e1d74000, b = 0x7f22f8baa000
+done. a=0x7f22e1d74000 b=0x7f22f8baa000 c=0x7f22caf3d000
+Thread has started!-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 48000000 (elements), Offset = 0 (elements)
+Memory per array = 366.2 MiB (= 0.4 GiB).
+Total memory required = 1098.6 MiB (= 1.1 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+num_pages = 25088, num_elems = 96000000, num_bytes = 768000000, arr_pages = 187500
+page: 0x7f22e1d74000
+page: 0x7f22e1d75000
+page: 0x7f22e1d76000
+page: 0x7f22e1d77000
+page: 0x7f22e1d78000
+page: 0x7f22e1d79000
+page: 0x7f22e1d7a000
+page: 0x7f22e1d7b000
+page: 0x7f22e1d7c000
+page: 0x7f22e1d7d000
+page array = 0x7f22c40008c0, arr_addr = 0x7f22e1d74000
+Number of Threads requested = 6
+Number of Threads counted = 6
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 67782 microseconds.
+   (= 67782 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+stream: completed 54 intervals in 101538648099 microseconds
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:           22748.8     0.045549     0.033760     0.059705
+Scale:          22548.4     0.046275     0.034060     0.065890
+Add:            30522.9     0.050060     0.037742     0.067239
+Triad:          30053.2     0.050628     0.038332     0.066459
+-------------------------------------------------------------
+Failed Validation on array a[], AvgRelAbsErr > epsilon (1.000000e-13)
+     Expected Value: 1.153301e+12, AvgAbsErr: 1.153301e+12, AvgRelAbsErr: 1.000000e+00
+     For array a[], 48000000 errors were found.
+Failed Validation on array b[], AvgRelAbsErr > epsilon (1.000000e-13)
+     Expected Value: 2.306602e+11, AvgAbsErr: 2.306602e+11, AvgRelAbsErr: 1.000000e+00
+     AvgRelAbsErr > Epsilon (1.000000e-13)
+     For array b[], 48000000 errors were found.
+Failed Validation on array c[], AvgRelAbsErr > epsilon (1.000000e-13)
+     Expected Value: 3.075469e+11, AvgAbsErr: 3.075469e+11, AvgRelAbsErr: 1.000000e+00
+     AvgRelAbsErr > Epsilon (1.000000e-13)
+     For array c[], 48000000 errors were found.
+Thread has stopped!
+Thread stopped! STREAM is exiting.
+-------------------------------------------------------------

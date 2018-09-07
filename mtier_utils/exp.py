@@ -29,10 +29,15 @@ mtierbind       = remotebind
 mtier           = 'mtier3'
 mtierargs       = ['--ftnode', '1', '--stnode', '0', '--verbose']
 
+'''
 module_variants = {
     'base'    : moddir,
     'heavy'   : modheavydir,
     'massive' : modmassivedir,
+}
+'''
+module_variants = {
+    'madvise' : moddir
 }
 
 progs = ['mm', 'stream']
@@ -44,7 +49,7 @@ results_dict = {}
 def run_mm():
     return 0
 
-def run_stream(threads, cfg, is_baseline, mtier_params = None):
+def run_stream(threads, cfg, is_baseline, is_madvise, mtier_params = None):
     if is_baseline == False and mtier_params == None:
         mtier_params = {'ft_size_mb':  '1000',
                         'ft_fraction': '1',
@@ -71,7 +76,13 @@ def run_stream(threads, cfg, is_baseline, mtier_params = None):
             elif is_baseline == True and cfg == 'baseline-remote':
                 invoke = [numactl] + remotebind + [progsdir + 'stream']
                 print(invoke)
-            elif is_baseline == False:
+            elif is_madvise == True:
+                invoke = [numactl] + remotebind + [progsdir + 'stream_madvise']
+                tracef = open(tracename, 'w')
+                trace_clear = 'echo "" > ' + tracedir
+                trace_invoke = ['cat', tracedir]
+                print(invoke)
+            elif is_baseline == False and is_madvise == False:
                 invoke = [numactl] + remotebind + [progsdir + mtier]
                 invoke = invoke + mtierargs
                 invoke.append(progsdir + 'stream')
@@ -89,7 +100,10 @@ def run_stream(threads, cfg, is_baseline, mtier_params = None):
             postintf = open(postintname, 'w')
 
             # Handle module setup and insertion if needed
-            if is_baseline == False:
+            if is_madvise == True:
+                tclearmon = subprocess.Popen(trace_clear, shell=True)
+                tclearmon.wait()
+            if is_baseline == False and is_madvise == False:
                 module_invoke = ['insmod', l_moddir + mod]
                 for k, v in mtier_params.items():
                     module_invoke.append(k + '=' + v)
@@ -116,7 +130,10 @@ def run_stream(threads, cfg, is_baseline, mtier_params = None):
             bwf.close()
             bwmon.send_signal(signal.SIGTERM)
 
-            if is_baseline == False:
+            if is_madvise == True:
+                tracemon = subprocess.Popen(trace_invoke, stdout = tracef)
+                tracef.close()
+            if is_baseline == False and is_madvise == False:
                 tracemon = subprocess.Popen(trace_invoke, stdout = tracef)
                 tracef.close()
                 time.sleep(5)
@@ -129,9 +146,10 @@ def run_stream(threads, cfg, is_baseline, mtier_params = None):
                 os.system('echo 1 > /proc/sys/vm/drop_caches')
                 time.sleep(10)
 
-def analyze_stream(cfg, path, is_baseline):
+def analyze_stream(cfg, path, is_baseline, is_madvise):
     #numthreads = [1]
     numthreads = [1, 2, 4, 6]
+    #numthreads = [6]
     print(path + cfg + ':')
     print('Bandwidth Table:')
     print('Threads | Node 0 Read | Node 0 Write | Node 0 Total |' + \
@@ -314,65 +332,152 @@ def analyze_stream(cfg, path, is_baseline):
 
     print()
     print()
-
-    if is_baseline == True:
-        print('No dmesg information for baseline runs.')
-        print()
-        print()
-        print('#' * 50)
-        return 0
+    
+    #if is_baseline == True or is_madvise == True:
+    #    print('No dmesg information for baseline and madvise runs.')
+    #    print()
+    #    print()
+    #    print('#' * 50)
+    #    return 0
 
     # Get behind-the-scenes information from dmesg output
-    print('Kernel Output Table (time in microseconds):')
-    print('Threads | Iterations | Heavy Copies | Heavy Copy Pages |',
-          'Heavy Copy Time | Light Swaps | Light Swap Pages |',
-          'Light Swap Time |')
-    
+    if is_baseline == False and is_madvise == False:
+        print('Kernel Output Table (time in microseconds):')
+        print('Threads | Iterations | Heavy Copies | Heavy Copy Pages |',
+              'Heavy Copy Time | Light Swaps | Light Swap Pages |',
+              'Light Swap Time |')
+
+        for threads in numthreads:
+            mtier_iters = 0
+            heavy_copies = 0
+            light_copies = 0
+            shortest_heavy_copy = 0.0
+            shortest_light_copy = 0.0
+            longest_heavy_copy = 0.0
+            longest_light_copy = 0.0
+            total_heavy_time = 0.0
+            total_light_time = 0.0
+            total_heavy_pages = 0
+            total_light_pages = 0
+            num_heavy_copies = 0.0
+            num_light_copies = 0.0
+
+            for i in range(0, 10):
+                dmfname = path + cfg + '-' + str(threads) + '-dmesg-' + str(i) + '.txt'
+                dmf = open(dmfname, 'r')
+                for line in dmf:
+                    if 'mod_iter:' in line:
+                        mtier_iters = mtier_iters + 1
+                    elif 'mtier duplicate heavy-copied' in line:
+                        linesplit = line.split(']')
+                        deetsplit = linesplit[1].split()
+                        heavy_copies += 1
+                        total_heavy_time += float(deetsplit[6])
+                        total_heavy_pages += int(deetsplit[3])
+                    elif 'evict_unused_tier_structs' in line:
+                        linesplit = line.split(']')
+                        deetsplit = linesplit[1].split()
+                        light_copies += 1
+                        total_light_time += float(deetsplit[5])
+                        total_light_pages += int(deetsplit[2])
+                        dmf.close()
+
+            heavy_microtime = total_heavy_time / 1000
+            light_microtime = total_light_time / 1000
+            print('{0:7d} |'.format(threads),
+                '{0:10d} |'.format(mtier_iters),
+                '{0:12d} |'.format(heavy_copies),
+                '{0:16d} |'.format(total_heavy_pages),
+                '{0:15.2f} |'.format(heavy_microtime),
+                '{0:11d} |'.format(light_copies),
+                '{0:16d} |'.format(total_light_pages),
+                '{0:15.2f} |'.format(light_microtime))
+
+    # Get TLB flush information (from interrupts procfile)
+    print()
+    print('TLB Interrupt Information (total over {} runs):'.format(num_iters))
+    print('{0:7} |'.format('Threads'), end = "")
+    for i in range(0, 6):
+        print('   Core {}   |'.format(i + 1), end = "")
+    print('   Totals   |')
     for threads in numthreads:
-        mtier_iters = 0
-        heavy_copies = 0
-        light_copies = 0
-        shortest_heavy_copy = 0.0
-        shortest_light_copy = 0.0
-        longest_heavy_copy = 0.0
-        longest_light_copy = 0.0
-        total_heavy_time = 0.0
-        total_light_time = 0.0
-        total_heavy_pages = 0
-        total_light_pages = 0
-        num_heavy_copies = 0.0
-        num_light_copies = 0.0
+        grand_total = 0
+        totals = [0, 0, 0, 0, 0, 0]
+        for i in range(0, num_iters):
+            tmp_bases = [0, 0, 0, 0, 0, 0]
+            tmp_finals = [0, 0, 0, 0, 0, 0]
+            basename = path + cfg + '-' + str(threads) + '-int_base-' + str(i) + '.txt'
+            basef = open(basename, 'r')
+            resname = path + cfg + '-' + str(threads) + '-int_res-' + str(i) + '.txt'
+            resf = open(resname, 'r')
+            # Get base values
+            for line in basef:
+                if 'TLB' in line:
+                    linesplit = line.split()
+                    for j in range(7, 13):
+                        tmp_bases[j - 7] += int(linesplit[j])
+            for line in resf:
+                if 'TLB' in line:
+                    linesplit = line.split()
+                    for j in range(7, 13):
+                        tmp_finals[j - 7] += int(linesplit[j])
+            resf.close()
+            basef.close()
+            for j in range(0, 6):
+                totals[j] += (tmp_finals[j] - tmp_bases[j])
+        print('{0:7d} |'.format(threads), end = "")
+        for i in range(0, 6):
+            print('{0:11d} |'.format(totals[i]), end="")
+        grand_total = sum(totals)
+        print('{0:11d} |'.format(grand_total))
 
-        for i in range(0, 10):
-            dmfname = path + cfg + '-' + str(threads) + '-dmesg-' + str(i) + '.txt'
-            dmf = open(dmfname, 'r')
-            for line in dmf:
-                if 'mod_iter:' in line:
-                    mtier_iters = mtier_iters + 1
-                elif 'mtier duplicate heavy-copied' in line:
-                    linesplit = line.split(']')
-                    deetsplit = linesplit[1].split()
-                    heavy_copies += 1
-                    total_heavy_time += float(deetsplit[6])
-                    total_heavy_pages += int(deetsplit[3])
-                elif 'evict_unused_tier_structs' in line:
-                    linesplit = line.split(']')
-                    deetsplit = linesplit[1].split()
-                    light_copies += 1
-                    total_light_time += float(deetsplit[5])
-                    total_light_pages += int(deetsplit[2])
-            dmf.close()
+    # Get TLB information from tracepoint dumps
+    print()
+    print('TLB Tracepoint Information (total over {} runs):'.format(num_iters))
+    print('{0:7} |'.format('Threads'),
+          '{0:15} |'.format('Total IPI Sends'),
+          '{0:15} |'.format('Total MM Flushes'),
+          '{0:12} |'.format('Range Flushes'),
+          '{0:13} |'.format('Pages Flushed'),
+          '{0:11} |'.format('All Sources'))
+    for thread in numthreads:
+        ipi_sends = 0
+        mm_dumps = 0
+        range_flushes = 0
+        pages_flushed = 0
+        all_sources = 0
+        for i in range(0, num_iters):
+            tlbname = path + cfg + '-' + str(thread) + '-tlb_trace-' + str(i) + '.txt'
+            tlbf = open(tlbname, 'r')
+            for line in tlbf:
+                if line[0] == '#':
+                    continue
+                if 'mtier_worker-' in line or 'stream-' in line or '<...>' in line:
+                    if 'remote ipi send' in line:
+                        ipi_sends += 1
+                    elif 'remote shootdown' in line:
+                        linesplit = line.split()
+                        for word in linesplit:
+                            if 'pages:' in word:
+                                parts = word.split(':')
+                                num_pages = parts[1]
+                                if num_pages == '-1':
+                                    mm_dumps += 1
+                                else:
+                                    pages_flushed += int(num_pages)
+                                    range_flushes += 1
+                core = line[line.find("[") + 1:line.find("]")]
+                if int(core) > 5 or int(core) < 12:
+                    all_sources += 1
 
-        heavy_microtime = total_heavy_time / 1000
-        light_microtime = total_light_time / 1000
-        print('{0:7d} |'.format(threads),
-              '{0:10d} |'.format(mtier_iters),
-              '{0:12d} |'.format(heavy_copies),
-              '{0:16d} |'.format(total_heavy_pages),
-              '{0:15.2f} |'.format(heavy_microtime),
-              '{0:11d} |'.format(light_copies),
-              '{0:16d} |'.format(total_light_pages),
-              '{0:15.2f} |'.format(light_microtime))
+            tlbf.close()
+        print('{0:7d} |'.format(thread),
+              '{0:15d} |'.format(ipi_sends),
+              '{0:15d} |'.format(mm_dumps),
+              '{0:12d} |'.format(range_flushes),
+              '{0:13d} |'.format(pages_flushed),
+              '{0:11d} |'.format(all_sources))
+    
 
     print()
     print()
@@ -389,8 +494,7 @@ stream_cfgs_1000 = ['1000-50-1-20',
                     '1000-500-1-20',
                     '1000-1000-1-20']
 stream_cfgs_98 = [  '98-50-1-20',
-                    #'98-100-1-20',
-                    #'98-250-1-20',
+                    '98-100-1-20',
                     '98-500-1-20',
                     '98-1000-1-20']
 stream_cfgs_196 = [ '196-50-1-20',
@@ -401,10 +505,20 @@ stream_cfgs_392 = [ '392-50-1-20',
                     '392-100-1-20',
                     '392-500-1-20',
                     '392-1000-1-20']
-all_stream_cfgs = stream_cfgs_392
+stream_cfgs_1000 = ['1000-50-1-20',
+                    '1000-100-1-20',
+                    '1000-500-1-20',
+                    '1000-1000-1-20']
+#all_stream_cfgs = stream_cfgs_base + stream_cfgs_98 + stream_cfgs_196 + \
+  #stream_cfgs_392 + stream_cfgs_1000
+all_stream_cfgs = ['madvise-98-50-1-20']
+                   #'madvise-196-50-1-20',
+                   #'madvise-392-50-1-20',
+                   #'madvise-1000-50-1-20']
 
 def process_stream_runs(runs):
-    threads = [1, 2, 4, 6]
+    #threads = [1, 2, 4, 6]
+    threads = [6]
     cfgs = []
     if 'all' in runs:
         cfgs = all_stream_cfgs
@@ -416,7 +530,12 @@ def process_stream_runs(runs):
         if 'baseline' in cfg:
             for thread in threads:
                 os.environ['OMP_NUM_THREADS'] = str(thread)
-                run_stream(thread, cfg, True)
+                run_stream(thread, cfg, True, False)
+        elif 'madvise' in cfg:
+            for thread in threads:
+                os.environ['OMP_NUM_THREADS'] = str(thread)
+                newcfg = cfg.replace('madvice-', '')
+                run_stream(thread, cfg, False, True)
         else:
             # Put together the mtier params dict
             cfgsplit = cfg.split('-')
@@ -429,7 +548,7 @@ def process_stream_runs(runs):
                                 'ft_bk_iters' : cfgsplit[3]}
             for thread in threads:
                 os.environ['OMP_NUM_THREADS'] = str(thread)
-                run_stream(thread, cfg, False, mtier_params)
+                run_stream(thread, cfg, False, False, mtier_params)
 
 def process_stream_analysis(runs):
     cfgs = []
@@ -444,9 +563,11 @@ def process_stream_analysis(runs):
         path = 'results_' + key + '/'
         for cfg in cfgs:
             if 'baseline' in cfg:
-                analyze_stream(cfg, path, True)
+                analyze_stream(cfg, path, True, False)
+            elif 'madvise' in cfg:
+                analyze_stream(cfg, path, False, True)
             else:
-                analyze_stream(cfg, path, False)
+                analyze_stream(cfg, path, False, False)
 
 #==================#
 #### START HERE ####
